@@ -1,0 +1,17 @@
+     1.688    216.213 # matmult_nmk
+     3.000    263.601 # matmult_nmk
+     6.750    297.676 # matmult_nmk
+    15.188    298.012 # matmult_nmk
+    27.000    302.007 # matmult_nmk
+    60.750    309.546 # matmult_nmk
+   117.188    312.775 # matmult_nmk
+   243.000    311.962 # matmult_nmk
+   487.688    311.953 # matmult_nmk
+   999.188    298.845 # matmult_nmk
+  1989.188    285.698 # matmult_nmk
+  3996.750    273.095 # matmult_nmk
+  7956.750    263.360 # matmult_nmk
+ 15987.000    277.097 # matmult_nmk
+ 31981.688    246.204 # matmult_nmk
+ 63948.000    204.235 # matmult_nmk
+127926.750    201.489 # matmult_nmk

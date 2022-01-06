@@ -1,0 +1,17 @@
+     1.758    645.628 # matmult_kmn
+     3.445   1304.516 # matmult_kmn
+     7.031   2337.703 # matmult_kmn
+    13.781   3121.511 # matmult_kmn
+    31.008   3841.397 # matmult_kmn
+    59.133   4246.142 # matmult_kmn
+   124.031   4003.538 # matmult_kmn
+   244.758   4087.440 # matmult_kmn
+   496.125   3937.855 # matmult_kmn
+   995.695   3569.977 # matmult_kmn
+  1984.500   3579.844 # matmult_kmn
+  3982.781   3623.559 # matmult_kmn
+  7985.320   3661.893 # matmult_kmn
+ 15998.133   3608.339 # matmult_kmn
+ 31941.281   3071.102 # matmult_kmn
+ 63992.531   2774.003 # matmult_kmn
+127954.758   1901.347 # matmult_kmn

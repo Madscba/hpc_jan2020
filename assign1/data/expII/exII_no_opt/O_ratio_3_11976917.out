@@ -1,0 +1,128 @@
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                24
+On-line CPU(s) list:   0-23
+Thread(s) per core:    1
+Core(s) per socket:    12
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 79
+Model name:            Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz
+Stepping:              1
+CPU MHz:               2200.000
+CPU max MHz:           2900.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4389.90
+Virtualization:        VT-x
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              30720K
+NUMA node0 CPU(s):     0-11
+NUMA node1 CPU(s):     12-23
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb cat_l3 cdp_l3 invpcid_single intel_ppin intel_pt ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm rdt_a rdseed adx smap xsaveopt cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts md_clear spec_ctrl intel_stibp flush_l1d
+./matmult_c. mnk 5
+./matmult_c. mnk 7
+./matmult_c. mnk 10
+./matmult_c. mnk 14
+./matmult_c. mnk 21
+./matmult_c. mnk 29
+./matmult_c. mnk 42
+./matmult_c. mnk 59
+./matmult_c. mnk 84
+./matmult_c. mnk 119
+./matmult_c. mnk 168
+./matmult_c. mnk 238
+./matmult_c. mnk 337
+./matmult_c. mnk 477
+./matmult_c. mnk 674
+./matmult_c. mnk 954
+./matmult_c. mnk 1349
+./matmult_c. mkn 5
+./matmult_c. mkn 7
+./matmult_c. mkn 10
+./matmult_c. mkn 14
+./matmult_c. mkn 21
+./matmult_c. mkn 29
+./matmult_c. mkn 42
+./matmult_c. mkn 59
+./matmult_c. mkn 84
+./matmult_c. mkn 119
+./matmult_c. mkn 168
+./matmult_c. mkn 238
+./matmult_c. mkn 337
+./matmult_c. mkn 477
+./matmult_c. mkn 674
+./matmult_c. mkn 954
+./matmult_c. mkn 1349
+./matmult_c. nmk 5
+./matmult_c. nmk 7
+./matmult_c. nmk 10
+./matmult_c. nmk 14
+./matmult_c. nmk 21
+./matmult_c. nmk 29
+./matmult_c. nmk 42
+./matmult_c. nmk 59
+./matmult_c. nmk 84
+./matmult_c. nmk 119
+./matmult_c. nmk 168
+./matmult_c. nmk 238
+./matmult_c. nmk 337
+./matmult_c. nmk 477
+./matmult_c. nmk 674
+./matmult_c. nmk 954
+./matmult_c. nmk 1349
+./matmult_c. nkm 5
+./matmult_c. nkm 7
+./matmult_c. nkm 10
+./matmult_c. nkm 14
+./matmult_c. nkm 21
+./matmult_c. nkm 29
+./matmult_c. nkm 42
+./matmult_c. nkm 59
+./matmult_c. nkm 84
+./matmult_c. nkm 119
+./matmult_c. nkm 168
+./matmult_c. nkm 238
+./matmult_c. nkm 337
+./matmult_c. nkm 477
+./matmult_c. nkm 674
+./matmult_c. nkm 954
+./matmult_c. nkm 1349
+./matmult_c. kmn 5
+./matmult_c. kmn 7
+./matmult_c. kmn 10
+./matmult_c. kmn 14
+./matmult_c. kmn 21
+./matmult_c. kmn 29
+./matmult_c. kmn 42
+./matmult_c. kmn 59
+./matmult_c. kmn 84
+./matmult_c. kmn 119
+./matmult_c. kmn 168
+./matmult_c. kmn 238
+./matmult_c. kmn 337
+./matmult_c. kmn 477
+./matmult_c. kmn 674
+./matmult_c. kmn 954
+./matmult_c. kmn 1349
+./matmult_c. knm 5
+./matmult_c. knm 7
+./matmult_c. knm 10
+./matmult_c. knm 14
+./matmult_c. knm 21
+./matmult_c. knm 29
+./matmult_c. knm 42
+./matmult_c. knm 59
+./matmult_c. knm 84
+./matmult_c. knm 119
+./matmult_c. knm 168
+./matmult_c. knm 238
+./matmult_c. knm 337
+./matmult_c. knm 477
+./matmult_c. knm 674
+./matmult_c. knm 954
+./matmult_c. knm 1349
