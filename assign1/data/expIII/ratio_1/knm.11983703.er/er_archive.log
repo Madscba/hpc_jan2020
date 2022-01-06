@@ -1,0 +1,15 @@
+### Start Thu Jan  6 19:07:13 2022
+# /opt/oracle/developerstudio12.6/bin/../bin/er_archive -n -O /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/er_archive.log /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er
+Copying `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/matmult_c.gcc'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/matmult_c.gcc_4xx-F7Z-bs9'
+Copying `/usr/lib64/libgcc_s-4.8.5-20150702.so.1'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/libgcc_s-4.8.5-20150702.so.1_OCEC1bthLm2'
+Copying `/usr/lib64/libquadmath.so.0.0.0'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/libquadmath.so.0.0.0_OCEC1bthLm2'
+Copying `/usr/lib64/libm-2.17.so'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/libm-2.17.so_OCEC1bthLm2'
+Copying `/usr/lib64/libgfortran.so.3.0.0'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/libgfortran.so.3.0.0_OCEC1bthLm2'
+Copying `/usr/lib64/librt-2.17.so'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/librt-2.17.so_OCEC1bthLm2'
+Copying `/usr/lib64/libpthread-2.17.so'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/libpthread-2.17.so_OCEC1bthLm2'
+Copying `/usr/lib64/libc-2.17.so'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/libc-2.17.so_OCEC1bthLm2'
+Copying `/usr/lib64/libdl-2.17.so'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/libdl-2.17.so_OCEC1bthLm2'
+Copying `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/libmatmult.so'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/libmatmult.so_4xx-F7Z-bs9'
+Copying `/usr/lib64/atlas/libsatlas.so.3.10'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/libsatlas.so.3.10_bkXz1NQ1lK8'
+Copying `/opt/oracle/developerstudio12.6/lib/analyzer/amd64/runtime/libcollector.so'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/libcollector.so_-C8vWEvanQd'
+Copying `/usr/lib64/ld-2.17.so'  to `/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/src/knm.11983703.er/archives/ld-2.17.so_OCEC1bthLm2'
