@@ -1,0 +1,16 @@
+     3.445   1333.053 # matmult_blk 103
+     7.031   2388.208 # matmult_blk 103
+    13.781   3304.446 # matmult_blk 103
+    31.008   4066.634 # matmult_blk 103
+    59.133   3788.612 # matmult_blk 103
+   124.031   3967.214 # matmult_blk 103
+   244.758   3900.115 # matmult_blk 103
+   496.125   3800.827 # matmult_blk 103
+   995.695   3922.262 # matmult_blk 103
+  1984.500   3898.217 # matmult_blk 103
+  3982.781   3881.349 # matmult_blk 103
+  7985.320   3882.900 # matmult_blk 103
+ 15998.133   4131.125 # matmult_blk 103
+ 31941.281   4127.554 # matmult_blk 103
+ 63992.531   4123.756 # matmult_blk 103
+127954.758   4108.166 # matmult_blk 103
