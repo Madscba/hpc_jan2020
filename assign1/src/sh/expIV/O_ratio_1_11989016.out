@@ -1,0 +1,75 @@
+E_ratio_1_11989016.err
+O_ratio_1_11989016.out
+blkperf.sh
+blksize.sh
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                24
+On-line CPU(s) list:   0-23
+Thread(s) per core:    1
+Core(s) per socket:    12
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 79
+Model name:            Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz
+Stepping:              1
+CPU MHz:               2200.000
+CPU max MHz:           2900.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              4389.85
+Virtualization:        VT-x
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              30720K
+NUMA node0 CPU(s):     0-11
+NUMA node1 CPU(s):     12-23
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb cat_l3 cdp_l3 invpcid_single intel_ppin intel_pt ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm rdt_a rdseed adx smap xsaveopt cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts md_clear spec_ctrl intel_stibp flush_l1d
+./matmult_c.gcc blk 413 1
+./matmult_c.gcc blk 413 2
+./matmult_c.gcc blk 413 3
+./matmult_c.gcc blk 413 4
+./matmult_c.gcc blk 413 5
+./matmult_c.gcc blk 413 6
+./matmult_c.gcc blk 413 7
+./matmult_c.gcc blk 413 8
+./matmult_c.gcc blk 413 9
+./matmult_c.gcc blk 413 10
+./matmult_c.gcc blk 413 11
+./matmult_c.gcc blk 413 12
+./matmult_c.gcc blk 413 13
+./matmult_c.gcc blk 413 14
+./matmult_c.gcc blk 413 15
+./matmult_c.gcc blk 146 1
+./matmult_c.gcc blk 146 2
+./matmult_c.gcc blk 146 3
+./matmult_c.gcc blk 146 4
+./matmult_c.gcc blk 146 5
+./matmult_c.gcc blk 146 6
+./matmult_c.gcc blk 146 7
+./matmult_c.gcc blk 146 8
+./matmult_c.gcc blk 146 9
+./matmult_c.gcc blk 146 10
+./matmult_c.gcc blk 146 11
+./matmult_c.gcc blk 146 12
+./matmult_c.gcc blk 146 13
+./matmult_c.gcc blk 146 14
+./matmult_c.gcc blk 146 15
+./matmult_c.gcc blk 238 1
+./matmult_c.gcc blk 238 2
+./matmult_c.gcc blk 238 3
+./matmult_c.gcc blk 238 4
+./matmult_c.gcc blk 238 5
+./matmult_c.gcc blk 238 6
+./matmult_c.gcc blk 238 7
+./matmult_c.gcc blk 238 8
+./matmult_c.gcc blk 238 9
+./matmult_c.gcc blk 238 10
+./matmult_c.gcc blk 238 11
+./matmult_c.gcc blk 238 12
+./matmult_c.gcc blk 238 13
+./matmult_c.gcc blk 238 14
+./matmult_c.gcc blk 238 15

@@ -2,4 +2,5 @@
 #define __MATMULT_NAT_H
 
 void matmult_blk(int m, int n, int k, double **A, double **B, double **C, int bs);
+void matmult_blk3(int m, int n, int k, double **A, double **B, double **C, int bs);
 #endif

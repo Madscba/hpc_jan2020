@@ -21,15 +21,13 @@ ls
 EXECUTABLE=matmult_c.gcc
 SRCPATH="src/"
 RPATH=$"/zhome/fa/5/127129/hpc_jan2022/assign1"
-DPATH=$"data/expII/ex_blocksize"
-mdim="103"
-BLOCKSIZE="10 13 16 19 22 25 28 31 34 37 40 43 46 49 52 55"
+DPATH=$"data/expIV/ex_blocksize"
 PERM="blk"
 LOGEXT=$CC.dat
 
 
 #export MFLOPS_MAX_IT=100
-export MATMULT_COMPARE=0
+export MATMULT_COMPARE=1
 JID=${LSB_JOBID}
 EXPOUT="$LSB_JOBNAME.${JID}.er"
 HWCOUNT="-h dch,on,dcm,on,l2h,on,l2m,on"
@@ -37,14 +35,35 @@ HWCOUNT="-h dch,on,dcm,on,l2h,on,l2m,on"
 
 lscpu
 cd "$RPATH/$SRCPATH"
-
-
+mdim="413"
+BLOCKSIZE=$(seq 1 15)
+/bin/rm -f "$RPATH/$DPATH/blk_1$LOGEXT"
 for bs in $BLOCKSIZE
 do
 	echo ./$EXECUTABLE blk $mdim $bs
 		#collect -o $EXPOUT $HWCOUNT ./$EXECUTABLE $perm $mdim $mdim $mdim | grep -v CPU >> $RPATH/$DPATH/ratio_1_$perm.$LOGEXT
-	./$EXECUTABLE blk $mdim $mdim $mdim $bs | grep -v CPU >> $RPATH/$DPATH/blk$LOGEXT
+	./$EXECUTABLE blk $mdim $mdim $mdim $bs | grep -v CPU >> $RPATH/$DPATH/blk_1$LOGEXT
 done
+mdim="146"
+BLOCKSIZE=$(seq 1 15)
+/bin/rm -f "$RPATH/$DPATH/blk_2$LOGEXT"
+for bs in $BLOCKSIZE
+do
+	echo ./$EXECUTABLE blk $mdim $bs
+		#collect -o $EXPOUT $HWCOUNT ./$EXECUTABLE $perm $mdim $mdim $mdim | grep -v CPU >> $RPATH/$DPATH/ratio_1_$perm.$LOGEXT
+	./$EXECUTABLE blk $(($mdim*4)) $(($mdim*4)) $mdim $bs | grep -v CPU >> $RPATH/$DPATH/blk_2$LOGEXT
+done
+
+/bin/rm -f "$RPATH/$DPATH/blk_3$LOGEXT"
+mdim="238"
+BLOCKSIZE=$(seq 1 15)
+for bs in $BLOCKSIZE
+do
+	echo ./$EXECUTABLE blk $mdim $bs
+		#collect -o $EXPOUT $HWCOUNT ./$EXECUTABLE $perm $mdim $mdim $mdim | grep -v CPU >> $RPATH/$DPATH/ratio_1_$perm.$LOGEXT
+	./$EXECUTABLE blk $mdim $mdim $(($mdim*4)) $bs | grep -v CPU >> $RPATH/$DPATH/blk_3$LOGEXT
+done
+
 
 exit 0
 

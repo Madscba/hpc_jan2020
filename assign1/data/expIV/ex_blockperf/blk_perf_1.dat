@@ -1,0 +1,8 @@
+     3.375   1214.314 # matmult_blk 52
+     7.594   2268.479 # matmult_blk 47
+    14.648   2882.917 # matmult_blk 43
+    30.375   3667.319 # matmult_blk 36
+    60.961   4043.820 # matmult_blk 30
+   124.898   4245.046 # matmult_blk 23
+   248.648   4495.393 # matmult_blk 17
+   499.594   4837.762 # matmult_blk 13
