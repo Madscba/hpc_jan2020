@@ -1,6 +1,6 @@
 TARGET	= libmatmult.so
 LIBSRCS	= matmult_nat.c matmult_lib.c matmult_blk.c
-LIBOBJS	=  matmult_nat.o matmult_lib.o matmult_blk.o
+LIBOBJS	= matmult_nat.o matmult_lib.o matmult_blk.o
 
 OPT	= -g -Ofast -funroll-loops
 PIC	= -fPIC
