@@ -28,6 +28,8 @@ main(int argc, char *argv[]) {
     char        *output_ext    = "";
     char	output_filename[FILENAME_MAX];
     double 	***u = NULL;
+    double 	***u_old = NULL;
+    double 	***f = NULL;
 
 
     /* get the paramters from the command line */
@@ -40,18 +42,43 @@ main(int argc, char *argv[]) {
     }
 
     // allocate memory
-    if ( (u = d_malloc_3d(N, N, N)) == NULL ) {
+    if ( (u = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
         perror("array u: allocation failed");
         exit(-1);
     }
-    int k = 0;
-    double d = DBL_MAX;
+    if ( (u_old = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
+        perror("array u_n: allocation failed");
+        exit(-1);
+    }
+    if ( (f = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
+        perror("array f: allocation failed");
+        exit(-1);
+    }
+
     /*
      *
      * fill in your code here 
      *
      *
      */
+
+    double delta = 1/N;
+    // Init u, u_n and f
+
+    int k = 0;
+    double d = __DBL_MAX__;
+    // Loop until we meet stopping criteria
+    while(d<tolerance && k<iter_max)
+    {
+		double **u_old = u;
+		update(u,f,N,delta);
+		d = frobenius(u_old, u);
+		if ((k % 100) == 0)
+		{
+			printf("%i  %.5f\n", k, d);
+		}
+		k +=1;
+	}
 
     // dump  results if wanted 
     switch(output_type) {
@@ -77,6 +104,8 @@ main(int argc, char *argv[]) {
 
     // de-allocate memory
     free(u);
+    free(u_n);
+    free(f);
 
     return(0);
 }

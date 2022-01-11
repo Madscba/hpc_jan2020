@@ -6,6 +6,6 @@
 #ifndef _JACOBI_H
 #define _JACOBI_H
 
-int jacobi(double ***u, double ***u_n, double ***f, int N, double delta);
+void jacobi(double ***u, double ***u_old, double ***f, int N, double delta);
 
 #endif
