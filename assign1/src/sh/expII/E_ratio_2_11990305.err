@@ -1,0 +1,206 @@
+Loaded module: studio/12u6
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 38: cd: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//src/: Not a directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mnk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_mkn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nmk..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_nkm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_kmn..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: /zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1//data/expII//ratio_2_knm..dat: Permission denied
+/zhome/fa/5/127129/.lsbatch/1641565005.11990305.shell: line 48: ./matmult_c.gcc: No such file or directory

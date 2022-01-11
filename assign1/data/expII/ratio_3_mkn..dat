@@ -2,3 +2,20 @@ Creating experiment database mkn.11984301.er (Process ID: 22514) ...
     13.781   3223.968 # matmult_mkn
 Creating experiment database mkn.11984302.er (Process ID: 22544) ...
    124.031   4102.184 # matmult_mkn
+     1.758    510.100 # matmult_mkn
+     3.445    895.844 # matmult_mkn
+     7.031   1547.009 # matmult_mkn
+    13.781   2043.250 # matmult_mkn
+    31.008   3032.784 # matmult_mkn
+    59.133   3336.642 # matmult_mkn
+   124.031   3472.927 # matmult_mkn
+   244.758   3640.970 # matmult_mkn
+   496.125   4001.455 # matmult_mkn
+   995.695   3837.453 # matmult_mkn
+  1984.500   4099.018 # matmult_mkn
+  3982.781   3948.020 # matmult_mkn
+  7985.320   3967.124 # matmult_mkn
+ 15998.133   3994.314 # matmult_mkn
+ 31941.281   4209.053 # matmult_mkn
+ 63992.531   3463.906 # matmult_mkn
+127954.758   2756.886 # matmult_mkn

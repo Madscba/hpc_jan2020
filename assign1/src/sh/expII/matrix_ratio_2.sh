@@ -20,7 +20,7 @@ module load studio
 #CC=${1-"gcc"}
 EXECUTABLE=matmult_c.gcc
 SRCPATH="src/"
-RPATH=$"/zhome/87/9/127623/Desktop/02461_hpc/assignments/hpc_jan2020/assign1/"
+RPATH=$"/zhome/fa/5/127129/hpc_jan2022/assign1"
 DPATH=$"data/expII/"
 NPARTS="3 4 6 9 12 18 25 36 51 73 103 146 206 292 413 584 826"
 PERM="mnk mkn nmk nkm kmn knm"
@@ -45,7 +45,7 @@ do
 	do
 		echo ./matmult_c.${CC} $perm $mdim
     		#collect -o $EXPOUT $HWCOUNT ./$EXECUTABLE $perm $(($mdim*4)) $(($mdim*4)) $mdim | grep -v CPU >> $RPATH/$DPATH/ratio_2_$perm.$LOGEXT
-		./$EXECUTABLE $perm $(($mdim*4)) $(($mdim*4)) $mdim | grep -v CPU >> $RPATH/$DPATH/ratio_2_$perm.$LOGEXT
+		./$EXECUTABLE $perm $(($mdim*4)) $mdim $(($mdim*4)) | grep -v CPU >> $RPATH/$DPATH/ratio_2_$perm.$LOGEXT
 	done
 done
 
