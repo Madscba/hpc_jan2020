@@ -44,7 +44,8 @@ main(int argc, char *argv[]) {
         perror("array u: allocation failed");
         exit(-1);
     }
-
+    int k = 0;
+    double d = DBL_MAX;
     /*
      *
      * fill in your code here 
