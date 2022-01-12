@@ -4,7 +4,7 @@
 #include <math.h>
 
 void
-gauss_seidel(double ***u, double ***f, int N, int delta) 
+gauss_seidel(double ***u, double ***f, int N, double delta) 
 {
 	// This is a implementation of the wavefront parallelization scheme with doacross loops
     int i, j, k;
