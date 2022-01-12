@@ -3,6 +3,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "alloc3d.h"
 #include "print.h"
 
@@ -47,7 +48,7 @@ main(int argc, char *argv[]) {
         exit(-1);
     }
     if ( (u_old = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
-        perror("array u_n: allocation failed");
+        perror("array u_old: allocation failed");
         exit(-1);
     }
     if ( (f = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
@@ -62,15 +63,15 @@ main(int argc, char *argv[]) {
      *
      */
 
-    double delta = 1/N;
-    // Init u, u_n and f
+    double delta = pow(1/(N+2),2);
+    // Init u and f
 
     int k = 0;
     double d = __DBL_MAX__;
     // Loop until we meet stopping criteria
     while(d<tolerance && k<iter_max)
     {
-		double **u_old = u;
+		double ***u_old = u;
         #ifdef _JACOBI
 		jacobi(u,u_old,f,N,delta);
         #endif

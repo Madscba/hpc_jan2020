@@ -16,7 +16,7 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 				double tmpX = (u_old[i-1][j][k] + u_old[i+1][j][k]);
 				double tmpY = (u_old[i][j-1][k] + u_old[i][j+1][k]);
 				double tmpZ = (u_old[i][j][k-1] + u_old[i][j][k+1]);
-				u[i][j][k] = (tmpX + tmpY + tmpZ + pow(delta,2)*f[i][j][k]) / 6.0;
+				u[i][j][k] = (tmpX + tmpY + tmpZ + delta*f[i][j][k]) / 6.0;
 			}
 		}
 	}
