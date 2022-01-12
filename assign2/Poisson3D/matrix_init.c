@@ -1,5 +1,5 @@
-
-
+#include <math.h>
+const double pi = 22.0 / 7.0;
 
 void init_inner(int outer_size,double start_T, double ***matrix)
 {
@@ -101,13 +101,11 @@ void init_bounds(int outer_size,double mw_T, double sw_T, double ***matrix)
 
 }
 
-void init_f(int outer_size, double source, double ***f)
+void init_f(int outer_size,  double ***f)
 {	
 	int x_bound, y_bound, z_bound;
 	int loop_size = size-1; 
 
-
-	
 	// BE AWARE:
 		//bounds have been given +1 or -1 since we use <=
 		// Either "<" or ">" is used depending on which way we iterate
@@ -122,7 +120,7 @@ void init_f(int outer_size, double source, double ***f)
 		{
 			for(int k = 0; k < x_bound; k++)
 			{
-				f[i][j][k] = source;
+				f[i][j][k] = 200;
 			}
 		}
 		
@@ -130,30 +128,73 @@ void init_f(int outer_size, double source, double ***f)
 }
 
 
-void init_mat(int grid_size,double start_T, double ***f, double ***u){
+double f_analytical(double x, double y, double z)
+{
+	
+	return 3*sqr(pi)*sin(pi*x)*sin(pi*y)*sin(pi*z);
+}
 
-	int outer_size = grid_size + 2;
+void init_f_analytical(int outer_size,  double ***f)
+{	
+	for(int i = 0; i < outer_size; i++)
+	{
+		for(int j = loop_size; j > outer_size; j--)
+		{
+			for(int k = 0; k < outer_size; k++)
+			{
+				f[i][j][k] = f_analytical((double)x, (double)y,(double)z);
+			}
+		}
+		
+	}
+}
+
+
+void init_mat(int N,double start_T, double ***f, double ***u){
+	int outer_size = N + 2;
+	int analytical = 1;
+	
 	/*m, matricen
 	en væg 0 grader.
 	(x,y,z) (k,j,i)*/
 
-	//initialization of the grid of u and f
-	init_inner(outer_size, 0, f)
-	init_inner(outer_size,start_T,u)
+
+	if(analytical)
+	{
+		//initialization of the grid of u - initial guess
+		init_inner(outer_size,start_T,u);	
+		
+		//initialization of boundaries
+			/*arguments: 
+				outer_size
+				temperature for 5 walls
+				temperature for wall in x-z plane with y=-1,
+				matrix you would like to define boundaries for */
+		init_bounds(outer_size,0, 0, double u);
+		
+		//initialization of f radiator
+		init_f_analytical(outer_size,f);
+
+	}
+	else
+	{
+		//initialization of the grid of u and f
+		init_inner(outer_size, 0, f);
+		init_inner(outer_size,start_T,u);
+		
+		//initialization of boundaries
+			/*arguments: 
+				outer_size
+				temperature for 5 walls
+				temperature for wall in x-z plane with y=-1,
+				matrix you would like to define boundaries for */
+		init_bounds(outer_size,20, 0, double u);
+		init_bounds(outer_size,0, 0, double f);
+		
+		//initialization of f radiator
+		init_f(outer_size,f)
+	}
 	
-
-
-	//initialization of boundaries
-		/*arguments: 
-			outer_size
-			temperature for 5 walls
-			temperature for wall in x-z plane with y=-1,
-			matrix you would like to define boundaries for */
-	init_bounds(outer_size,20, 0, double u)
-	init_bounds(outer_size,0, 0, double f)
-
-	
-
 
 
 
