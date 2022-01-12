@@ -4,7 +4,7 @@
 #include <math.h>
 
 void
-gauss_seidel(double ***u, double ***f, int N, int delta) 
+gauss_seidel(double ***u, double ***f, int N, double delta) 
 {
     int i, j, k;
     for (i = 1; i < N+1; ++i) 
