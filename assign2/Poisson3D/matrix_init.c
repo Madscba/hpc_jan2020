@@ -99,11 +99,34 @@ void init_bounds(int outer_size,double mw_T, double sw_T, double ***matrix){
 
 }
 
+boid init_f(int outer_size, double source, double ***f)
+{	
+	int x_bound, y_bound, z_bound;
+	int loop_size = size-1; 
 
-void init_f()
-{
 
+	
+	// BE AWARE:
+		//bounds have been given +1 or -1 since we use <=
+		// Either "<" or ">" is used depending on which way we iterate
+	
+	x_bound = outer_size * (5/16) + 1  	//outer_size/2 * (5/8) + 1
+	y_bound = outer_size * (3/2) - 1 	//outer_size/2 * 3 - 1
+	z_bound_start = outer_size * (2/6) 	//outer_size/2 * (2/3)  
+	z_bound_stop = outer_size + 1
+	for(int i = 0; i < k; i++)
+	{
+		for(int j = loop_size; j > y_bound; j--)
+		{
+			for(int k = 0; k < x_bound; k++)
+			{
+				f[i][j][k] = source;
+			}
+		}
+		
+	}
 }
+
 
 void init_mat(int grid_size,double T_start, double ***f, double ***u){
 
@@ -130,7 +153,7 @@ void init_mat(int grid_size,double T_start, double ***f, double ***u){
 	
 
 
-	init_f()
+
 
 
 }
