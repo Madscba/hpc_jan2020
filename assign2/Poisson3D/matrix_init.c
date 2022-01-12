@@ -4,7 +4,7 @@
 void init_inner(int outer_size,double start_T, double ***matrix)
 {
 	
-	int loop_size = size-1; //Should only init from 1-N+1
+	int loop_size = outer_size-1; //Should only init from 1-N+1
 	for(int i = 1; i < loop_size; i++)
 	{	
 		for(int j = 1; j < loop_size; j++)
@@ -23,7 +23,7 @@ void init_bounds(int outer_size,double mw_T, double sw_T, double ***matrix)
 {
 	//sw_T = single wall temperature
 	//mw_T = multiple wall temperature
-	int loop_size = size-1; 
+	int loop_size = outer_size-1; 
 
 
 	//x-z plane with y=1  (start phys (x,y,z)=(-1,1,-1), start idx (z,y,x)=(i,j,k)=(0->N+2 , 0 , 0->N+2)
@@ -103,8 +103,8 @@ void init_bounds(int outer_size,double mw_T, double sw_T, double ***matrix)
 
 void init_f(int outer_size, double source, double ***f)
 {	
-	int x_bound, y_bound, z_bound;
-	int loop_size = size-1; 
+	int x_bound, y_bound, z_bound_start, z_bound_stop;
+	int loop_size = outer_size-1; 
 
 
 	
@@ -112,11 +112,11 @@ void init_f(int outer_size, double source, double ***f)
 		//bounds have been given +1 or -1 since we use <=
 		// Either "<" or ">" is used depending on which way we iterate
 	
-	x_bound = outer_size * (5/16) + 1  	//outer_size/2 * (5/8) + 1
-	y_bound = outer_size * (3/2) - 1 	//outer_size/2 * 3 - 1
-	z_bound_start = outer_size * (2/6) 	//outer_size/2 * (2/3)  
-	z_bound_stop = outer_size + 1
-	for(int i = 0; i < k; i++)
+	x_bound = outer_size * (5/16) + 1;  	//outer_size/2 * (5/8) + 1
+	y_bound = outer_size * (3/4) - 1; 	//outer_size/2 * (3/2) - 1
+	z_bound_start = outer_size * (1/6) - 1; 	//outer_size/2 * (1/3)  
+	z_bound_stop = outer_size/2 + 1; 
+	for(int i = z_bound_start; i < z_bound_stop; i++)
 	{
 		for(int j = loop_size; j > y_bound; j--)
 		{
@@ -138,8 +138,8 @@ void init_mat(int grid_size,double start_T, double ***f, double ***u){
 	(x,y,z) (k,j,i)*/
 
 	//initialization of the grid of u and f
-	init_inner(outer_size, 0, f)
-	init_inner(outer_size,start_T,u)
+	init_inner(outer_size, 0, f);
+	init_inner(outer_size,start_T,u);
 	
 
 
@@ -149,8 +149,8 @@ void init_mat(int grid_size,double start_T, double ***f, double ***u){
 			temperature for 5 walls
 			temperature for wall in x-z plane with y=-1,
 			matrix you would like to define boundaries for */
-	init_bounds(outer_size,20, 0, double u)
-	init_bounds(outer_size,0, 0, double f)
+	init_bounds(outer_size,20, 0, u);
+	init_bounds(outer_size,0, 0, f);
 
 	
 

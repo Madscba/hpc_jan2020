@@ -69,7 +69,7 @@ main(int argc, char *argv[]) {
 
     double delta = pow(2/(N+2),2);
     // Init u and f
-    init_mat(N,start_T, f,u)
+    init_mat(N,start_T, f,u);
 
     int k = 0;
     double d = __DBL_MAX__;
