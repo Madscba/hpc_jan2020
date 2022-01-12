@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 #include "alloc3d.h"
 #include "print.h"
 #include "frobenius.h"
@@ -32,6 +33,7 @@ main(int argc, char *argv[]) {
     char	output_filename[FILENAME_MAX];
     double 	***u = NULL;
     double 	***u_old = NULL;
+    double 	***u_ana = NULL;
     double 	***f = NULL;
 
 
@@ -53,11 +55,14 @@ main(int argc, char *argv[]) {
         perror("array u_old: allocation failed");
         exit(-1);
     }
+    if ( (u_ana = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
+        perror("array u_old: allocation failed");
+        exit(-1);
+    }
     if ( (f = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
         perror("array f: allocation failed");
         exit(-1);
     }
-    
     
 
     /*
@@ -67,29 +72,50 @@ main(int argc, char *argv[]) {
      *
      */
 
-    double delta = pow(2/(N+2),2);
+    double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
     init_mat(N,start_T, f,u);
+    init_mat(N,start_T, f,u_old);
+    u_true_analytical(N+2, u_ana);
+ 
+    printf("Before run diff: %.5f\n",frobenius(u_ana, u, N));
 
     int k = 0;
     double d = __DBL_MAX__;
     // Loop until we meet stopping criteria
-    while(d<tolerance && k<iter_max)
+    while(2>tolerance && k<iter_max)
     {
-		double ***u_old = u;
+        double ***temp = u_old;
+        u_old = u;
+        double ***u = temp; 
+        printf("pointer equal: %d\n",&u==&u_old);
+        
+        // memcpy(u_old, u, (N+2) * sizeof(double **) +
+        //                                    (N+2) * (N+2) * sizeof(double *) +
+        //                                    (N+2) * (N+2) * (N+2) * sizeof(double));
+        //double ***u_old = u;
         #ifdef _JACOBI
-		jacobi(u,u_old,f,N,delta);
+		jacobi(u,u_old,f,N,delta_sqr);
         #endif
         #ifdef _GAUSS_SEIDEL
-		gauss_seidel(u,f,N,delta);
+		gauss_seidel(u,f,N,delta_sqr);
         #endif
 		d = frobenius(u_old, u, N);
-		if ((k % 100) == 0)
+        
+		if ((k % 1) == 0)
 		{
 			printf("%i  %.5f\n", k, d);
 		}
 		k +=1;
 	}
+
+
+
+    printf("After run diff: %.5f\n",frobenius(u_ana, u, N));
+
+    
+
+
 
     // dump  results if wanted 
     switch(output_type) {

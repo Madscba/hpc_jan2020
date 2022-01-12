@@ -8,6 +8,8 @@ void init_inner(int outer_size,double start_T, double ***matrix);
 
 void init_f_analytical(int outer_size,  double ***f);
 double f_analytical(double x, double y, double z);
+void u_true_analytical(int outer_size,  double ***u);
+double u_analytical(double x, double y, double z);
 
 
 #endif
