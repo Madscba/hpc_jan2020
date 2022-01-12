@@ -1,2 +1,6 @@
-double frobenious(double ***u, double ***u_old int N);
+#ifndef _FROBENIUS
+#define _FROBENIUS
+
+double frobenius(double ***u, double ***u_old, int N);
+#endif
 

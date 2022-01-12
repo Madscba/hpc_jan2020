@@ -6,7 +6,7 @@
 #include <math.h>
 #include "alloc3d.h"
 #include "print.h"
-#include "frobenious.h"
+#include "frobenius.h"
 
 #ifdef _JACOBI
 #include "jacobi.h"
@@ -79,7 +79,7 @@ main(int argc, char *argv[]) {
         #ifdef _GAUSS_SEIDEL
 		gauss_seidel(u,f,N,delta);
         #endif
-		d = frobenius(u_old, u);
+		d = frobenius(u_old, u, N);
 		if ((k % 100) == 0)
 		{
 			printf("%i  %.5f\n", k, d);
