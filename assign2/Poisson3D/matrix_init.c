@@ -1,7 +1,8 @@
 
 
 
-void init_inner(int outer_size,double T_start, double ***matrix){
+void init_inner(int outer_size,double T_start, double ***matrix)
+{
 	
 	int loop_size = size-1; //Should only init from 1-N+1
 	for(int i = 1; i < loop_size; i++)
@@ -18,7 +19,8 @@ void init_inner(int outer_size,double T_start, double ***matrix){
 	}
 }
 
-void init_bounds(int outer_size,double mw_T, double sw_T, double ***matrix){
+void init_bounds(int outer_size,double mw_T, double sw_T, double ***matrix)
+{
 	//sw_T = single wall temperature
 	//mw_T = multiple wall temperature
 	int loop_size = size-1; 
@@ -99,7 +101,7 @@ void init_bounds(int outer_size,double mw_T, double sw_T, double ***matrix){
 
 }
 
-boid init_f(int outer_size, double source, double ***f)
+void init_f(int outer_size, double source, double ***f)
 {	
 	int x_bound, y_bound, z_bound;
 	int loop_size = size-1; 

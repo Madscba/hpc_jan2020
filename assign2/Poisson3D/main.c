@@ -7,6 +7,7 @@
 #include "alloc3d.h"
 #include "print.h"
 #include "frobenius.h"
+#include "matrix_init.h"
 
 #ifdef _JACOBI
 #include "jacobi.h"
@@ -56,6 +57,8 @@ main(int argc, char *argv[]) {
         perror("array f: allocation failed");
         exit(-1);
     }
+    
+    
 
     /*
      *
