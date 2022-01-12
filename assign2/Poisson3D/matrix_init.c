@@ -1,7 +1,7 @@
 
 
 
-void init_inner(int outer_size,double T_start, double ***matrix)
+void init_inner(int outer_size,double start_T, double ***matrix)
 {
 	
 	int loop_size = size-1; //Should only init from 1-N+1
@@ -12,7 +12,7 @@ void init_inner(int outer_size,double T_start, double ***matrix)
 			for(int k = 1; k < loop_size; k++)
 			{
 
-				matrix[i][j][k] = T_start;
+				matrix[i][j][k] = start_T;
 			}
 			
 		}
@@ -130,7 +130,7 @@ void init_f(int outer_size, double source, double ***f)
 }
 
 
-void init_mat(int grid_size,double T_start, double ***f, double ***u){
+void init_mat(int grid_size,double start_T, double ***f, double ***u){
 
 	int outer_size = grid_size + 2;
 	/*m, matricen
@@ -139,7 +139,7 @@ void init_mat(int grid_size,double T_start, double ***f, double ***u){
 
 	//initialization of the grid of u and f
 	init_inner(outer_size, 0, f)
-	init_inner(outer_size,T_start,u)
+	init_inner(outer_size,start_T,u)
 	
 
 
