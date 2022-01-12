@@ -71,7 +71,12 @@ main(int argc, char *argv[]) {
     while(d<tolerance && k<iter_max)
     {
 		double **u_old = u;
-		update(u,f,N,delta);
+        #ifdef _JACOBI
+		jacobi(u,u_old,f,N,delta);
+        #endif
+        #ifdef _GAUSS_SEIDEL
+		gauss_seidel(u,f,N,delta);
+        #endif
 		d = frobenius(u_old, u);
 		if ((k % 100) == 0)
 		{
@@ -104,7 +109,7 @@ main(int argc, char *argv[]) {
 
     // de-allocate memory
     free(u);
-    free(u_n);
+    free(u_old);
     free(f);
 
     return(0);
