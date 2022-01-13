@@ -103,10 +103,10 @@ main(int argc, char *argv[]) {
         #ifdef _GAUSS_SEIDEL
 		gauss_seidel(u,f,N,delta_sqr);
         #endif
-		d = frobenius(u_old, u, N);
 		if ((k % 100) == 0)
 		{   
             if (output_type == 0){
+            d = frobenius(u_old, u, N);
             if (analytical){
                 d_ana = frobenius(u_ana, u, N);
 			    printf("%i  %.5f  %.5f %.5f\n",k,d,d_ana, d_ana/(N*N*N));

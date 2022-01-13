@@ -1,5 +1,5 @@
 # Set the output to a png file
-set terminal png size 1920,1080
+set terminal png size 640,360
 
 set logscale y
 set xlabel "Iterations (1)"

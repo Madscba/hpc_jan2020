@@ -24,16 +24,16 @@ LOGEXT=$CC.dat
 
 lscpu
 ndim="8 16 32 64 128 256 512 1024"
-BLOCKSIZE=16
+START_T=16
+/bin/rm -f "./perf_j$LOGEXT"
+/bin/rm -f "./perf_gs$LOGEXT"
 for n in $ndim
 do
-	/bin/rm -f "./perf_j$LOGEXT"
-	echo $EXECUTABLE__J  $n 10000 0.0 $BLOCKSIZE 0 1
-	$EXECUTABLE_J $n 10000 0.0 $BLOCKSIZE 0 1  | grep -v CPU >> ./perf_j$LOGEXT
+	echo $EXECUTABLE__J  $n 1000 0.0 $START_T 0 1
+	$EXECUTABLE_J $n 1000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_j$LOGEXT
 
-	/bin/rm -f "./perf_j$LOGEXT"
-	echo $EXECUTABLE__GS  $n 10000 0.0 $BLOCKSIZE 0 1
-	$EXECUTABLE_GS $n 10000 0.0 $BLOCKSIZE 0 1  | grep -v CPU >> ./perf_gs$LOGEXT
+	echo $EXECUTABLE__GS  $n 1000 0.0 $START_T 0 1
+	$EXECUTABLE_GS $n 1000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_gs$LOGEXT
 done
 
 exit 0
