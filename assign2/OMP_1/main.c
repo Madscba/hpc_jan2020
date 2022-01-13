@@ -6,6 +6,7 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
+#include <omp.h>
 #include "xtime.h"
 #include "alloc3d.h"
 #include "print.h"
@@ -92,8 +93,7 @@ main(int argc, char *argv[]) {
     double d = __DBL_MAX__;
     double d_ana;
     // Loop until we meet stopping criteria
-    init_timer();
-    ts = xtime();
+    ts = omp_get_wtime();
     while(d>tolerance && k<iter_max)
     {
 		m_overwrite(N,u,u_old);
@@ -116,7 +116,7 @@ main(int argc, char *argv[]) {
 		}
 		k +=1;
 	}
-    te = xtime();
+    te = omp_get_wtime();
 
 
     
@@ -131,7 +131,7 @@ main(int argc, char *argv[]) {
     case 1:
         lats = N*N*N;
         mlups = (double) lats*k/((te-ts)*1000*1000);
-        printf("%d %.5f \n",N,mlups);
+        printf("%d %.5f %.5f \n",N,mlups, te-ts);
 
         break;
 	case 3:
