@@ -182,9 +182,8 @@ void u_true_analytical(int outer_size,  double ***u)
 	}
 }
 
-void init_mat(int N,double start_T, double ***f, double ***u){
+void init_mat(int N,double start_T, int analytical, double ***f, double ***u){
 	int outer_size = N + 2;
-	int analytical = 1;
 	
 	/*m, matricen
 	en væg 0 grader.

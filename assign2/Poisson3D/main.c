@@ -77,7 +77,7 @@ main(int argc, char *argv[]) {
      */
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
-    init_mat(N,start_T, f,u);
+    init_mat(N,start_T, analytical,f,u);
     if (analytical){
     u_true_analytical(N+2, u_ana);
     
