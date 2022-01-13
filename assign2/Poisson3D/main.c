@@ -29,6 +29,7 @@ main(int argc, char *argv[]) {
     double	tolerance;
     double	start_T;
     int		output_type = 0;
+    int     analytical = 0;
     char	*output_prefix = "poisson_res";
     char        *output_ext    = "";
     char	output_filename[FILENAME_MAX];
@@ -43,8 +44,9 @@ main(int argc, char *argv[]) {
     iter_max  = atoi(argv[2]);  // max. no. of iterations
     tolerance = atof(argv[3]);  // tolerance
     start_T   = atof(argv[4]);  // start T for all inner grid points
-    if (argc == 6) {
-	output_type = atoi(argv[5]);  // ouput type
+    analytical   = atof(argv[5]);  // 1 if analytical 0 else
+    if (argc == 7) {
+	output_type = atoi(argv[6]);  // ouput type
     }
 
     // allocate memory
@@ -56,10 +58,11 @@ main(int argc, char *argv[]) {
         perror("array u_old: allocation failed");
         exit(-1);
     }
+    if (analytical){
     if ( (u_ana = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
         perror("array u_old: allocation failed");
         exit(-1);
-    }
+    }}
     if ( (f = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
         perror("array f: allocation failed");
         exit(-1);
@@ -72,15 +75,14 @@ main(int argc, char *argv[]) {
      *
      *
      */
-	printf("After run diff: %.5f\n",frobenius(u_ana, u, N));
-
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
     init_mat(N,start_T, f,u);
+    if (analytical){
     u_true_analytical(N+2, u_ana);
- 
+    
     printf("Before run diff: %.5f\n",frobenius(u_ana, u, N));
-
+    }
     int k = 0;
     double d = __DBL_MAX__;
     // Loop until we meet stopping criteria
@@ -97,16 +99,18 @@ main(int argc, char *argv[]) {
 		if ((k % 100) == 0)
 		{
 			printf("%i  %.5f\n", k, d);
+            if (analytical){
 			printf("Diff analytical: %.5f\n",frobenius(u_ana, u, N));
+            }
 
 		}
 		k +=1;
 	}
 
 
-
+    if (analytical){
     printf("After run diff: %.5f\n",frobenius(u_ana, u, N));
-
+    }
     
 
 
@@ -137,6 +141,11 @@ main(int argc, char *argv[]) {
     free(u);
     free(u_old);
     free(f);
+    if (analytical)
+    {
+        free(u_ana);
+    }
+    
 
     return(0);
 }
