@@ -72,6 +72,7 @@ main(int argc, char *argv[]) {
      *
      *
      */
+	printf("After run diff: %.5f\n",frobenius(u_ana, u, N));
 
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
@@ -86,17 +87,6 @@ main(int argc, char *argv[]) {
     // Loop until we meet stopping criteria
     while(d>tolerance && k<iter_max)
     {
-		printf("when entering run diff: %.5f\n",frobenius(u_old, u, N));
-
-        //double ***temp = u_old;
-        //u_old = u;
-        //double ***u = temp; 
-        printf("pointer equal: %d\n",&u==&u_old);
-        
-        // memcpy(u_old, u, (N+2) * sizeof(double **) +
-        //                                    (N+2) * (N+2) * sizeof(double *) +
-        //                                    (N+2) * (N+2) * (N+2) * sizeof(double));
-        //double ***u_old = u;
         #ifdef _JACOBI
 		jacobi(u,u_old,f,N,delta_sqr);
         #endif
@@ -105,16 +95,18 @@ main(int argc, char *argv[]) {
         #endif
 		d = frobenius(u_old, u, N);
 		m_overwrite(N,u,u_old);
-		if ((k % 1) == 0)
+		if ((k % 100) == 0)
 		{
 			printf("%i  %.5f\n", k, d);
+			printf("Diff analytical: %.5f\n",frobenius(u_ana, u, N));
+
 		}
 		k +=1;
 	}
 
 
 
-    printf("After run diff: %.5f\n",frobenius(u_old, u, N));
+    printf("After run diff: %.5f\n",frobenius(u_ana, u, N));
 
     
 
