@@ -3,7 +3,7 @@
 # Experiment Block size
 
 #BSUB -q hpc
-#BSUB -J mlups_seq
+#BSUB -J collect_omp1
 #BSUB -n 24
 #BSUB -R "rusage[mem=1024MB]"
 #BSUB -R "select[model=XeonE5_2650v4]"

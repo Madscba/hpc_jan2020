@@ -7,7 +7,6 @@
 #include <string.h>
 #include <time.h>
 #include <omp.h>
-#include "xtime.h"
 #include "alloc3d.h"
 #include "print.h"
 #include "frobenius.h"
@@ -103,16 +102,17 @@ main(int argc, char *argv[]) {
         #ifdef _GAUSS_SEIDEL
 		gauss_seidel(u,f,N,delta_sqr);
         #endif
+        d = frobenius(u_old, u, N);
+        if (output_type == 0){
 		if ((k % 100) == 0)
 		{   
-            if (output_type == 0){
-            d = frobenius(u_old, u, N);
             if (analytical){
                 d_ana = frobenius(u_ana, u, N);
 			    printf("%i  %.5f  %.5f %.5f\n",k,d,d_ana, d_ana/(N*N*N));
             }else{
 			    printf("%i  %.5f\n", k, d);
-            }}
+            }
+        }
 		}
 		k +=1;
 	}
@@ -131,7 +131,7 @@ main(int argc, char *argv[]) {
     case 1:
         lats = N*N*N;
         mlups = (double) lats*k/((te-ts)*1000*1000);
-        printf("%d %.5f %.5f \n",N,mlups, te-ts);
+        printf("%d %.5f %.5f %d \n",N,mlups, te-ts, omp_get_max_threads());
 
         break;
 	case 3:

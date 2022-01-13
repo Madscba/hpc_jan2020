@@ -3,7 +3,7 @@
 # Experiment Block size
 
 #BSUB -q hpc
-#BSUB -J mlups_seq
+#BSUB -J mlups_omp1
 #BSUB -n 24
 #BSUB -R "rusage[mem=1024MB]"
 #BSUB -R "select[model=XeonE5_2650v4]"
@@ -30,22 +30,16 @@ export OMP_PROC_BIND=spread #close
 /bin/rm -f "./perf_j$LOGEXT"
 /bin/rm -f "./perf_gs$LOGEXT"
 
-export OMP_NUM_THREADS=4
-JID=${LSB_JOBID}
-EXPOUT="$LSB_JOBNAME.${JID}.er"
-HWCOUNT="-h dch,on,dcm,on,l2h,on,l2m,on"
-collect -o $EXPOUT $HWCOUNT ./$EXECUTABLE_J $NDIM 1000 0.0 $START_T 0 1 | grep -v CPU >> ./dummy$LOGEXT
-
 
 for n in $THREADS
 do
 	
 	export OMP_NUM_THREADS=$n
-	echo $EXECUTABLE__J  $NDIM 3000 0.0 $START_T 0 1
+	echo $EXECUTABLE_J  $NDIM 3000 0.0 $START_T 0 1
 	$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_j$LOGEXT
 
-	
-	echo $EXECUTABLE__GS  $NDIM 3000 0.0 $START_T 0 1
+	export OMP_NUM_THREADS=$n
+	echo $EXECUTABLE_GS  $NDIM 3000 0.0 $START_T 0 1
 	$EXECUTABLE_GS $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_gs$LOGEXT
 done
 
