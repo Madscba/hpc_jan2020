@@ -3,8 +3,8 @@
 TARGET_J  = poisson_j		# Jacobi
 TARGET_GS = poisson_gs		# Gauss-Seidel
 
-SOURCES	= main.c print.c alloc3d.c frobenius.c matrix_init.c
-OBJECTS	= print.o alloc3d.o frobenius.o matrix_init.o matrix_init.o
+SOURCES	= main.c print.c alloc3d.c frobenius.c matrix_init.c matrix_overwrite.c
+OBJECTS	= print.o alloc3d.o frobenius.o matrix_init.o matrix_overwrite.o
 MAIN_J	= main_j.o
 MAIN_GS = main_gs.o
 OBJS_J	= $(MAIN_J) jacobi.o
