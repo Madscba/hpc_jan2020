@@ -7,5 +7,4 @@
 #define _JACOBI_H
 
 void jacobi(double ***u, double ***u_old, double ***f, int N, double delta);
-
 #endif

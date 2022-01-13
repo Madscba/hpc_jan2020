@@ -20,8 +20,7 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 				u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
 			}
 		}
-	}
-    
+	}   
 
 
     // fill in your code here

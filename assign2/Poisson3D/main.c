@@ -9,6 +9,7 @@
 #include "print.h"
 #include "frobenius.h"
 #include "matrix_init.h"
+#include "matrix_overwrite.h"
 
 #ifdef _JACOBI
 #include "jacobi.h"
@@ -83,11 +84,13 @@ main(int argc, char *argv[]) {
     int k = 0;
     double d = __DBL_MAX__;
     // Loop until we meet stopping criteria
-    while(2>tolerance && k<iter_max)
+    while(d>tolerance && k<iter_max)
     {
-        double ***temp = u_old;
-        u_old = u;
-        double ***u = temp; 
+		printf("when entering run diff: %.5f\n",frobenius(u_old, u, N));
+
+        //double ***temp = u_old;
+        //u_old = u;
+        //double ***u = temp; 
         printf("pointer equal: %d\n",&u==&u_old);
         
         // memcpy(u_old, u, (N+2) * sizeof(double **) +
@@ -101,7 +104,7 @@ main(int argc, char *argv[]) {
 		gauss_seidel(u,f,N,delta_sqr);
         #endif
 		d = frobenius(u_old, u, N);
-        
+		m_overwrite(N,u,u_old);
 		if ((k % 1) == 0)
 		{
 			printf("%i  %.5f\n", k, d);
@@ -111,7 +114,7 @@ main(int argc, char *argv[]) {
 
 
 
-    printf("After run diff: %.5f\n",frobenius(u_ana, u, N));
+    printf("After run diff: %.5f\n",frobenius(u_old, u, N));
 
     
 
