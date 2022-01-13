@@ -14,10 +14,10 @@ gauss_seidel(double ***u, double ***f, int N, double delta)
 		{
 			for (k = 1; k < N+1; ++k) 
 			{	
-				tmpX = (u[i-1][j][k] + u[i+1][j][k]);
+				tmpZ = (u[i-1][j][k] + u[i+1][j][k]);
 				tmpY = (u[i][j-1][k] + u[i][j+1][k]);
-				tmpZ = (u[i][j][k-1] + u[i][j][k+1]);
-				u[i][j][k] = (tmpX + tmpY + tmpZ + delta*f[i][j][k]) / 6.0;
+				tmpX = (u[i][j][k-1] + u[i][j][k+1]);
+				u[i][j][k] = (tmpZ + tmpY + tmpX + delta*f[i][j][k]) / 6.0;
 			}
 		}
 	}
