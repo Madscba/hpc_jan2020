@@ -70,15 +70,22 @@ main(int argc, char *argv[]) {
     int k = 0;
     double d = __DBL_MAX__;
     // Loop until we meet stopping criteria
+    #pragma omp parallel
+    {
+    #pragma omp single
+    {
     while(d<tolerance && k<iter_max)
     {
 		double ***u_old = u;
+        #pragma omp task
+        {
         #ifdef _JACOBI
 		jacobi(u,u_old,f,N,delta);
         #endif
         #ifdef _GAUSS_SEIDEL
 		gauss_seidel(u,f,N,delta);
         #endif
+        }
 		d = frobenius(u_old, u, N);
 		if ((k % 100) == 0)
 		{
@@ -86,6 +93,8 @@ main(int argc, char *argv[]) {
 		}
 		k +=1;
 	}
+    }
+    }
 
     // dump  results if wanted 
     switch(output_type) {

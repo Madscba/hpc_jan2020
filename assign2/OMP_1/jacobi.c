@@ -7,6 +7,9 @@
 void
 jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
     int i, j, k;
+	#pragma omp parallel shared(u,u_old) private(i,j,k)
+	{
+	#pragma omp for
     for (i = 1; i < N+1; i++) 
 	{
 		for (j = 1; j < N+1; j++)   
@@ -19,6 +22,7 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 				u[i][j][k] = (tmpX + tmpY + tmpZ + delta*f[i][j][k]) / 6.0;
 			}
 		}
+	}
 	}
     
 
