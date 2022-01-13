@@ -78,11 +78,13 @@ main(int argc, char *argv[]) {
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
     init_mat(N,start_T, analytical,f,u);
+    init_bounds(N+2,20, 0, u_old);
     if (analytical){
     u_true_analytical(N+2, u_ana);
     }
     int k = 0;
     double d = __DBL_MAX__;
+    double d_ana;
     // Loop until we meet stopping criteria
     while(d>tolerance && k<iter_max)
     {
@@ -97,7 +99,8 @@ main(int argc, char *argv[]) {
 		if ((k % 100) == 0)
 		{
             if (analytical){
-			    printf("%i  %.5f  %.5f\n",k,d,frobenius(u_ana, u, N));
+                d_ana = frobenius(u_ana, u, N);
+			    printf("%i  %.5f  %.5f %.5f\n",k,d,d_ana, d_ana/(N*N*N));
             }else{
 			    printf("%i  %.5f\n", k, d);
             }

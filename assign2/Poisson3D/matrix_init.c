@@ -132,23 +132,23 @@ void init_f(int outer_size,  double ***f)
 double f_analytical(double x, double y, double z)
 {
 	
-	return 3*M_PI*M_PI*sin(M_PI*x)*sin(M_PI*y)*sin(M_PI*z);
+	return 3.0*M_PI*M_PI*sin(M_PI*x)*sin(M_PI*y)*sin(M_PI*z);
 }
 
 void init_f_analytical(int outer_size,  double ***f)
 {	
 	int i, j, k;
-	double delta = (double) 2/outer_size; 
+	double delta = (double) 2.0/outer_size; 
 	double x,y,z;
-	for(int i = 0; i < outer_size; i++)
+	for(i = 0; i < outer_size; i++)
 	{
-		for(int j = 0; j < outer_size; j++)
+		for(j = 0; j < outer_size; j++)
 		{
-			for(int k = 0; k < outer_size; k++)
+			for(k = 0; k < outer_size; k++)
 			{
-				x = (double) -1+k*delta;
-				y = (double) 1-j*delta;
-				z = (double) -1+i*delta;
+				x = (double) -1.0+k*delta;
+				y = (double) 1.0-j*delta;
+				z = (double) -1.0+i*delta;
 				f[i][j][k] = f_analytical(x, y, z);
 			}
 		}
