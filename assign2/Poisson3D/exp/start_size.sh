@@ -22,7 +22,7 @@ LOGEXT=$CC.dat
 
 
 lscpu
-
+ndim=100
 BLOCKSIZE="0 2 4 6 8 10 12 14 16 18 20 22"
 for start in $BLOCKSIZE
 do

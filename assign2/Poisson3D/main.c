@@ -6,6 +6,7 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
+#include "xtime.h"
 #include "alloc3d.h"
 #include "print.h"
 #include "frobenius.h"
@@ -35,7 +36,7 @@ main(int argc, char *argv[]) {
     char        *output_ext    = "";
     char	output_filename[FILENAME_MAX];
     int     lats;
-    double  diff, mlups;
+    double  ts,te, mlups;
     double 	***u = NULL;
     double 	***u_old = NULL;
     double 	***u_ana = NULL;
@@ -91,7 +92,8 @@ main(int argc, char *argv[]) {
     double d = __DBL_MAX__;
     double d_ana;
     // Loop until we meet stopping criteria
-    time_t start = time(0);
+    init_timer();
+    ts = xtime();
     while(d>tolerance && k<iter_max)
     {
 		m_overwrite(N,u,u_old);
@@ -103,18 +105,18 @@ main(int argc, char *argv[]) {
         #endif
 		d = frobenius(u_old, u, N);
 		if ((k % 100) == 0)
-		{
+		{   
+            if (output_type == 0){
             if (analytical){
                 d_ana = frobenius(u_ana, u, N);
 			    printf("%i  %.5f  %.5f %.5f\n",k,d,d_ana, d_ana/(N*N*N));
             }else{
 			    printf("%i  %.5f\n", k, d);
-            }
+            }}
 		}
 		k +=1;
 	}
-    time_t end = time(0);
-    diff = difftime(end,start);
+    te = xtime();
 
 
     
@@ -128,8 +130,8 @@ main(int argc, char *argv[]) {
 	    break;
     case 1:
         lats = N*N*N;
-        mlups = lats*k/(diff*1000*1000);
-        printf("MLUPS: %.5f \n",mlups);
+        mlups = (double) lats*k/((te-ts)*1000*1000);
+        printf("%d %.5f \n",N,mlups);
 
         break;
 	case 3:
