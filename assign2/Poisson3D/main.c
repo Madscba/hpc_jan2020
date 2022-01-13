@@ -80,8 +80,6 @@ main(int argc, char *argv[]) {
     init_mat(N,start_T, analytical,f,u);
     if (analytical){
     u_true_analytical(N+2, u_ana);
-    
-    printf("Before run diff: %.5f\n",frobenius(u_ana, u, N));
     }
     int k = 0;
     double d = __DBL_MAX__;
@@ -98,19 +96,16 @@ main(int argc, char *argv[]) {
 		d = frobenius(u_old, u, N);
 		if ((k % 100) == 0)
 		{
-			printf("%i  %.5f\n", k, d);
             if (analytical){
-			printf("Diff analytical: %.5f\n",frobenius(u_ana, u, N));
+			    printf("%i  %.5f  %.5f\n",k,d,frobenius(u_ana, u, N));
+            }else{
+			    printf("%i  %.5f\n", k, d);
             }
-
 		}
 		k +=1;
 	}
 
 
-    if (analytical){
-    printf("After run diff: %.5f\n",frobenius(u_ana, u, N));
-    }
     
 
 
