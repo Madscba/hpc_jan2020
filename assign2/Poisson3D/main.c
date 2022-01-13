@@ -77,7 +77,6 @@ main(int argc, char *argv[]) {
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
     init_mat(N,start_T, f,u);
-    init_mat(N,start_T, f,u_old);
     u_true_analytical(N+2, u_ana);
  
     printf("Before run diff: %.5f\n",frobenius(u_ana, u, N));
@@ -87,6 +86,7 @@ main(int argc, char *argv[]) {
     // Loop until we meet stopping criteria
     while(d>tolerance && k<iter_max)
     {
+		m_overwrite(N,u,u_old);
         #ifdef _JACOBI
 		jacobi(u,u_old,f,N,delta_sqr);
         #endif
@@ -94,7 +94,6 @@ main(int argc, char *argv[]) {
 		gauss_seidel(u,f,N,delta_sqr);
         #endif
 		d = frobenius(u_old, u, N);
-		m_overwrite(N,u,u_old);
 		if ((k % 100) == 0)
 		{
 			printf("%i  %.5f\n", k, d);
