@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <time.h>
 #include "alloc3d.h"
 #include "print.h"
 #include "frobenius.h"
@@ -33,6 +34,8 @@ main(int argc, char *argv[]) {
     char	*output_prefix = "poisson_res";
     char        *output_ext    = "";
     char	output_filename[FILENAME_MAX];
+    int     lats;
+    double  diff, mlups;
     double 	***u = NULL;
     double 	***u_old = NULL;
     double 	***u_ana = NULL;
@@ -78,14 +81,17 @@ main(int argc, char *argv[]) {
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
     init_mat(N,start_T, analytical,f,u);
-    init_bounds(N+2,20, 0, u_old);
     if (analytical){
-    u_true_analytical(N+2, u_ana);
+        init_bounds(N+2,0, 0, u_old);
+        u_true_analytical(N+2, u_ana);
+    }else{  
+        init_bounds(N+2,20, 0, u_old);
     }
     int k = 0;
     double d = __DBL_MAX__;
     double d_ana;
     // Loop until we meet stopping criteria
+    time_t start = time(0);
     while(d>tolerance && k<iter_max)
     {
 		m_overwrite(N,u,u_old);
@@ -107,6 +113,8 @@ main(int argc, char *argv[]) {
 		}
 		k +=1;
 	}
+    time_t end = time(0);
+    diff = difftime(end,start);
 
 
     
@@ -118,6 +126,12 @@ main(int argc, char *argv[]) {
 	case 0:
 	    // no output at all
 	    break;
+    case 1:
+        lats = N*N*N;
+        mlups = lats*k/(diff*1000*1000);
+        printf("MLUPS: %.5f \n",mlups);
+
+        break;
 	case 3:
 	    output_ext = ".bin";
 	    sprintf(output_filename, "%s_%d%s", output_prefix, N, output_ext);
