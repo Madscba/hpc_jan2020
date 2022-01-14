@@ -1,0 +1,14 @@
+### Start Fri Jan 14 14:56:08 2022
+# /opt/oracle/developerstudio12.6/bin/../bin/er_archive -n -O /zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/er_archive.log /zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er
+Copying `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/poisson_j'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/poisson_j_k3n1Py2WZb0'
+Copying `/usr/lib64/librt-2.17.so'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/librt-2.17.so_OCEC1bthLm2'
+Copying `/usr/lib64/libdl-2.17.so'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/libdl-2.17.so_OCEC1bthLm2'
+Copying `/opt/oracle/developerstudio12.6/lib/compilers/rtlibs/usr/lib/amd64/libmtsk_crt.so.1'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/libmtsk_crt.so.1_cGydg-gVPAc'
+Copying `/usr/lib64/libc-2.17.so'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/libc-2.17.so_OCEC1bthLm2'
+Copying `/usr/lib64/libpthread-2.17.so'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/libpthread-2.17.so_OCEC1bthLm2'
+Copying `/opt/oracle/developerstudio12.6/lib/compilers/rtlibs/usr/lib/amd64/libmtsk.so.1'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/libmtsk.so.1_cGydg-gVPAc'
+Copying `/opt/oracle/developerstudio12.6/lib/amd64/libtha.so.1'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/libtha.so.1_H4JvMpbRDd4'
+Copying `/usr/lib64/libm-2.17.so'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/libm-2.17.so_OCEC1bthLm2'
+Copying `/opt/oracle/developerstudio12.6/lib/analyzer/amd64/runtime/libcollector.so'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/libcollector.so_-C8vWEvanQd'
+Copying `/opt/oracle/developerstudio12.6/lib/analyzer/amd64/runtime/tha.so'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/tha.so_-C8vWEvanQd'
+Copying `/usr/lib64/ld-2.17.so'  to `/zhome/fa/5/127129/hpc_jan2022/assign2/OMP_2/exp/datarace/tha.1.er/archives/ld-2.17.so_OCEC1bthLm2'

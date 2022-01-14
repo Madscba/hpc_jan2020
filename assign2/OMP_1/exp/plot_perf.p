@@ -1,6 +1,8 @@
 # Set the output to a png file
 set terminal png size 1280,720
 
+set xtics 2,2,24
+set yrange [80:300]
 set xlabel "Threads N (1)"
 set ylabel "MLups (1/s)"
 set pointsize 2.5

@@ -3,13 +3,13 @@
 # Experiment Block size
 
 #BSUB -q hpc
-#BSUB -J mlups_omp1_ndim
+#BSUB -J mlups_omp2
 #BSUB -n 24
 #BSUB -R "rusage[mem=1024MB]"
 #BSUB -R "select[model=XeonE5_2650v4]"
 #BSUB -R "span[hosts=1]"
 #BSUB -M 4GB
-#BSUB -W 120
+#BSUB -W 180
 ###BSUB -B 
 #BSUB -N 
 #BSUB -o O_ratio_1_%J.out 
@@ -33,7 +33,7 @@ do
 	
 		export OMP_NUM_THREADS=$n
 		echo $EXECUTABLE_J  $NDIM 3000 0.0 $START_T 0 1 $n
-		$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_j_$NDIM$LOGEXT
+		$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_$NDIM$LOGEXT
 
 	done
 done
