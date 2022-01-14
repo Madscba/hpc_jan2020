@@ -8,7 +8,7 @@ set pointsize 2.5
 set grid
 
 set output 'size.png'
-set title 'Convergence speed of different start_T'
+set title 'Convergence speed of different start_T (N=100)'
 p "size_0.dat" u 1:2 t "0" w lp, \
  "size_2.dat" u 1:2 t "2" w lp, \
  "size_4.dat" u 1:2 t "4" w lp, \
