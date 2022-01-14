@@ -19,12 +19,12 @@
 NDIM=256
 START_T=16
 EXECUTABLE_J="../poisson_j"
-THREADS="12 24"
+THREADS="18 24"
 lscpu
 LOGEXT=$CC.dat
 SCHEDS="dynamic static"
 BINDS="spread close"
-CHUNKS="1 2 5 10 25"
+CHUNKS="2 4 8 16 32"
 export OMP_DISPLAY_ENV=verbose
 export OMP_DISPLAY_AFFINITY=TRUE
 
