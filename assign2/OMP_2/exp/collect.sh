@@ -19,13 +19,13 @@ module load studio
 NDIM=256
 START_T=16
 EXECUTABLE_J="../poisson_j"
-EXECUTABLE_GS="../poisson_gs"
 lscpu
 LOGEXT=$CC.dat
 export OMP_DISPLAY_ENV=verbose
 export OMP_DISPLAY_AFFINITY=TRUE
 export OMP_PROC_PLACES=24
 export OMP_PROC_BIND=spread #close
+export OMP_SCHEDULE='dynamic'
 
 export OMP_NUM_THREADS=4
 JID=${LSB_JOBID}
