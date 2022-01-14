@@ -16,7 +16,7 @@
 #BSUB -e E_ratio_1_%J.err 
 
 #CC=${1-"gcc"}
-NDIMS="64 128 256 512"
+NDIMS = "64 128 256 512"
 START_T=16
 EXECUTABLE_J="../poisson_j"
 THREADS="1 2 4 6 8 10 12 14 16 18 20 22 24"
@@ -27,17 +27,17 @@ export OMP_DISPLAY_AFFINITY=TRUE
 export OMP_PROC_PLACES=24
 export OMP_PROC_BIND=spread #close
 
-for NDIM in $NDIMS
+for NDIM in NDIMS
 do
-	/bin/rm -f "./perf_j_$NDIM$LOGEXT"
-	for n in $THREADS
-	do
+/bin/rm -f "./perf_j_$NDIM$LOGEXT"
+for n in $THREADS
+do
 	
-		export OMP_NUM_THREADS=$n
-		echo $EXECUTABLE_J  $NDIM 3000 0.0 $START_T 0 1 $n
-		$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_j_$NDIM$LOGEXT
+	export OMP_NUM_THREADS=$n
+	echo $EXECUTABLE_J  $NDIM 3000 0.0 $START_T 0 1 $n
+	$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_j_$NDIM$LOGEXT
 
-	done
+done
 done
 
 exit 0

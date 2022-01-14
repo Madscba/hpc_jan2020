@@ -3,7 +3,7 @@
 # Experiment Block size
 
 #BSUB -q hpc
-#BSUB -J collect_omp1
+#BSUB -J collect_gs
 #BSUB -n 24
 #BSUB -R "rusage[mem=1024MB]"
 #BSUB -R "select[model=XeonE5_2650v4]"
@@ -18,7 +18,7 @@ module load studio
 #CC=${1-"gcc"}
 NDIM=256
 START_T=16
-EXECUTABLE_J="../poisson_j"
+EXECUTABLE_J="../poisson_gs"
 lscpu
 LOGEXT=$CC.dat
 

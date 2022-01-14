@@ -25,19 +25,24 @@ LOGEXT=$CC.dat
 export OMP_DISPLAY_ENV=verbose
 export OMP_DISPLAY_AFFINITY=TRUE
 export OMP_PROC_PLACES=24
-export OMP_PROC_BIND=spread #close
 
 for NDIM in $NDIMS
 do
-	/bin/rm -f "./perf_j_$NDIM$LOGEXT"
-	for n in $THREADS
-	do
+/bin/rm -f "./perf_j_$NDIM$LOGEXT"
+for n in $THREADS
+do
 	
-		export OMP_NUM_THREADS=$n
-		echo $EXECUTABLE_J  $NDIM 3000 0.0 $START_T 0 1 $n
-		$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_j_$NDIM$LOGEXT
+	export OMP_PROC_BIND=spread
+	export OMP_NUM_THREADS=$n
+	echo $EXECUTABLE_J  $NDIM 3000 0.0 $START_T 0 1 $n
+	$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./spread_j_$NDIM$LOGEXT
 
-	done
+	export OMP_PROC_BIND=close
+	export OMP_NUM_THREADS=$n
+	echo $EXECUTABLE_J  $NDIM 3000 0.0 $START_T 0 1 $n
+	$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./close_j_$NDIM$LOGEXT
+
+done
 done
 
 exit 0
