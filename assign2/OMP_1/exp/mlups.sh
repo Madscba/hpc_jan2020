@@ -25,8 +25,6 @@ lscpu
 LOGEXT=$CC.dat
 export OMP_DISPLAY_ENV=verbose
 export OMP_DISPLAY_AFFINITY=TRUE
-export OMP_PROC_PLACES=24
-export OMP_PROC_BIND=spread #close
 /bin/rm -f "./perf_j$LOGEXT"
 /bin/rm -f "./perf_gs$LOGEXT"
 
