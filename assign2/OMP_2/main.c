@@ -81,6 +81,7 @@ main(int argc, char *argv[]) {
      */
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
+    #pragma omp parallel
     init_mat(N,start_T, analytical,f,u);
     if (analytical){
         init_bounds(N+2,0, 0, u_old);

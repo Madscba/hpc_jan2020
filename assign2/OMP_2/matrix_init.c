@@ -6,7 +6,7 @@ void init_inner(int outer_size,double start_T, double ***matrix)
 	
 	int loop_size = outer_size-1; //Should only init from 1-N+1
 	int i,j,k;
-	#pragma omp parallel for default(none) shared(start_T,loop_size,matrix) private(i,j,k)
+	#pragma omp for default(none) shared(start_T,loop_size,matrix) private(i,j,k)
 	for(i = 1; i < loop_size; i++)
 	{	
 		for(j = 1; j < loop_size; j++)
@@ -26,86 +26,23 @@ void init_bounds(int outer_size,double mw_T, double sw_T, double ***matrix)
 	//sw_T = single wall temperature
 	//mw_T = multiple wall temperature
 	int loop_size = outer_size-1; 
-
-	int i,j,k;
+	int j,k;
 	//x-z plane with y=1  (start phys (x,y,z)=(-1,1,-1), start idx (z,y,x)=(i,j,k)=(0->N+2 , 0 , 0->N+2)
-	#pragma omp parallel sections default(none) shared(loop_size,outer_size,mw_T,sw_T,matrix) private(i,j,k)
-	{
-	#pragma omp section
+	#pragma omp for default(none) shared(loop_size,outer_size,mw_T,sw_T,matrix) private(j,k)
 	for(j = 1; j < loop_size; j++)
 	{
 		for(k = 1; k < loop_size; k++)
 		{
 			//     (z,y,x) (i,j,k)
 			matrix[j][0][k] = mw_T;
-		}
-	
-	}
-	#pragma omp section
-	//x-z plane with y=-1  (start phys (x,y,z)=(-1, -1,-1), start idx (z,y,x)=(i,j,k)=(0->N+2 , N+2  , 0->N+2)
-	for(j = 1; j < loop_size; j++)
-	{
-		for(k = 1; k < loop_size; k++)
-		{
-			//     (z,y,x) (i,j,k)
 			matrix[j][loop_size][k] = sw_T;
+			matrix[loop_size][j][k] = mw_T;
+			matrix[loop_size][j][k] = mw_T;
+			matrix[0][j][k] = mw_T;
+			matrix[j][k][loop_size] = mw_T;
+			matrix[j][k][0] = mw_T;
 		}
-	
 	}
-	#pragma omp section
-	//x-y plane with z=1  (start phys (x,y,z)=(-1,1,1), start idx (z,y,x)=(i,j,k)=(N+2 , 0->N+2, 0->N+2 )
-	for(i = 1; i < loop_size; i++)
-	{
-		for(k = 1; k < loop_size; k++)
-		{
-			//     (z,y,x) (i,j,k)
-			matrix[loop_size][i][k] = mw_T;
-		}
-	
-	}
-	#pragma omp section
-	//x-y plane with z=-1  (start phys (x,y,z)=(-1,1,-1), start idx (z,y,x)=(i,j,k)=(0 , 0->N+2, 0->N+2 )
-	for(i = 1; i < loop_size; i++)
-	{
-		for(k = 1; k < loop_size; k++)
-		{
-			//     (z,y,x) (i,j,k)
-			matrix[0][i][k] = mw_T;
-		}
-	
-	}
-
-	#pragma omp section
-	//y-z plane with x=1  (start phys (x,y,z)=(1,1,1), start idx (z,y,x)=(i,j,k)=(0->N+2 , 0->N+2, N+2 )
-	for(j = 1; j < loop_size; j++)
-	{
-		for(i = 1; i < loop_size; i++)
-		{
-			//     (z,y,x) (i,j,k)
-			matrix[j][i][loop_size] = mw_T;
-		}
-	
-	}
-	#pragma omp section
-	//y-z plane with x=-1  (start phys (x,y,z)=(-1,1,-1), start idx (z,y,x)=(i,j,k)=(0-N+2 , 0->N+2, 0 )
-	for(j = 1; j < loop_size; j++)
-	{
-		for(i = 1; i < loop_size; i++)
-		{
-			//     (z,y,x) (i,j,k)
-			matrix[j][i][0] = mw_T;
-		}
-	
-	}
-	
-	}/* end pragma sections barrier */
-
-	
-	
-
-	
-	
-
 }
 
 void init_f(int outer_size,  double ***f)
@@ -121,7 +58,7 @@ void init_f(int outer_size,  double ***f)
 	z_bound_start = loop_size * (1.0/6.0) - 1.0; 	//outer_size/2 * (1/3)  
 	z_bound_stop = loop_size/2.0 + 1.0; 
 	
-	#pragma omp parallel for default(none) shared(f,x_bound,y_bound,z_bound_start,z_bound_stop, loop_size) private(i,j,k)
+	#pragma omp for default(none) shared(f,x_bound,y_bound,z_bound_start,z_bound_stop, loop_size) private(i,j,k)
 	for(i = z_bound_start; i < z_bound_stop; i++)
 	{
 		for(j = loop_size; j > y_bound; j--)
