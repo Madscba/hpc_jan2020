@@ -34,8 +34,8 @@ for n in $THREADS
 do
 
 	export OMP_NUM_THREADS=$n
-	echo $EXECUTABLE_J  $NDIM 3000 0.0 $START_T 0 1 $n
-	$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_settings$LOGEXT
+	echo $EXECUTABLE_J  $NDIMS 3000 0.0 $START_T 0 1 $n
+	$EXECUTABLE_J $NDIMS 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_settings$LOGEXT
 
 
 done
