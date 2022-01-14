@@ -16,7 +16,7 @@
 #BSUB -e E_ratio_1_%J.err 
 
 #CC=${1-"gcc"}
-NDIMS="64 128 256 512"
+NDIMS="256"
 START_T=16
 EXECUTABLE_J="../poisson_j"
 THREADS="1 2 4 6 8 10 12 14 16 18 20 22 24"

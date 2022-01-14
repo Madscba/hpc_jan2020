@@ -12,5 +12,4 @@ set title 'Speed-up for different itterations of Jacobi (Ndim=256, Start_T=16)'
 p "naive.dat" u 4:5 t "Naive" w lp, \
  "advanced.dat" u 4:5 t "Advanced" w lp , \
  "numa.dat" u 4:5 t "NUMA" w lp , \
- "settings.dat" u 4:5 t "NUMA-best settings" w lp , \
  x t "f = 1"

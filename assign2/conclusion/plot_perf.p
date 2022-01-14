@@ -9,7 +9,7 @@ set grid
 
 set output 'perf.png'
 set title 'Performance of iterations of Jacobian (Ndim=256, start_T=16)'
-p "naive.dat" u 4:2 t "Naive" w lp, \
+p "sequential.dat" u 4:2 t "Sequential" w lp,\
+ "naive.dat" u 4:2 t "Naive" w lp, \
  "advanced.dat" u 4:2 t "Advanced" w lp, \
- "numa.dat" u 4:2 t "NUMA" w lp, \
-  "settings.dat" u 4:2 t "NUMA-best settings" w lp , \
+ "perf_settings.dat" u 4:2 t "NUMA" w lp, \

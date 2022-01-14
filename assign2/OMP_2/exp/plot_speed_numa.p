@@ -8,7 +8,7 @@ set pointsize 2.5
 set grid
 
 set output 'speed_numa.png'
-set title 'Speed-up for advanced Jacobi at different sizes (Start_T=16)'
+set title 'Speed-up for NUMA Jacobi at different sizes (Start_T=16)'
 p "perf_numa_64.dat" u 4:5 t "64" w lp, \
  "perf_numa_128.dat" u 4:5 t "128" w lp , \
  "perf_numa_256.dat" u 4:5 t "256" w lp , \
