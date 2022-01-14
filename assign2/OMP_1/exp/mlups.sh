@@ -9,7 +9,7 @@
 #BSUB -R "select[model=XeonE5_2650v4]"
 #BSUB -R "span[hosts=1]"
 #BSUB -M 4GB
-#BSUB -W 60
+#BSUB -W 120
 ###BSUB -B 
 #BSUB -N 
 #BSUB -o O_ratio_1_%J.out 

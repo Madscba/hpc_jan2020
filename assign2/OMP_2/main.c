@@ -97,12 +97,12 @@ main(int argc, char *argv[]) {
     {
 		m_overwrite(N,u,u_old);
         #ifdef _JACOBI
-		jacobi(u,u_old,f,N,delta_sqr);
+		d = jacobi(u,u_old,f,N,delta_sqr);
         #endif
         #ifdef _GAUSS_SEIDEL
 		gauss_seidel(u,f,N,delta_sqr);
-        #endif
         d = frobenius(u_old, u, N);
+        #endif
         if (output_type == 0){
 		if ((k % 100) == 0)
 		{   
