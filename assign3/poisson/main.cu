@@ -120,7 +120,7 @@ main(int argc, char *argv[]) {
 
     while(k<iter_max)
     {
-        printf("U[2][2][2]=%d.5 \n",u_d[2][2][2]); fflush(stdout);
+        printf("U[2][2][2]=%d.5 \n",u_d); fflush(stdout);
         printf("U_old[2][2][2]=%d.5 \n",u_old_d[2][2][2]); fflush(stdout);
         #ifdef _JACOBI
         // Execute kernel function
