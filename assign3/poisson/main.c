@@ -12,8 +12,8 @@
 #include "alloc3d.h"
 #include "alloc3d_gpu.h"
 #include "transfer3d_gpu.h"
-#include <matrix_init.h>
-#include <matrix_overwrite.h>
+#include "matrix_init.h"
+#include "matrix_overwrite.h"
 
 #ifdef _JACOBI
 #include <jacobi.h>
