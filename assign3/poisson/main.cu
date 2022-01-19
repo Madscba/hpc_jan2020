@@ -39,6 +39,7 @@ main(int argc, char *argv[]) {
     double 	***u_d = NULL;
     double 	***u_old_d = NULL;
     double 	***f_d = NULL;
+    double*** temp;
     int NUM_BLOCKS, THREADS_PER_BLOCK;
 
 
@@ -116,8 +117,6 @@ main(int argc, char *argv[]) {
     int k = 0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
-    double*** temp;
-
     while(k<iter_max)
     {
         #ifdef _JACOBI
