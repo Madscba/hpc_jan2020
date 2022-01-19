@@ -124,7 +124,7 @@ main(int argc, char *argv[]) {
     {
         #ifdef _JACOBI
         // Execute kernel function
-        jacobi<<<1,1>>>(u_d,u_old_d,f_d,N,delta_sqr);
+        jacobi<<<dimGrid,dimBlock>>>(u_d,u_old_d,f_d,N,delta_sqr);
         checkCudaErrors(cudaDeviceSynchronize());
         #endif
         if ((k % 100) == 0)
