@@ -78,12 +78,20 @@ main(int argc, char *argv[]) {
     
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
-    init_mat(N,start_T,f,u);
-    init_bounds(N+2,20, 0, u_old);
+    init_mat(N,start_T,f_h,u_h);
+    init_bounds(N+2,20, 0, u_old_h);
 
 
     // Allocate 3d array on device 0 memory
-    if ( (u_d = d_malloc_3d_gpu(N / 2, N, N)) == NULL ) {
+    if ( (u_d = d_malloc_3d_gpu(N, N, N)) == NULL ) {
+        perror("array u_d0: allocation on gpu failed");
+        exit(-1);
+    }
+    if ( (u_old_d = d_malloc_3d_gpu(N, N, N)) == NULL ) {
+        perror("array u_d0: allocation on gpu failed");
+        exit(-1);
+    }
+    if ( (f_d = d_malloc_3d_gpu(N, N, N)) == NULL ) {
         perror("array u_d0: allocation on gpu failed");
         exit(-1);
     }
