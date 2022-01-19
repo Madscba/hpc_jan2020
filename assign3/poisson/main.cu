@@ -113,18 +113,17 @@ main(int argc, char *argv[]) {
 
 
     printf("Transfered data \n"); fflush(stdout);
-
     int k = 0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
     while(k<iter_max)
     {
         printf("Matrix overwrite \n"); fflush(stdout);
-        m_overwrite(N,u_d,u_old_d);
+        m_overwrite<<<1,1>>>(N,u_d,u_old_d);
         checkCudaErrors(cudaDeviceSynchronize());
         #ifdef _JACOBI
         // Execute kernel function
-        jacobi(u_d,u_old_d,f_d,N,delta_sqr);
+        jacobi<<<1,1>>>(u_d,u_old_d,f_d,N,delta_sqr);
         checkCudaErrors(cudaDeviceSynchronize());
         #endif
         if ((k % 100) == 0)
