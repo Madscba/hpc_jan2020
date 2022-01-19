@@ -66,15 +66,15 @@ main(int argc, char *argv[]) {
 
     // Allocate 3d array in host memory.
     if ( (u_h = d_malloc_3d(N, N, N)) == NULL ) {
-        perror("array u: allocation failed");
+        perror("array u: allocation failed"); fflush(stdout);
         exit(-1);
     }
     if ( (u_old_h = d_malloc_3d(N, N, N)) == NULL ) {
-        perror("array u: allocation failed");
+        perror("array u: allocation failed"); fflush(stdout);
         exit(-1);
     }
     if ( (f_h = d_malloc_3d(N, N, N)) == NULL ) {
-        perror("array u: allocation failed");
+        perror("array u: allocation failed"); fflush(stdout);
         exit(-1);
     }
 
