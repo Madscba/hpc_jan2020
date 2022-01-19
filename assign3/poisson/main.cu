@@ -118,11 +118,11 @@ main(int argc, char *argv[]) {
     ts = omp_get_wtime();
     while(k<iter_max)
     {
-        m_overwrite<<<NUM_BLOCKS, THREADS_PER_BLOCK>>>(N,u_d,u_old_d);
+        m_overwrite(N,u_d,u_old_d);
         printf("Matrix overwrite \n"); fflush(stdout);
         #ifdef _JACOBI
         // Execute kernel function
-        jacobi<<<NUM_BLOCKS, THREADS_PER_BLOCK>>>(u_d,u_old_d,f_d,N,delta_sqr);
+        jacobi(u_d,u_old_d,f_d,N,delta_sqr);
         checkCudaErrors(cudaDeviceSynchronize());
         #endif
         if ((k % 100) == 0)
