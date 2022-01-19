@@ -76,7 +76,7 @@ main(int argc, char *argv[]) {
         exit(-1);
     }
 
-    printf("Allocated memory to host")
+    printf("Allocated memory to host");
     
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
@@ -104,7 +104,7 @@ main(int argc, char *argv[]) {
     transfer_3d_from_1d(f_d, f_h[0][0], N, N, N, cudaMemcpyHostToDevice);
 
 
-    printf("Transfered data")
+    printf("Transfered data");
 
     int k = 0;
     // Loop until we meet stopping criteria
