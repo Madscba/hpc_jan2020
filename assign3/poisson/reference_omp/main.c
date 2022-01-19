@@ -72,9 +72,9 @@ main(int argc, char *argv[]) {
         {   
         printf("%i \n", k);
         }
-        temp = u_old_d;
-        u_old_d = u_d;
-        u_d  = temp;
+        temp = u_old;
+        u_old = u;
+        u  = temp;
         k +=1;
     }
     te = omp_get_wtime();
