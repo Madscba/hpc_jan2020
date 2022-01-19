@@ -8,7 +8,6 @@ void
 jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
     int i, j, k;
 	double tmpi, tmpj, tmpk;
-	#pragma omp parallel for shared(u, u_old, f, delta) private(i,j,k,tmpi,tmpj,tmpk)
     for (i = 1; i < N+1; i++) 
 	{
 		for (j = 1; j < N+1; j++)   
