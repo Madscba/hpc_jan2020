@@ -100,6 +100,9 @@ main(int argc, char *argv[]) {
         exit(-1);
     }
 
+        printf("Allocated memory to device \n"); fflush(stdout);
+
+
     // Transfer to device 0.
     transfer_3d_from_1d(u_d, u_h[0][0], N, N, N, cudaMemcpyHostToDevice);
     transfer_3d_from_1d(u_old_d, u_old_h[0][0], N, N, N, cudaMemcpyHostToDevice);
