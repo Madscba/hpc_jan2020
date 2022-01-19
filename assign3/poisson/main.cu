@@ -21,13 +21,6 @@
 #include <jacobi.h>
 #endif
 
-void 
-pointer_swap(double ****A, double ****B) {
-  double *temp = ***A;
-  *A = *B;
-  ***B  = temp;
-}
-
 int
 main(int argc, char *argv[]) {
 
@@ -123,7 +116,7 @@ main(int argc, char *argv[]) {
     int k = 0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
-    double** temp;
+    double*** temp;
 
     while(k<iter_max)
     {
@@ -136,10 +129,13 @@ main(int argc, char *argv[]) {
         {   
             printf("%i \n", k);
         }
-        pointer_swap(&u_d,&u_old_d);
+        temp = u_old_d;
+        u_old_d = u_d;
+        u_d  = temp;
+        k+=1;
     }
     te = omp_get_wtime();
-
+    
     // Transfer back
     transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
    
