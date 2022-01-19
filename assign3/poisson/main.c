@@ -78,7 +78,7 @@ main(int argc, char *argv[]) {
     
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
-    init_mat(N,start_T,f_h,u_h);
+    init_mat(N,start_T,*f_h,*u_h);
     init_bounds(N+2,20, 0, u_old_h);
 
 
@@ -144,4 +144,5 @@ main(int argc, char *argv[]) {
     free_gpu(u_old_d);
     free_gpu(f_d);
     return(0);
+}
 }
