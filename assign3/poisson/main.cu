@@ -60,21 +60,21 @@ main(int argc, char *argv[]) {
     output_type = atoi(argv[5]);  // ouput type
     }
 
-    printf("Understood arguments N=%i iter_max=%i, NUM_BLOCKS=%i, THREADS_PER_BLOCK=%i \n",N,iter_max,NUM_BLOCKS,THREADS_PER_BLOCK); fflush(stdout);
+    printf("N=%i iter_max=%i, NUM_BLOCKS=%i, THREADS_PER_BLOCK=%i, device=%i \n",N,iter_max,NUM_BLOCKS,THREADS_PER_BLOCK,device); fflush(stdout);
 
     const long nElms = N * N * N; // Number of elements.
 
     // Allocate 3d array in host memory.
     if ( (u_h = d_malloc_3d(N, N, N)) == NULL ) {
-        perror("array u: allocation failed"); fflush(stdout);
+        perror("array u: allocation failed");
         exit(-1);
     }
     if ( (u_old_h = d_malloc_3d(N, N, N)) == NULL ) {
-        perror("array u: allocation failed"); fflush(stdout);
+        perror("array u: allocation failed");
         exit(-1);
     }
     if ( (f_h = d_malloc_3d(N, N, N)) == NULL ) {
-        perror("array u: allocation failed"); fflush(stdout);
+        perror("array u: allocation failed");
         exit(-1);
     }
 
