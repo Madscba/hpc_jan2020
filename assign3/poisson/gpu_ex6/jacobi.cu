@@ -12,7 +12,7 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 	i = blockIdx.x * blockDim.x * gridDim.x + threadIdx.x+1;
 	j = blockIdx.y * blockDim.y * gridDim.y  + threadIdx.y+1;
 	k = blockIdx.z * blockDim.z * gridDim.z  + threadIdx.z+1;
-	printf("block %i, grid %i thread %i", blockIdx.x, gridDim.x,threadIdx.x);
+	printf("block %i, grid %i thread %i", blockIdx.x, gridDim.x,threadIdx.x); fflush(stdout);
 	tmpi = (u_old[i-1][j][k] + u_old[i+1][j][k]);
 	tmpj = (u_old[i][j-1][k] + u_old[i][j+1][k]);
 	tmpk = (u_old[i][j][k-1] + u_old[i][j][k+1]);
