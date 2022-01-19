@@ -21,6 +21,13 @@
 #include <jacobi.h>
 #endif
 
+void 
+pointer_swap(double ***A, double ***B) {
+  double **temp = *A;
+  *A = *B;
+  *B  = temp;
+}
+
 int
 main(int argc, char *argv[]) {
 
@@ -129,9 +136,7 @@ main(int argc, char *argv[]) {
         {   
             printf("%i \n", k);
         }
-        temp = *u_d;
-        **u_old_d = *temp;
-        k +=1;
+        pointer_swap(&u_d,&u_old_d);
     }
     te = omp_get_wtime();
 
