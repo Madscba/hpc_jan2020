@@ -60,7 +60,7 @@ main(int argc, char *argv[]) {
     output_type = atoi(argv[5]);  // ouput type
     }
 
-    printf("Understood arguments \n"); fflush(stdout);
+    printf("Understood arguments N=%i iter_max=%i, NUM_BLOCKS=%i, THREADS_PER_BLOCK=%i \n",N,iter_max,NUM_BLOCKS,THREADS_PER_BLOCK); fflush(stdout);
 
     const long nElms = N * N * N; // Number of elements.
 
