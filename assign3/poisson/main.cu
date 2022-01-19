@@ -83,7 +83,7 @@ main(int argc, char *argv[]) {
     
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
-    init_mat(N,start_T,f_h,u_h);
+    init_mat(N,start_T,f_h,u_old_h);
     printf("Initialized u and f \n"); fflush(stdout);
     init_bounds(N+2,20, 0, u_old_h);
     printf("Initialized boundaries \n"); fflush(stdout);
@@ -116,11 +116,12 @@ main(int argc, char *argv[]) {
     int k = 0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
+    double*** temp;
+
     while(k<iter_max)
     {
-        printf("Matrix overwrite \n"); fflush(stdout);
-        m_overwrite<<<1,1>>>(N,u_d,u_old_d);
-        checkCudaErrors(cudaDeviceSynchronize());
+        print("U[2][2][2]=%f.5 \n",u_d[2][2][2]);
+        print("U_old[2][2][2]=%f.5 \n",u_old_d[2][2][2]);
         #ifdef _JACOBI
         // Execute kernel function
         jacobi<<<1,1>>>(u_d,u_old_d,f_d,N,delta_sqr);
@@ -130,15 +131,19 @@ main(int argc, char *argv[]) {
         {   
             printf("%i \n", k);
         }
+        print("U[2][2][2]=%f.5 \n",u_d[2][2][2]);
+        print("U_old[2][2][2]=%f.5 \n",u_old_d[2][2][2]);
+        temp = *u_d;
+        *u_old_d = *temp;
         k +=1;
+        print("U[2][2][2]=%f.5 \n",u_d[2][2][2]);
+        print("U_old[2][2][2]=%f.5 \n",u_old_d[2][2][2]);
     }
     te = omp_get_wtime();
 
     // Transfer back
     transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-    transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-    transfer_3d(f_h,f_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-
+   
     printf("Transfered data back \n"); fflush(stdout);
 
     // dump  results if wanted 
