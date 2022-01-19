@@ -22,7 +22,7 @@
 #endif
 
 void 
-pointer_swap(double ***A, double ***B) {
+pointer_swap(double ****A, double ****B) {
   double *temp = *A;
   *A = *B;
   *B  = temp;
