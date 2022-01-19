@@ -116,7 +116,7 @@ main(int argc, char *argv[]) {
     int k = 0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
-    double* temp;
+    double** temp;
 
     while(k<iter_max)
     {
