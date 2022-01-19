@@ -1,5 +1,5 @@
 TARGET= poisson_gpu
-OBJS	= main.o jacobi.o alloc3d.o alloc3d_gpu.o transfer3d_gpu.o
+OBJS	= main.o jacobi.o matrix_init.o matrix_overwrite.o alloc3d.o alloc3d_gpu.o transfer3d_gpu.o
 
 OPT	= -O3
 ISA	= 
