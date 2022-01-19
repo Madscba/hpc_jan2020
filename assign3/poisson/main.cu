@@ -89,15 +89,15 @@ main(int argc, char *argv[]) {
 
 
     // Allocate 3d array on device 0 memory
-    if ( (u_d = d_malloc_3d_gpu(N, N, N)) == NULL ) {
+    if ( (u_d = d_malloc_3d_gpu(N+2, N+2, N+2)) == NULL ) {
         perror("array u_d0: allocation on gpu failed");
         exit(-1);
     }
-    if ( (u_old_d = d_malloc_3d_gpu(N, N, N)) == NULL ) {
+    if ( (u_old_d = d_malloc_3d_gpu(N+2, N+2, N+2)) == NULL ) {
         perror("array u_d0: allocation on gpu failed");
         exit(-1);
     }
-    if ( (f_d = d_malloc_3d_gpu(N, N, N)) == NULL ) {
+    if ( (f_d = d_malloc_3d_gpu(N+2, N+2, N+2)) == NULL ) {
         perror("array u_d0: allocation on gpu failed");
         exit(-1);
     }
@@ -106,9 +106,9 @@ main(int argc, char *argv[]) {
 
 
     // Transfer to device 0.
-    transfer_3d_from_1d(u_d, u_h[0][0], N, N, N, cudaMemcpyHostToDevice);
-    transfer_3d_from_1d(u_old_d, u_old_h[0][0], N, N, N, cudaMemcpyHostToDevice);
-    transfer_3d_from_1d(f_d, f_h[0][0], N, N, N, cudaMemcpyHostToDevice);
+    transfer_3d_from_1d(u_d, u_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
+    transfer_3d_from_1d(u_old_d, u_old_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
+    transfer_3d_from_1d(f_d, f_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
 
 
     printf("Transfered data \n"); fflush(stdout);
@@ -119,6 +119,7 @@ main(int argc, char *argv[]) {
     while(k<iter_max)
     {
         m_overwrite(N,u_d,u_old_d);
+        printf("Matrix overwrite \n"); fflush(stdout);
         #ifdef _JACOBI
         // Execute kernel function
         jacobi<<<NUM_BLOCKS, THREADS_PER_BLOCK>>>(u_d,u_old_d,f_d,N,delta_sqr);
@@ -133,9 +134,9 @@ main(int argc, char *argv[]) {
     te = omp_get_wtime();
 
     // Transfer back
-    transfer_3d(u_h,u_d,N,N,N,cudaMemcpyDeviceToHost);
-    transfer_3d(u_old_h,u_old_d,N,N,N,cudaMemcpyDeviceToHost);
-    transfer_3d(f_h,f_d,N,N,N,cudaMemcpyDeviceToHost);
+    transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+    transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+    transfer_3d(f_h,f_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
 
     printf("Transfered data back \n"); fflush(stdout);
 
