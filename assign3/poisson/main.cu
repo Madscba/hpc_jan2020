@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <helper_cuda.h>
 #include <time.h>
 #include <cuda.h>
 #include <cuda_runtime.h>
