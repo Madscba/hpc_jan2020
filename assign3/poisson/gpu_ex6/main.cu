@@ -112,6 +112,9 @@ main(int argc, char *argv[]) {
     transfer_3d_from_1d(u_old_d, u_old_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
     transfer_3d_from_1d(f_d, f_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
 
+    int grid_dim = 2;
+    dim3 dimGrid(grid_dim,grid_dim,1); // 4096 blocks in total 
+    dim3 dimBlock(ceil(N/grid_dim),ceil(N/grid_dim),1);// 256 threads per block
 
     printf("Transfered data \n"); fflush(stdout);
     int k = 0;
