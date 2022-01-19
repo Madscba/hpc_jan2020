@@ -122,9 +122,9 @@ main(int argc, char *argv[]) {
     te = omp_get_wtime();
 
     // Transfer back
-    transfer_3d_to_1d(u_h,u_d,N,N,N,cudaMemcpyDeviceToHost);
-    transfer_3d_to_1d(u_old_h,u_old_d,N,N,N,cudaMemcpyDeviceToHost);
-    transfer_3d_to_1d(f_h,f_d,N,N,N,cudaMemcpyDeviceToHost);
+    transfer_3d(u_h,u_d,N,N,N,cudaMemcpyDeviceToHost);
+    transfer_3d(u_old_h,u_old_d,N,N,N,cudaMemcpyDeviceToHost);
+    transfer_3d(f_h,f_d,N,N,N,cudaMemcpyDeviceToHost);
 
     // dump  results if wanted 
     switch(output_type) {
