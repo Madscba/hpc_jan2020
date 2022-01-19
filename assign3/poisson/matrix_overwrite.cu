@@ -1,8 +1,8 @@
- __device__ __host__
+ __device__
 void m_overwrite(int N, double ***u, double ***u_old)
 {
 	//overwrite values of matrix u into u_old indentically square matrices
-	printf("I'm here! \n"); fflush(stdout);
+	printf("I'm here! \n");
 	int i, j, k;
     for (i = 1; i < N+1; i++) 
 	{
