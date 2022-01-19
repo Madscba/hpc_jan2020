@@ -100,7 +100,7 @@ main(int argc, char *argv[]) {
         exit(-1);
     }
 
-        printf("Allocated memory to device \n"); fflush(stdout);
+    printf("Allocated memory to device \n"); fflush(stdout);
 
 
     // Transfer to device 0.
