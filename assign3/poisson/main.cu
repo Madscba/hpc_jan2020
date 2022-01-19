@@ -60,6 +60,8 @@ main(int argc, char *argv[]) {
     output_type = atoi(argv[5]);  // ouput type
     }
 
+    printf("Understood arguments"); fflush(stdout);
+
     const long nElms = N * N * N; // Number of elements.
 
     // Allocate 3d array in host memory.
@@ -76,7 +78,7 @@ main(int argc, char *argv[]) {
         exit(-1);
     }
 
-    printf("Allocated memory to host");
+    printf("Allocated memory to host"); fflush(stdout);
     
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
