@@ -45,7 +45,7 @@ main(int argc, char *argv[]) {
 
     int 	iter_max = 1000;
     double	start_T = 16.0;
-    int		output_type = 0;
+    int		output_type = 1;
     char	*output_prefix = "poisson_res";
     char        *output_ext    = "";
     char	output_filename[FILENAME_MAX];

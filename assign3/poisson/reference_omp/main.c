@@ -17,21 +17,18 @@
 #include "jacobi.h"
 #endif
 
-#define N_DEFAULT 100
-
 int
 main(int argc, char *argv[]) {
 
-    int 	N = N_DEFAULT;
-    int 	iter_max = 1000;
-    double	tolerance;
-    double	start_T;
-    int		output_type = 0;
-    int     analytical = 0;
-    char	*output_prefix = "poisson_res";
-    char        *output_ext    = "";
-    char	output_filename[FILENAME_MAX];
-    int     lats;
+    int N;
+    int iter_max = 1000;
+    double	start_T=16.0;
+    double ***temp;
+    int	output_type = 1;
+    char*output_prefix = "poisson_res";
+    char *output_ext    = "";
+    char output_filename[FILENAME_MAX];
+    int lats;
     double  ts,te, mlups;
     double 	***u = NULL;
     double 	***u_old = NULL;
@@ -41,10 +38,8 @@ main(int argc, char *argv[]) {
     /* get the paramters from the command line */
     N         = atoi(argv[1]);	// grid size
     iter_max  = atoi(argv[2]);  // max. no. of iterations
-    tolerance = atof(argv[3]);  // tolerance
-    start_T   = atof(argv[4]);  // start T for all inner grid points
-    if (argc == 6) {
-    output_type = atoi(argv[5]);  // ouput type
+    if (argc == 4) {
+    output_type = atoi(argv[3]);  // ouput type
     }
 
     // allocate memory
@@ -63,14 +58,13 @@ main(int argc, char *argv[]) {
     
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
-    init_mat(N,start_T,f,u);
+    init_mat(N,start_T,f,u_old);
     init_bounds(N+2,20, 0, u_old);
     int k = 0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
     while(k<iter_max)
     {
-        m_overwrite(N,u,u_old);
         #ifdef _JACOBI
         jacobi(u,u_old,f,N,delta_sqr);
         #endif
@@ -78,13 +72,14 @@ main(int argc, char *argv[]) {
         {   
         printf("%i \n", k);
         }
+        temp = u_old_d;
+        u_old_d = u_d;
+        u_d  = temp;
         k +=1;
     }
     te = omp_get_wtime();
 
     
-
-
 
     // dump  results if wanted 
     switch(output_type) {
@@ -97,30 +92,10 @@ main(int argc, char *argv[]) {
         printf("%d %.5f %.5f %d \n",N,mlups, te-ts, omp_get_max_threads());
 
         break;
-    case 3:
-        output_ext = ".bin";
-        sprintf(output_filename, "%s_%d%s", output_prefix, N, output_ext);
-        fprintf(stderr, "Write binary dump to %s: ", output_filename);
-        print_binary(output_filename, N, u);
-        break;
-    case 4:
-        output_ext = ".vtk";
-        sprintf(output_filename, "%s_%d%s", output_prefix, N, output_ext);
-        fprintf(stderr, "Write VTK file to %s: ", output_filename);
-        print_vtk(output_filename, N+2, u);
-        break;
-    default:
-        fprintf(stderr, "Non-supported output type!\n");
-        break;
-    }
 
     // de-allocate memory
     free(u);
     free(u_old);
     free(f);
-    if (analytical)
-    {
-        free(u_ana);
-    }
     return(0);
 }
