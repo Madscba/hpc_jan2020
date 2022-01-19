@@ -1,7 +1,7 @@
-TARGET= example3d
-OBJS	= alloc3d.o alloc3d_gpu.o transfer3d_gpu.o example3d.o
+TARGET= poisson_gpu
+OBJS	= main.o jacobi.o alloc3d.o alloc3d_gpu.o transfer3d_gpu.o example3d.o
 
-OPT	= -g -O3
+OPT	= -O3
 ISA	= 
 PARA	= -fopenmp
 

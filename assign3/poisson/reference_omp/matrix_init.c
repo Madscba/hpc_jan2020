@@ -126,53 +126,27 @@ void u_true_analytical(int outer_size,  double ***u)
 	}
 }
 
-void init_mat(int N,double start_T, int analytical, double ***f, double ***u){
+void init_mat(int N,double start_T, double ***f, double ***u){
 	int outer_size = N + 2;
 	
 	/*m, matricen
 	en væg 0 grader.
 	(x,y,z) (k,j,i)*/
 
-
-	if(analytical)
-	{
-		//initialization of the grid of u - initial guess
-		init_inner(outer_size,start_T,u);	
-		
-		//initialization of boundaries
-			/*arguments: 
-				outer_size
-				temperature for 5 walls
-				temperature for wall in x-z plane with y=-1,
-				matrix you would like to define boundaries for */
-		init_bounds(outer_size,0, 0, u);
-		
-		//initialization of f radiator
-		init_f_analytical(outer_size,f);
-
-	}
-	else
-	{
 		//initialization of the grid of u and f
 
-		init_inner(outer_size, 0, f);
-		
-		init_inner(outer_size,start_T,u);
-		
-		//initialization of boundaries
-			/*arguments: 
-				outer_size
-				temperature for 5 walls
-				temperature for wall in x-z plane with y=-1,
-				matrix you would like to define boundaries for */
-		init_bounds(outer_size,20, 0, u);
-		init_bounds(outer_size,0, 0, f);
-		
-		//initialization of f radiator
-		init_f(outer_size,f);
-	}
+	init_inner(outer_size, 0, f);
+	init_inner(outer_size,start_T,u);
 	
-
-
-
+	//initialization of boundaries
+		/*arguments: 
+			outer_size
+			temperature for 5 walls
+			temperature for wall in x-z plane with y=-1,
+			matrix you would like to define boundaries for */
+	init_bounds(outer_size,20, 0, u);
+	init_bounds(outer_size,0, 0, f);
+	
+	//initialization of f radiator
+	init_f(outer_size,f);
 }
