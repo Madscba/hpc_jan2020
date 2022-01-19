@@ -8,6 +8,7 @@
 #include <string.h>
 #include <time.h>
 #include <cuda.h>
+#include <cuda_runtime.h>
 #include <omp.h>
 #include "alloc3d.h"
 #include "alloc3d_gpu.h"
