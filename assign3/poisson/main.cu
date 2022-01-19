@@ -60,7 +60,7 @@ main(int argc, char *argv[]) {
     output_type = atoi(argv[5]);  // ouput type
     }
 
-    printf("Understood arguments"); fflush(stdout);
+    printf("Understood arguments \n"); fflush(stdout);
 
     const long nElms = N * N * N; // Number of elements.
 
@@ -78,7 +78,7 @@ main(int argc, char *argv[]) {
         exit(-1);
     }
 
-    printf("Allocated memory to host"); fflush(stdout);
+    printf("Allocated memory to host \n"); fflush(stdout);
     
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
@@ -106,7 +106,7 @@ main(int argc, char *argv[]) {
     transfer_3d_from_1d(f_d, f_h[0][0], N, N, N, cudaMemcpyHostToDevice);
 
 
-    printf("Transfered data");
+    printf("Transfered data \n"); fflush(stdout);
 
     int k = 0;
     // Loop until we meet stopping criteria
@@ -131,6 +131,8 @@ main(int argc, char *argv[]) {
     transfer_3d(u_h,u_d,N,N,N,cudaMemcpyDeviceToHost);
     transfer_3d(u_old_h,u_old_d,N,N,N,cudaMemcpyDeviceToHost);
     transfer_3d(f_h,f_d,N,N,N,cudaMemcpyDeviceToHost);
+
+    printf("Transfered data back \n"); fflush(stdout);
 
     // dump  results if wanted 
     switch(output_type) {
