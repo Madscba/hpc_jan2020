@@ -118,7 +118,7 @@ main(int argc, char *argv[]) {
     ts = omp_get_wtime();
     while(k<iter_max)
     {
-        m_overwrite(N,u_d,u_old_d);
+        m_overwrite<<<NUM_BLOCKS, THREADS_PER_BLOCK>>>(N,u_d,u_old_d);
         printf("Matrix overwrite \n"); fflush(stdout);
         #ifdef _JACOBI
         // Execute kernel function
