@@ -1,3 +1,4 @@
+__device__
 void m_overwrite(int N, double ***u, double ***u_old)
 {
 	//overwrite values of matrix u into u_old indentically square matrices

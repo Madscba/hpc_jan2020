@@ -145,5 +145,5 @@ main(int argc, char *argv[]) {
     free_gpu(u_old_d);
     free_gpu(f_d);
     return(0);
-}
+    }
 }

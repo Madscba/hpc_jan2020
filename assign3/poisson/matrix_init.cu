@@ -1,6 +1,5 @@
 #include <math.h>
 #include <stdio.h>
-
 void init_inner(int outer_size,double start_T, double ***matrix)
 {
 	
