@@ -21,7 +21,7 @@ INCLUDES = -I$(CUDA_PATH)/include -I$(CUDA_PATH)/samples/common/inc
 all: $(TARGET)
 
 $(TARGET): $(OBJS) 
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LIBS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(INCLUDES)
 
 .SUFFIXES: .cu
 .cu.o:
