@@ -65,15 +65,15 @@ main(int argc, char *argv[]) {
     const long nElms = N * N * N; // Number of elements.
 
     // Allocate 3d array in host memory.
-    if ( (u_h = d_malloc_3d(N, N, N)) == NULL ) {
+    if ( (u_h = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
         perror("array u: allocation failed");
         exit(-1);
     }
-    if ( (u_old_h = d_malloc_3d(N, N, N)) == NULL ) {
+    if ( (u_old_h = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
         perror("array u: allocation failed");
         exit(-1);
     }
-    if ( (f_h = d_malloc_3d(N, N, N)) == NULL ) {
+    if ( (f_h = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
         perror("array u: allocation failed");
         exit(-1);
     }
@@ -83,7 +83,9 @@ main(int argc, char *argv[]) {
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
     init_mat(N,start_T,f_h,u_h);
+    printf("Initialized u and f \n"); fflush(stdout);
     init_bounds(N+2,20, 0, u_old_h);
+    printf("Initialized boundaries \n"); fflush(stdout);
 
 
     // Allocate 3d array on device 0 memory
