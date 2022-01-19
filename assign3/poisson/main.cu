@@ -133,7 +133,7 @@ main(int argc, char *argv[]) {
         }
         printf("U[2][2][2]=%f.5 \n",u_d[2][2][2]);
         printf("U_old[2][2][2]=%f.5 \n",u_old_d[2][2][2]);
-        temp = **u_d;
+        temp = *u_d;
         **u_old_d = *temp;
         k +=1;
         printf("U[2][2][2]=%f.5 \n",u_d[2][2][2]);
