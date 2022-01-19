@@ -4,6 +4,7 @@
 #include <math.h>
 #include <float.h>
 
+__global__
 void
 jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
     int i, j, k;
