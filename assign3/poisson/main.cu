@@ -120,8 +120,8 @@ main(int argc, char *argv[]) {
 
     while(k<iter_max)
     {
-        printf("U[2][2][2]=%f.5 \n",u_d[2][2][2]);
-        printf("U_old[2][2][2]=%f.5 \n",u_old_d[2][2][2]);
+        printf("U[2][2][2]=%f.5 \n",u_d[2][2][2]); fflush(stdout);
+        printf("U_old[2][2][2]=%f.5 \n",u_old_d[2][2][2]); fflush(stdout);
         #ifdef _JACOBI
         // Execute kernel function
         jacobi<<<1,1>>>(u_d,u_old_d,f_d,N,delta_sqr);
@@ -131,13 +131,13 @@ main(int argc, char *argv[]) {
         {   
             printf("%i \n", k);
         }
-        printf("U[2][2][2]=%f.5 \n",u_d[2][2][2]);
-        printf("U_old[2][2][2]=%f.5 \n",u_old_d[2][2][2]);
+        printf("U[2][2][2]=%f.5 \n",u_d[2][2][2]); fflush(stdout);
+        printf("U_old[2][2][2]=%f.5 \n",u_old_d[2][2][2]); fflush(stdout);
         temp = *u_d;
         **u_old_d = *temp;
         k +=1;
-        printf("U[2][2][2]=%f.5 \n",u_d[2][2][2]);
-        printf("U_old[2][2][2]=%f.5 \n",u_old_d[2][2][2]);
+        printf("U[2][2][2]=%f.5 \n",u_d[2][2][2]); fflush(stdout);
+        printf("U_old[2][2][2]=%f.5 \n",u_old_d[2][2][2]); fflush(stdout);
     }
     te = omp_get_wtime();
 
