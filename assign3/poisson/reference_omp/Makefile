@@ -2,8 +2,8 @@
 #
 TARGET_J  = poisson_j		# Jacobi
 
-SOURCES	= main.c print.c alloc3d.c matrix_init.c matrix_overwrite.c
-OBJECTS	= print.o alloc3d.o matrix_init.o matrix_overwrite.o
+SOURCES	= main.c print.c alloc3d.c matrix_init.c
+OBJECTS	= print.o alloc3d.o matrix_init.o
 MAIN_J	= main_j.o
 OBJS_J	= $(MAIN_J) jacobi.o
 
