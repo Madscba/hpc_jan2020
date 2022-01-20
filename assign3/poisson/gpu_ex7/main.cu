@@ -17,10 +17,7 @@
 #include "transfer3d_gpu.h"
 #include "matrix_init.h"
 #include "matrix_overwrite.h"
-
-#ifdef _JACOBI
-#include <jacobi.h>
-#endif
+#include "jacobi.h"
 
 int
 main(int argc, char *argv[]) {
@@ -139,27 +136,7 @@ main(int argc, char *argv[]) {
     double d = 0.0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
-    while(k<iter_max)
-    {
-        #ifdef _JACOBI
-        // Execute kernel function
-        jacobi<<<dimGrid,dimBlock>>>(u_d0,u_old_d0,f_d0,N,delta_sqr);
-        jacobi<<<dimGrid,dimBlock>>>(u_d1,u_old_d1,f_d1,N,delta_sqr);
-        checkCudaErrors(cudaDeviceSynchronize());
-        #endif
-        if ((k % 100) == 0)
-		{   
-            d = frobenius(u_d0,u_h,(N+2)/2);
-			printf("%i  %.5f\n", k, d);
-        }
-        temp0 = u_old_d0;
-        u_old_d0 = u_d0;
-        u_d0  = temp0;
-        temp1 = u_old_d1;
-        u_old_d1 = u_d1;
-        u_d1  = temp1;
-        k+=1;
-    }
+    k = jacobi(u_d0, u_old_d0, f_d0, u_d1, u_old_d1, f_d1, u_h, u_old_h, f_h, N, delta_sqr, iter_max);
     te = omp_get_wtime();
     
     // Transfer back top part
