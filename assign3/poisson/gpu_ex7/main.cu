@@ -37,6 +37,9 @@ main(int argc, char *argv[]) {
     double 	***u_h = NULL;
     double 	***u_old_h = NULL;
     double 	***f_h = NULL;
+    double 	***u_d0 = NULL;
+    double 	***u_old_d0 = NULL;
+    double 	***f_d0 = NULL;
     double*** temp;
     int NUM_BLOCKS, THREADS_PER_BLOCK;
 
