@@ -141,7 +141,7 @@ main(int argc, char *argv[]) {
     
     // Transfer back top part
     transfer_3d(u_h,u_d0,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-    transfer_3d(u_h,u_d0,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+    transfer_3d(u_h,u_d1,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
 
     // dump  results if wanted 
     switch(output_type) {
