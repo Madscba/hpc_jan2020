@@ -11,6 +11,7 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 #include <omp.h>
+#include "print.h"
 #include "alloc3d.h"
 #include "alloc3d_gpu.h"
 #include "transfer3d_gpu.h"
@@ -161,7 +162,11 @@ main(int argc, char *argv[]) {
         mlups = (double) lats*k/((te-ts)*1000*1000);
         printf("%d %.5f %.5f %d \n",N,mlups, te-ts, omp_get_max_threads());
         break;
-
+        
+    output_ext = ".vtk";
+    sprintf(output_filename, "%s_%d%s", output_prefix, N, output_ext);
+    fprintf(stderr, "Write VTK file to %s: ", output_filename);
+    print_vtk(output_filename, N+2, u_h);
     // de-allocate memory
     free(u_h);
     free(u_old_h);
