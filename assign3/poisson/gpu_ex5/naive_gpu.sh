@@ -2,36 +2,31 @@
 
 # Naive GPU solution - varying size
 
-#
-#BSUB -q hpcintrogpu
-#BSUB -J poisson_ref_gpu_nat
-#BSUB -n 1
-#BSUB -R "rusage[mem=1024MB]"
-#BSUB -R "span[hosts=1]"
-#BSUB -gpu "num=1:mode=exclusive_process"
-#BSUB -M 4GB
-#BSUB -W 40
-###BSUB -B 
+#BSUB -J poisson_ref_gpu_nat 
+#BSUB -q hpcintrogpu 
+#BSUB -n 1 
+#BSUB -R "span[hosts=1]"  
+#BSUB -gpu "num=1:mode=exclusive_process"  
+#BSUB -W 10 
+#BSUB -R "rusage[mem=2048]"
 #BSUB -N 
 #BSUB -o O_gpu_nat_%J.out 
-#BSUB -e E_gpu_nat_%J.err 
-
-#CC=${1-"gcc"}
-NDIMS="4 8 16 32 64 128 256"
-START_T=16
-EXECUTABLE_J="../poisson_gpu"
-THREADS="1"
-lscpu
-LOGEXT=$CC.dat
+#BSUB -e E_gpu_nat_%J.err  
+ 
+export TMPDIR=$__LSF_JOB_TMPDIR__ 
 module load cuda/11.5.1 
  
-export MFLOPS_MAX_IT=1
+export MFLOPS_MAX_IT=1 
+
+NDIMS="4 8 16 32 64 128 256"
+START_T=16
+EXECUTABLE_J="poisson_gpu"
+lscpu
 
 for NDIM in $NDIMS
 do
-	/bin/rm -f "./perf_j_$NDIM$LOGEXT"
-	echo $EXECUTABLE_J  $NDIM 3000 0.0 $START_T 0 1 $n
-	$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_numa_$NDIM$LOGEXT
+	echo $EXECUTABLE_J $NDIM 300 $START_T 1 1
+	./$EXECUTABLE_J $NDIM 300 $START_T 1 1
 
 done
 
