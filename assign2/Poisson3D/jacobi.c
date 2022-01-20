@@ -24,7 +24,7 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 			}
 		}
 	}   
-
-
+	printf("kernel3 %f \n",u[2][2][2]); 
+	printf("kernel4 %f \n",u_old[2][2][2]);
     // fill in your code here
 }
