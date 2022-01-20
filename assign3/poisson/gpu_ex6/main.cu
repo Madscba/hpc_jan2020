@@ -17,10 +17,7 @@
 #include "transfer3d_gpu.h"
 #include "matrix_init.h"
 #include "matrix_overwrite.h"
-
-#ifdef _JACOBI
-#include <jacobi.h>
-#endif
+#include "jacobi.h"
 
 int
 main(int argc, char *argv[]) {
@@ -105,30 +102,11 @@ main(int argc, char *argv[]) {
     transfer_3d_from_1d(u_old_d, u_old_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
     transfer_3d_from_1d(f_d, f_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
 
-    dim3 dimGrid(N/2,N/2,1); // 4096 blocks in total 
-    dim3 dimBlock(N,N,1);// 256 threads per block
-
     int k = 0;
     double d = 0.0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
-    while(k<iter_max)
-    {
-        #ifdef _JACOBI
-        // Execute kernel function
-        jacobi<<<dimGrid,dimBlock>>>(u_d,u_old_d,f_d,N,delta_sqr);
-        checkCudaErrors(cudaDeviceSynchronize());
-        #endif
-        if ((k % 100) == 0)
-		{   
-            d = frobenius(u_d,u_old_d,N);
-			printf("%i  %.5f\n", k, d);
-        }
-        temp = u_old_d;
-        u_old_d = u_d;
-        u_d  = temp;
-        k+=1;
-    }
+    k = jacobi(u_d,u_old_d,f_d,N,delta_sqr,NUM_BLOCKS,THREADS_PER_BLOCK);
     te = omp_get_wtime();
     
     // Transfer back

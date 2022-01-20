@@ -3,10 +3,12 @@
  */
 #include <math.h>
 #include <float.h>
+#include <stdio.h>
+
 
 __global__
 void
-jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
+jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
     int i, j, k;
 	double tmpi, tmpj, tmpk;
     for (i = 1; i < N+1; i++) 
@@ -22,4 +24,30 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 			}
 		}
 	}
+}
+
+int
+jacobi(double ***u, double ***u_old, double ***f, int N, double delta, int iter_max) {
+	int k = 0;
+    double d = 0.0;
+	while(k<iter_max)
+    {
+        // Execute kernel function
+        jacobi<<<1,1>>>(u,u_old,f,N,delta_sqr);
+        checkCudaErrors(cudaDeviceSynchronize());
+		//  #Comment out when benchmarking!!#
+        if ((k % 100) == 0)
+		{   
+			transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+			transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+            d = frobenius(u_h,u_old_h,N);
+			printf("%i  %.5f\n", k, d);
+        }
+        //  #Comment out when benchmarking!!#
+        temp = u_old_d;
+        u_old_d = u_d;
+        u_d  = temp;
+        k+=1;
+    }
+	return k; 
 }

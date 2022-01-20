@@ -1,7 +1,7 @@
 #include <math.h>
-double frobenius(double ***u, double ***u_old, int N){
+__global__
+void frobenius_kernel(double ***u, double ***u_old, int N,double sum){
     int i, j, k;
-    double sum=0.0;
     double dist;
     for (i = 1; i < N+1; i++) 
 	{
@@ -14,6 +14,10 @@ double frobenius(double ***u, double ***u_old, int N){
             }
         }
     }
-    return sqrt(sum);
+}
 
+double frobenius(double ***u, double ***u_old, int N){
+    double sum=0.0;
+	frobenius_kernel<<<1,1>>>(u,u_old,N,sum);
+    return sqrt(sum);
 }
