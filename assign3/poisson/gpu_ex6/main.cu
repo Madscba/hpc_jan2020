@@ -121,7 +121,7 @@ main(int argc, char *argv[]) {
         #endif
         if ((k % 100) == 0)
 		{   
-            d = frobenius(u_d,u_d_old,N);
+            d = frobenius(u_d,u_old_d,N);
 			printf("%i  %.5f\n", k, d);
         }
         temp = u_old_d;
