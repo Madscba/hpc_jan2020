@@ -7,6 +7,7 @@
 #include <helper_cuda.h>
 #include "transfer3d_gpu.h"
 #include "frobenius.h"
+#include "alloc3d_gpu.h"
 
 
 __global__
@@ -34,6 +35,12 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
 	double*** temp;
 	int k = 0;
     double d = 0.0;
+
+	if ( (temp = d_malloc_3d_gpu(N+2, N+2, N+2)) == NULL ) {
+        perror("array temp: allocation on gpu failed");
+        exit(-1);
+    }
+
 	while(k<iter_max)
     {
         // Execute kernel function
