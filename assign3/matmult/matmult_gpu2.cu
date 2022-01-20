@@ -7,13 +7,12 @@ __global__ void kernel_gpu2(int m, int n, int k, double *A, double *B, double *C
       double tmp = 0;
 
       if (ti < m && tj < n){
-         C[ti*n+tj] = 0;
-      for (int l = 0; l < k; l++)
-		{
-         tmp += A[ti*k+l] * B[l*n+tj];
-      }
-      }
-      C[ti*n+tj] = tmp;
+         for (int l = 0; l < k; l++)
+         {
+            tmp += A[ti*k + l] * B[l*n + tj];
+         }
+         C[ti*n+tj] = tmp;
+         }
 			
 }
 void matmult_gpu2(int m, int n, int k, double *A_h, double *B_h, double *C_h) 
@@ -28,11 +27,11 @@ void matmult_gpu2(int m, int n, int k, double *A_h, double *B_h, double *C_h)
       cudaMalloc( (void**)&A_d, A_size );
       cudaMalloc( (void**)&B_d, B_size );
       cudaMalloc( (void**)&C_d, C_size );
-
+      cudaMemset(C_d, 0, C_size);
       //Copy to device from host
       cudaMemcpy(A_d, A_h, A_size, cudaMemcpyHostToDevice);
       cudaMemcpy(B_d, B_h, B_size, cudaMemcpyHostToDevice);
-      cudaMemcpy(C_d, C_h, C_size, cudaMemcpyHostToDevice);
+
       
       //Define block grid
       dim3 block(BLOCK_SIZE,BLOCK_SIZE);
