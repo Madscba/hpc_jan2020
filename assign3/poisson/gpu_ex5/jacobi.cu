@@ -15,7 +15,7 @@ void
 jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
     int i, j, k;
 	double tmpi, tmpj, tmpk;
-	printf("OLD0: %f NEW: %f \n",u_old[0][0][0],u[0][0][0]);
+	printf("OLD0: %f NEW: %f \n",u_old[0][1][1],u[0][1][1]);
     for (i = 1; i < N+1; i++) 
 	{
 		for (j = 1; j < N+1; j++)   
