@@ -2,32 +2,9 @@ extern "C" {
 #include <math.h>
 #include <stdio.h>
 __global__ void kernel_gpu5(int m, int n, int k, double *A, double *B, double *C){
-		int ti = blockIdx.y * blockDim.y + threadIdx.y;
-		int tj = blockIdx.x * blockDim.x + threadIdx.x;
-      double tmp11 = 0;
-      double tmp12 = 0;
-      double tmp21 = 0;
-      double tmp22 = 0;
-      double tmp_a1, tmp_a2, tmp_b1, tmp_b2;
-      //printf("i = %d, j = %d \n",ti,tj);
-      if (2*ti < m && 2*tj < n){
-         for (int l = 0; l < k; l++)
-         {
-            tmp_a1 = A[2*ti*k + l];
-            tmp_a2 = A[(2*ti+1)*k + l];
-            tmp_b1 = B[l*n + 2*tj];
-            tmp_b2 = B[l*n + 2*tj+1];
-            tmp11 += tmp_a1 * tmp_b1;
-            tmp12 += tmp_a1 * tmp_b2;
-            tmp21 += tmp_a2 * tmp_b1;
-            tmp22 += tmp_a2 * tmp_b2;
-         }
-         C[2*ti*n+tj*2] = tmp11;
-         C[2*ti*n+tj*2+1] = tmp12;
-         C[(2*ti+1)*n+tj*2] = tmp21;
-         C[(2*ti+1)*n+tj*2+1] = tmp22;
-         }
-			
+		int x = blockIdx.x;
+		int y = blockIdx.y;
+      double tmp = 0;
 }
 void matmult_gpu5(int m, int n, int k, double *A_h, double *B_h, double *C_h) 
    { 
@@ -48,7 +25,7 @@ void matmult_gpu5(int m, int n, int k, double *A_h, double *B_h, double *C_h)
 
       const int BLOCK_SIZE = 16;
       //Define block grid
-      dim3 block(BLOCK_SIZE/2,BLOCK_SIZE/2);
+      dim3 block(BLOCK_SIZE,BLOCK_SIZE);
       dim3 grid(ceil((double) n/BLOCK_SIZE),  ceil((double) m/BLOCK_SIZE));
       // Launch kernel and synchronize
       kernel_gpu5<<<grid,block>>>(m,n,k,A_d,B_d,C_d);
