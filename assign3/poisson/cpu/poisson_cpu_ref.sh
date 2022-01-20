@@ -19,7 +19,7 @@
 #CC=${1-"gcc"}
 NDIMS="4 8 16 32 64 128 256"
 START_T=16
-EXECUTABLE_J="./poisson_j"
+EXECUTABLE_J="poisson_j"
 THREADS="1"
 lscpu
 LOGEXT=$CC.dat
