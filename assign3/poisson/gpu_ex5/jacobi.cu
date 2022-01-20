@@ -36,11 +36,6 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
 	int k = 0;
     double d = 0.0;
 
-	if ( (temp = d_malloc_3d_gpu(N+2, N+2, N+2)) == NULL ) {
-        perror("array temp: allocation on gpu failed");
-        exit(-1);
-    }
-
 	while(k<iter_max)
     {
         // Execute kernel function
@@ -51,6 +46,8 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
 		{   
 			transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
 			transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+			printf(u_h[2][2][2]); 
+			printf(u_old_h[2][2][2]);
             d = frobenius(u_h,u_old_h,N);
 			printf("%i  %.5f\n", k, d);
         }
