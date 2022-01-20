@@ -106,7 +106,7 @@ main(int argc, char *argv[]) {
     double d = 0.0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
-    k = jacobi(u_d,u_old_d,f_d,N,delta_sqr,NUM_BLOCKS,THREADS_PER_BLOCK);
+    k = jacobi(u_d,u_old_d,f_d,u_h,u_old_h,f_h,N,delta_sqr,NUM_BLOCKS,THREADS_PER_BLOCK);
     te = omp_get_wtime();
     
     // Transfer back
