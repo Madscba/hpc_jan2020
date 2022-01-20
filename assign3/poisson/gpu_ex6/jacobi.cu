@@ -29,6 +29,7 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
 	int k = 0;
     double d = 0.0;
     dim3 dimBlock(NUM_BLOCKS,THREADS_PER_BLOCK,1);
+	printf("dimBlock.x: %i dimBlock.y: %i dimBlock.z: %i",dimBlock.x,dimBlock.y,dimBlock.z);
     dim3 dimGrid((N+dimBlock.x-1)/dimBlock.x,(N+dimBlock.y-1)/dimBlock.y,1); 
 	while(k<iter_max)
     {
