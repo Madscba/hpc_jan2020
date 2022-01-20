@@ -6,7 +6,6 @@
 #BSUB -q hpcintrogpu 
 #BSUB -n 1 
 #BSUB -R "span[hosts=1]"  
-#BSUB -R "select[model=XeonGold6126]"
 #BSUB -gpu "num=1:mode=exclusive_process"  
 #BSUB -W 20 
 #BSUB -R "rusage[mem=1024MB]"
