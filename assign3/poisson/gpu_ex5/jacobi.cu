@@ -46,7 +46,7 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
         jacobi_kernel<<<1,1>>>(u_d,u_old_d,f_d,N,delta);
         checkCudaErrors(cudaDeviceSynchronize());
 		//  #Comment out when benchmarking!!#
-        if ((k % 1) == 0)
+        if ((k % 100) == 0)
 		{   
 			transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
 			transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
