@@ -25,7 +25,8 @@ jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
 
 int
 jacobi(double ***u_d0, double ***u_old_d0, double ***f_d0,double ***u_d1, double ***u_old_d1, double ***f_d1, double ***u_h, double ***u_old_h, double ***f_h, int N, double delta, int iter_max) {
-	double*** temp;
+	double*** temp0;
+	double*** temp1;
 	int k = 0;
     double d = 0.0;
 	dim3 dimBlock(10,10,10); //Threads per block
