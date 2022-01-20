@@ -181,9 +181,12 @@ main(int argc, char *argv[]) {
     free(u_h);
     free(u_old_h);
     free(f_h);
-    free_gpu(u_d);
-    free_gpu(u_old_d);
-    free_gpu(f_d);
+    free_gpu(u_d0);
+    free_gpu(u_old_d0);
+    free_gpu(f_d0);
+    free_gpu(u_d1);
+    free_gpu(u_old_d1);
+    free_gpu(f_d1);
     return(0);
     }
 }
