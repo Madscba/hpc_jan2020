@@ -4,10 +4,10 @@
 
 #BSUB -J matmult_gpu2
 #BSUB -q hpcintrogpu 
-#BSUB -n 1 
+#BSUB -n 16 
 #BSUB -R "span[hosts=1]"  
 #BSUB -gpu "num=1:mode=exclusive_process"  
-#BSUB -W 20 
+#BSUB -W 60
 #BSUB -R "rusage[mem=4024MB]"
 #BSUB -N 
 #BSUB -o O_gpu_nat_%J.out 
@@ -16,7 +16,7 @@
 module load cuda/11.5.1 
 #CC=${1-"gcc"}
 EXECUTABLE=matmult_f.nvcc
-NPARTS="103 146 206 292 413 584 826 1168 1652 2336 3304 4672 6602 9344"
+NPARTS="80 128 160 256 320 512 640 1024 1280 2048 2560 4096 5120 8192"
 LOGEXT=$CC.dat
 lscpu
 nvidia-smi
