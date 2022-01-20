@@ -59,7 +59,7 @@ main(int argc, char *argv[]) {
     output_type = atoi(argv[5]);  // ouput type
     }
 
-    const long nElms = N * N * N; // Number of elements.
+    const long nElms = (N+2) * (N+2) * (N+2); // Number of elements.
 
     // Allocate 3d array in host memory.
     if ( (u_h = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
