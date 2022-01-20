@@ -17,7 +17,10 @@ void frobenius_kernel(double ***u, double ***u_old, int N,double sum){
 }
 
 double frobenius(double ***u, double ***u_old, int N){
-    double sum=0.0;
-	frobenius_kernel<<<1,1>>>(u,u_old,N,sum);
-    return sqrt(sum);
+    double sum_h;
+    double sum_d;
+    cudaMalloc((void*)sum_d, sizeof(double));
+	frobenius_kernel<<<1,1>>>(u,u_old,N,sum_d);
+    cudaMemcpy(sum_h, sum_d, sizeof(double), cudaMemcpyDeviceToHost);
+    return sqrt(sum_h);
 }

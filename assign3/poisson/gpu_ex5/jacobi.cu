@@ -42,9 +42,9 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
 		//  #Comment out when benchmarking!!#
         if ((k % 100) == 0)
 		{   
-			transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-			transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-            d = frobenius(u_h,u_old_h,N);
+			//transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+			//transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+            d = frobenius(u_d,u_old_d,N);
 			printf("%i  %.5f\n", k, d);
         }
         //  #Comment out when benchmarking!!#
