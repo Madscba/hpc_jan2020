@@ -3,6 +3,7 @@
  */
 #include <math.h>
 #include <float.h>
+#include <stdio.h>
 
 double
 jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
