@@ -15,8 +15,6 @@ void
 jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
     int i, j, k;
 	double tmpi, tmpj, tmpk;
-	printf("kernel1 %f \n",u[1][2][2]); 
-	printf("kernel2 %f \n",u_old[1][2][2]);
     for (i = 1; i < N+1; i++) 
 	{
 		for (j = 1; j < N+1; j++)   
@@ -27,14 +25,13 @@ jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
 				tmpj = (u_old[i][j-1][k] + u_old[i][j+1][k]);
 				tmpk = (u_old[i][j][k-1] + u_old[i][j][k+1]);
 				u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
+				printf("%i %i %i %f \n",i,j,k,u_old[i][j][k]);
 				if (f[i][j][k]>0){
-				printf("F %i %i %i %f \n",i,j,k,f[i][j][k]);
+				printf("F %f %i %i %i %f \n",delta,i,j,k,f[i][j][k]);
 				}
 			}
 		}
 	}
-	printf("kernel3 %f \n",u[1][2][2]); 
-	printf("kernel4 %f \n",u_old[1][2][2]);
 }
 
 int
