@@ -6,6 +6,7 @@
 #BSUB -q hpcintrogpu 
 #BSUB -n 1 
 #BSUB -R "span[hosts=1]"  
+#BSUB -R "select[model=XeonGold6126]"
 #BSUB -gpu "num=1:mode=exclusive_process"  
 #BSUB -W 10 
 #BSUB -R "rusage[mem=2048]"
@@ -25,8 +26,8 @@ lscpu
 
 for NDIM in $NDIMS
 do
-	echo $EXECUTABLE_J $NDIM 300 $START_T 1 1
-	./$EXECUTABLE_J $NDIM 300 $START_T 1 1
+	echo $EXECUTABLE_J $NDIM 300 1 1
+	./$EXECUTABLE_J $NDIM 300 1 1
 
 done
 
