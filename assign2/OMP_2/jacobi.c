@@ -25,11 +25,11 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 				u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
 				dist = u[i][j][k] - u_old[i][j][k];
 				d += dist*dist;
+				printf("F %f \n",f[i][j][k]);
 			}
 		}
 	}
 	printf("kernel3 %f \n",u[1][2][2]); 
 	printf("kernel4 %f \n",u_old[1][2][2]);
-	printf("F %f \n",f[1][2][2]);
 	return sqrt(d);
 }

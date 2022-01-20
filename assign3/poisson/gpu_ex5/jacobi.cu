@@ -27,12 +27,12 @@ jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
 				tmpj = (u_old[i][j-1][k] + u_old[i][j+1][k]);
 				tmpk = (u_old[i][j][k-1] + u_old[i][j][k+1]);
 				u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
+				printf("F %f \n",f[i][j][k]);
 			}
 		}
 	}
 	printf("kernel3 %f \n",u[1][2][2]); 
 	printf("kernel4 %f \n",u_old[1][2][2]);
-	printf("F %f \n",f[1][2][2]);
 }
 
 int
