@@ -28,11 +28,11 @@ jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
 			}
 		}
 	}
-	for (i = 1; i < N+1; i++) 
+	for (i = 0; i < N+2; i++) 
 	{
-		for (j = 1; j < N+1; j++)   
+		for (j = 0; j < N+2; j++)   
 		{
-			for (k = 1; k < N+1; k++) 
+			for (k = 0; k < N+2; k++) 
 			{	
 				printf("%i %i %i %f \n",i,j,k,u_old[i][j][k]);
 				if (f[i][j][k]>0){

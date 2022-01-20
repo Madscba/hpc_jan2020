@@ -10,8 +10,6 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
     int i, j, k;
 	double tmpi, tmpj, tmpk, dist;
 	double d = 0.0;
-	printf("kernel1 %f \n",u[1][2][2]); 
-	printf("kernel2 %f \n",u_old[1][2][2]);
 	#pragma omp parallel for shared(u, u_old, f, delta) private(i,j,k,tmpi,tmpj,tmpk, dist) reduction(+:d)
     for (i = 1; i < N+1; i++) 
 	{
@@ -28,11 +26,11 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 			}
 		}
 	}
-	for (i = 1; i < N+1; i++) 
+	for (i = 0; i < N+2; i++) 
 	{
-		for (j = 1; j < N+1; j++)   
+		for (j = 0; j < N+2; j++)   
 		{
-			for (k = 1; k < N+1; k++) 
+			for (k = 0; k < N+2; k++) 
 			{	
 				printf("%i %i %i %f \n",i,j,k,u_old[i][j][k]);
 				if (f[i][j][k]>0){
@@ -41,7 +39,5 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 			}
 		}
 	}
-	printf("kernel3 %f \n",u[1][2][2]); 
-	printf("kernel4 %f \n",u_old[1][2][2]);
 	return sqrt(d);
 }
