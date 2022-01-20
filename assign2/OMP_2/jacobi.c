@@ -3,6 +3,7 @@
  */
 #include <math.h>
 #include <float.h>
+#include <stdio.h>
 
 double
 jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
@@ -22,6 +23,19 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 				u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
 				dist = u[i][j][k] - u_old[i][j][k];
 				d += dist*dist;
+			}
+		}
+	}
+	for (i = 0; i < N+2; i++) 
+	{
+		for (j = 0; j < N+2; j++)   
+		{
+			for (k = 0; k < N+2; k++) 
+			{	
+				printf("%i %i %i %f \n",i,j,k,u_old[i][j][k]);
+				if (f[i][j][k]>0){
+				printf("F %f %i %i %i %f \n",delta,i,j,k,f[i][j][k]);
+				}
 			}
 		}
 	}

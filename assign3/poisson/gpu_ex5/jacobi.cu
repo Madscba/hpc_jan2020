@@ -28,6 +28,19 @@ jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
 			}
 		}
 	}
+	for (i = 0; i < N+2; i++) 
+	{
+		for (j = 0; j < N+2; j++)   
+		{
+			for (k = 0; k < N+2; k++) 
+			{	
+				printf("%i %i %i %f \n",i,j,k,u_old[i][j][k]);
+				if (f[i][j][k]>0){
+				printf("F %f %i %i %i %f \n",delta,i,j,k,f[i][j][k]);
+				}
+			}
+		}
+	}
 }
 
 int
@@ -36,21 +49,18 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
 	int k = 0;
     double d = 0.0;
 
-	if ( (temp = d_malloc_3d_gpu(N+2, N+2, N+2)) == NULL ) {
-        perror("array temp: allocation on gpu failed");
-        exit(-1);
-    }
-
 	while(k<iter_max)
     {
         // Execute kernel function
         jacobi_kernel<<<1,1>>>(u_d,u_old_d,f_d,N,delta);
         checkCudaErrors(cudaDeviceSynchronize());
 		//  #Comment out when benchmarking!!#
-        if ((k % 100) == 0)
+        if ((k % 1) == 0)
 		{   
 			transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
 			transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+			printf("%f \n",u_h[1][2][2]); 
+			printf("%f \n",u_old_h[1][2][2]);
             d = frobenius(u_h,u_old_h,N);
 			printf("%i  %.5f\n", k, d);
         }
