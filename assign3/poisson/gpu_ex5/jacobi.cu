@@ -15,8 +15,8 @@ void
 jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
     int i, j, k;
 	double tmpi, tmpj, tmpk;
-	printf("kernel1 %f \n",u[2][2][2]); 
-	printf("kernel2 %f \n",u_old[2][2][2]);
+	printf("kernel1 %f \n",u[1][2][2]); 
+	printf("kernel2 %f \n",u_old[1][2][2]);
     for (i = 1; i < N+1; i++) 
 	{
 		for (j = 1; j < N+1; j++)   
@@ -30,9 +30,9 @@ jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
 			}
 		}
 	}
-	printf("kernel3 %f \n",u[2][2][2]); 
-	printf("kernel4 %f \n",u_old[2][2][2]);
-	printf("F %f \n",f[2][2][2]);
+	printf("kernel3 %f \n",u[1][2][2]); 
+	printf("kernel4 %f \n",u_old[1][2][2]);
+	printf("F %f \n",f[1][2][2]);
 }
 
 int
@@ -51,8 +51,8 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
 		{   
 			transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
 			transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-			printf("%f \n",u_h[2][2][2]); 
-			printf("%f \n",u_old_h[2][2][2]);
+			printf("%f \n",u_h[1][2][2]); 
+			printf("%f \n",u_old_h[1][2][2]);
             d = frobenius(u_h,u_old_h,N);
 			printf("%i  %.5f\n", k, d);
         }

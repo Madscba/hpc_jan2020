@@ -9,8 +9,8 @@ void
 jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
     int i, j, k;
 	double tmpi, tmpj, tmpk;	
-	printf("kernel1 %f \n",u[2][2][2]); 
-	printf("kernel2 %f \n",u_old[2][2][2]);
+	printf("kernel1 %f \n",u[1][2][2]); 
+	printf("kernel2 %f \n",u_old[1][2][2]);
     for (i = 1; i < N+1; i++) 
 	{
 		for (j = 1; j < N+1; j++)   
@@ -24,8 +24,8 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 			}
 		}
 	}   
-	printf("kernel3 %f \n",u[2][2][2]); 
-	printf("kernel4 %f \n",u_old[2][2][2]);
-	printf("F %f \n",f[2][2][2]);
+	printf("kernel3 %f \n",u[1][2][2]); 
+	printf("kernel4 %f \n",u_old[1][2][2]);
+	printf("F %f \n",f[1][2][2]);
     // fill in your code here
 }
