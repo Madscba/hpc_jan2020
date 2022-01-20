@@ -8,8 +8,8 @@
 #BSUB -R "span[hosts=1]"  
 #BSUB -R "select[model=XeonGold6126]"
 #BSUB -gpu "num=1:mode=exclusive_process"  
-#BSUB -W 20 
-#BSUB -R "rusage[mem=2048]"
+#BSUB -W 10 
+#BSUB -R "rusage[mem=2048MB]"
 #BSUB -N 
 #BSUB -o O_gpu_nat_%J.out 
 #BSUB -e E_gpu_nat_%J.err  
