@@ -67,10 +67,6 @@ main(int argc, char *argv[]) {
         #ifdef _JACOBI
         jacobi(u,u_old,f,N,delta_sqr);
         #endif
-        if ((k % 100) == 0)
-        {   
-        printf("%i \n", k);
-        }
         temp = u_old;
         u_old = u;
         u  = temp;
