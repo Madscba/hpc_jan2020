@@ -109,6 +109,7 @@ main(int argc, char *argv[]) {
     dim3 dimBlock(N,N,1);// 256 threads per block
 
     int k = 0;
+    double d = 0.0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
     while(k<iter_max)
