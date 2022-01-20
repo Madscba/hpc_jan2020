@@ -1,0 +1,239 @@
+Loaded module: cuda/11.5.1
+
+OPENMP DISPLAY ENVIRONMENT BEGIN
+  _OPENMP = '201511'
+  OMP_DYNAMIC = 'FALSE'
+  OMP_NESTED = 'FALSE'
+  OMP_NUM_THREADS = '12'
+  OMP_SCHEDULE = 'DYNAMIC'
+  OMP_PROC_BIND = 'SPREAD'
+  OMP_PLACES = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23}'
+  OMP_STACKSIZE = '0'
+  OMP_WAIT_POLICY = 'PASSIVE'
+  OMP_THREAD_LIMIT = '4294967295'
+  OMP_MAX_ACTIVE_LEVELS = '2147483647'
+  OMP_CANCELLATION = 'FALSE'
+  OMP_DEFAULT_DEVICE = '0'
+  OMP_MAX_TASK_PRIORITY = '0'
+  OMP_DISPLAY_AFFINITY = 'TRUE'
+  OMP_AFFINITY_FORMAT = 'level %L thread %i affinity %A'
+  GOMP_CPU_AFFINITY = ''
+  GOMP_STACKSIZE = '0'
+  GOMP_SPINCOUNT = '300000'
+OPENMP DISPLAY ENVIRONMENT END
+level 1 thread 0x7f857585a7c0 affinity 0
+level 1 thread 0x7f8574bc3700 affinity 2
+level 1 thread 0x7f85741c2700 affinity 4
+level 1 thread 0x7f85737c1700 affinity 6
+level 1 thread 0x7f8572dc0700 affinity 8
+level 1 thread 0x7f85723bf700 affinity 10
+level 1 thread 0x7f85719be700 affinity 12
+level 1 thread 0x7f8570fbd700 affinity 14
+level 1 thread 0x7f85705bc700 affinity 16
+level 1 thread 0x7f856fbbb700 affinity 18
+level 1 thread 0x7f856f1ba700 affinity 20
+level 1 thread 0x7f856e7b9700 affinity 22
+
+OPENMP DISPLAY ENVIRONMENT BEGIN
+  _OPENMP = '201511'
+  OMP_DYNAMIC = 'FALSE'
+  OMP_NESTED = 'FALSE'
+  OMP_NUM_THREADS = '12'
+  OMP_SCHEDULE = 'DYNAMIC'
+  OMP_PROC_BIND = 'SPREAD'
+  OMP_PLACES = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23}'
+  OMP_STACKSIZE = '0'
+  OMP_WAIT_POLICY = 'PASSIVE'
+  OMP_THREAD_LIMIT = '4294967295'
+  OMP_MAX_ACTIVE_LEVELS = '2147483647'
+  OMP_CANCELLATION = 'FALSE'
+  OMP_DEFAULT_DEVICE = '0'
+  OMP_MAX_TASK_PRIORITY = '0'
+  OMP_DISPLAY_AFFINITY = 'TRUE'
+  OMP_AFFINITY_FORMAT = 'level %L thread %i affinity %A'
+  GOMP_CPU_AFFINITY = ''
+  GOMP_STACKSIZE = '0'
+  GOMP_SPINCOUNT = '300000'
+OPENMP DISPLAY ENVIRONMENT END
+level 1 thread 0x7fd4af7077c0 affinity 0
+level 1 thread 0x7fd4aea70700 affinity 2
+level 1 thread 0x7fd4ae06f700 affinity 4
+level 1 thread 0x7fd4ad66e700 affinity 6
+level 1 thread 0x7fd4acc6d700 affinity 8
+level 1 thread 0x7fd4ac26c700 affinity 10
+level 1 thread 0x7fd4ab86b700 affinity 12
+level 1 thread 0x7fd4aae6a700 affinity 14
+level 1 thread 0x7fd4aa469700 affinity 16
+level 1 thread 0x7fd4a9a68700 affinity 18
+level 1 thread 0x7fd4a9067700 affinity 20
+level 1 thread 0x7fd4a8666700 affinity 22
+
+OPENMP DISPLAY ENVIRONMENT BEGIN
+  _OPENMP = '201511'
+  OMP_DYNAMIC = 'FALSE'
+  OMP_NESTED = 'FALSE'
+  OMP_NUM_THREADS = '12'
+  OMP_SCHEDULE = 'DYNAMIC'
+  OMP_PROC_BIND = 'SPREAD'
+  OMP_PLACES = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23}'
+  OMP_STACKSIZE = '0'
+  OMP_WAIT_POLICY = 'PASSIVE'
+  OMP_THREAD_LIMIT = '4294967295'
+  OMP_MAX_ACTIVE_LEVELS = '2147483647'
+  OMP_CANCELLATION = 'FALSE'
+  OMP_DEFAULT_DEVICE = '0'
+  OMP_MAX_TASK_PRIORITY = '0'
+  OMP_DISPLAY_AFFINITY = 'TRUE'
+  OMP_AFFINITY_FORMAT = 'level %L thread %i affinity %A'
+  GOMP_CPU_AFFINITY = ''
+  GOMP_STACKSIZE = '0'
+  GOMP_SPINCOUNT = '300000'
+OPENMP DISPLAY ENVIRONMENT END
+level 1 thread 0x7f25b866d7c0 affinity 0
+level 1 thread 0x7f25b79d6700 affinity 2
+level 1 thread 0x7f25b6fd5700 affinity 4
+level 1 thread 0x7f25b65d4700 affinity 6
+level 1 thread 0x7f25b5bd3700 affinity 8
+level 1 thread 0x7f25b51d2700 affinity 10
+level 1 thread 0x7f25b47d1700 affinity 12
+level 1 thread 0x7f25b3dd0700 affinity 14
+level 1 thread 0x7f25b33cf700 affinity 16
+level 1 thread 0x7f25b29ce700 affinity 18
+level 1 thread 0x7f25b1fcd700 affinity 20
+level 1 thread 0x7f25b15cc700 affinity 22
+
+OPENMP DISPLAY ENVIRONMENT BEGIN
+  _OPENMP = '201511'
+  OMP_DYNAMIC = 'FALSE'
+  OMP_NESTED = 'FALSE'
+  OMP_NUM_THREADS = '12'
+  OMP_SCHEDULE = 'DYNAMIC'
+  OMP_PROC_BIND = 'SPREAD'
+  OMP_PLACES = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23}'
+  OMP_STACKSIZE = '0'
+  OMP_WAIT_POLICY = 'PASSIVE'
+  OMP_THREAD_LIMIT = '4294967295'
+  OMP_MAX_ACTIVE_LEVELS = '2147483647'
+  OMP_CANCELLATION = 'FALSE'
+  OMP_DEFAULT_DEVICE = '0'
+  OMP_MAX_TASK_PRIORITY = '0'
+  OMP_DISPLAY_AFFINITY = 'TRUE'
+  OMP_AFFINITY_FORMAT = 'level %L thread %i affinity %A'
+  GOMP_CPU_AFFINITY = ''
+  GOMP_STACKSIZE = '0'
+  GOMP_SPINCOUNT = '300000'
+OPENMP DISPLAY ENVIRONMENT END
+level 1 thread 0x7fb43b79c7c0 affinity 0
+level 1 thread 0x7fb43ab05700 affinity 2
+level 1 thread 0x7fb43a104700 affinity 4
+level 1 thread 0x7fb439703700 affinity 6
+level 1 thread 0x7fb438d02700 affinity 8
+level 1 thread 0x7fb438301700 affinity 10
+level 1 thread 0x7fb437900700 affinity 12
+level 1 thread 0x7fb436eff700 affinity 14
+level 1 thread 0x7fb4364fe700 affinity 16
+level 1 thread 0x7fb435afd700 affinity 18
+level 1 thread 0x7fb4350fc700 affinity 20
+level 1 thread 0x7fb4346fb700 affinity 22
+
+OPENMP DISPLAY ENVIRONMENT BEGIN
+  _OPENMP = '201511'
+  OMP_DYNAMIC = 'FALSE'
+  OMP_NESTED = 'FALSE'
+  OMP_NUM_THREADS = '12'
+  OMP_SCHEDULE = 'DYNAMIC'
+  OMP_PROC_BIND = 'SPREAD'
+  OMP_PLACES = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23}'
+  OMP_STACKSIZE = '0'
+  OMP_WAIT_POLICY = 'PASSIVE'
+  OMP_THREAD_LIMIT = '4294967295'
+  OMP_MAX_ACTIVE_LEVELS = '2147483647'
+  OMP_CANCELLATION = 'FALSE'
+  OMP_DEFAULT_DEVICE = '0'
+  OMP_MAX_TASK_PRIORITY = '0'
+  OMP_DISPLAY_AFFINITY = 'TRUE'
+  OMP_AFFINITY_FORMAT = 'level %L thread %i affinity %A'
+  GOMP_CPU_AFFINITY = ''
+  GOMP_STACKSIZE = '0'
+  GOMP_SPINCOUNT = '300000'
+OPENMP DISPLAY ENVIRONMENT END
+level 1 thread 0x7f2eaaaf77c0 affinity 0
+level 1 thread 0x7f2ea97af700 affinity 2
+level 1 thread 0x7f2ea8dae700 affinity 4
+level 1 thread 0x7f2ea83ad700 affinity 6
+level 1 thread 0x7f2ea79ac700 affinity 8
+level 1 thread 0x7f2ea6fab700 affinity 10
+level 1 thread 0x7f2ea65aa700 affinity 12
+level 1 thread 0x7f2ea5ba9700 affinity 14
+level 1 thread 0x7f2ea51a8700 affinity 16
+level 1 thread 0x7f2ea47a7700 affinity 18
+level 1 thread 0x7f2ea3da6700 affinity 20
+level 1 thread 0x7f2ea33a5700 affinity 22
+
+OPENMP DISPLAY ENVIRONMENT BEGIN
+  _OPENMP = '201511'
+  OMP_DYNAMIC = 'FALSE'
+  OMP_NESTED = 'FALSE'
+  OMP_NUM_THREADS = '12'
+  OMP_SCHEDULE = 'DYNAMIC'
+  OMP_PROC_BIND = 'SPREAD'
+  OMP_PLACES = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23}'
+  OMP_STACKSIZE = '0'
+  OMP_WAIT_POLICY = 'PASSIVE'
+  OMP_THREAD_LIMIT = '4294967295'
+  OMP_MAX_ACTIVE_LEVELS = '2147483647'
+  OMP_CANCELLATION = 'FALSE'
+  OMP_DEFAULT_DEVICE = '0'
+  OMP_MAX_TASK_PRIORITY = '0'
+  OMP_DISPLAY_AFFINITY = 'TRUE'
+  OMP_AFFINITY_FORMAT = 'level %L thread %i affinity %A'
+  GOMP_CPU_AFFINITY = ''
+  GOMP_STACKSIZE = '0'
+  GOMP_SPINCOUNT = '300000'
+OPENMP DISPLAY ENVIRONMENT END
+level 1 thread 0x7f1c9dc3d7c0 affinity 0
+level 1 thread 0x7f1c99cf7700 affinity 2
+level 1 thread 0x7f1c992f6700 affinity 4
+level 1 thread 0x7f1c988f5700 affinity 6
+level 1 thread 0x7f1c97ef4700 affinity 8
+level 1 thread 0x7f1c974f3700 affinity 10
+level 1 thread 0x7f1c96af2700 affinity 12
+level 1 thread 0x7f1c960f1700 affinity 14
+level 1 thread 0x7f1c956f0700 affinity 16
+level 1 thread 0x7f1c94cef700 affinity 18
+level 1 thread 0x7f1c942ee700 affinity 20
+level 1 thread 0x7f1c938ed700 affinity 22
+
+OPENMP DISPLAY ENVIRONMENT BEGIN
+  _OPENMP = '201511'
+  OMP_DYNAMIC = 'FALSE'
+  OMP_NESTED = 'FALSE'
+  OMP_NUM_THREADS = '12'
+  OMP_SCHEDULE = 'DYNAMIC'
+  OMP_PROC_BIND = 'SPREAD'
+  OMP_PLACES = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23}'
+  OMP_STACKSIZE = '0'
+  OMP_WAIT_POLICY = 'PASSIVE'
+  OMP_THREAD_LIMIT = '4294967295'
+  OMP_MAX_ACTIVE_LEVELS = '2147483647'
+  OMP_CANCELLATION = 'FALSE'
+  OMP_DEFAULT_DEVICE = '0'
+  OMP_MAX_TASK_PRIORITY = '0'
+  OMP_DISPLAY_AFFINITY = 'TRUE'
+  OMP_AFFINITY_FORMAT = 'level %L thread %i affinity %A'
+  GOMP_CPU_AFFINITY = ''
+  GOMP_STACKSIZE = '0'
+  GOMP_SPINCOUNT = '300000'
+OPENMP DISPLAY ENVIRONMENT END
+level 1 thread 0x7f797f2637c0 affinity 0
+level 1 thread 0x7f7965b31700 affinity 2
+level 1 thread 0x7f7965130700 affinity 4
+level 1 thread 0x7f796472f700 affinity 6
+level 1 thread 0x7f7963d2e700 affinity 8
+level 1 thread 0x7f796332d700 affinity 10
+level 1 thread 0x7f796292c700 affinity 12
+level 1 thread 0x7f7961f2b700 affinity 14
+level 1 thread 0x7f796152a700 affinity 16
+level 1 thread 0x7f7960b29700 affinity 18
+level 1 thread 0x7f7960128700 affinity 20
+level 1 thread 0x7f795f727700 affinity 22
