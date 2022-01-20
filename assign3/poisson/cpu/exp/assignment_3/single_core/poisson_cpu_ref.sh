@@ -6,12 +6,12 @@
 #BSUB -q hpc
 #BSUB -J poisson_ref_cpu
 #BSUB -n 1
-#BSUB -R "rusage[mem=2048MB]"
+#BSUB -R "rusage[mem=1024MB]"
 #BSUB -R "select[model=XeonGold6126]"
 #BSUB -R "span[hosts=1]"
 #BSUB -M 4GB
 #BSUB -W 40
-###BSUB -B 
+###BSUB -
 #BSUB -N 
 #BSUB -o O_cpu_%J.out 
 #BSUB -e E_cpu_%J.err 

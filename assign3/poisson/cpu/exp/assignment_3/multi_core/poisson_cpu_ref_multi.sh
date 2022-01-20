@@ -4,9 +4,9 @@
 
 ###				QUEUE?
 #BSUB -q hpc
-#BSUB -J poisson_ref_cpu
-#BSUB -n 1
-#BSUB -R "rusage[mem=2048MB]"
+#BSUB -J poisson_ref_cpu_multi
+#BSUB -n 24
+#BSUB -R "rusage[mem=1024MB]"
 #BSUB -R "select[model=XeonGold6126]"
 #BSUB -R "span[hosts=1]"
 #BSUB -M 4GB
@@ -19,7 +19,7 @@
 #CC=${1-"gcc"}
 NDIMS="4 8 16 32 64 128 256"
 EXECUTABLE_J="poisson_j"
-THREADS="1"
+THREADS="12"
 lscpu
 LOGEXT=$CC.dat
 module load cuda/11.5.1
@@ -34,7 +34,7 @@ for NDIM in $NDIMS
 do
 	export OMP_NUM_THREADS=$THREADS
 	echo $EXECUTABLE_J  $NDIM 1000
-	$EXECUTABLE_J $NDIM 1000  | grep -v CPU >> ./cpu_$NDIM$LOGEXT
+	$EXECUTABLE_J $NDIM 1000  | grep -v CPU >> ./cpu_multi$NDIM$LOGEXT
 
 done
 

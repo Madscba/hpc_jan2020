@@ -1,8 +1,8 @@
 #!/bin/sh 
 
-# Naive GPU solution - varying size
+# GPU solution with one threads per element in U - varying size
 
-#BSUB -J poisson_ref_gpu_nat 
+#BSUB -J poisson_ref_gpu_mlt 
 #BSUB -q hpcintrogpu 
 #BSUB -n 1 
 #BSUB -R "span[hosts=1]"  
@@ -22,7 +22,6 @@ LOGEXT=$CC.dat
 NDIMS="4 8 16 32 64 128 256"
 EXECUTABLE_J="poisson_gpu"
 lscpu
-nvidia-smi
 
 for NDIM in $NDIMS
 do
