@@ -26,8 +26,8 @@ lscpu
 
 for NDIM in $NDIMS
 do
-	echo $EXECUTABLE_J $NDIM 1000 1 1
-	./$EXECUTABLE_J $NDIM 1000 1 1 | grep -v CPU >> ./gpu_$NDIM$LOGEXT
+	echo $EXECUTABLE_J $NDIM 10000 1 1
+	./$EXECUTABLE_J $NDIM 10000 1 1 | grep -v CPU >> ./gpu_$NDIM$LOGEXT
 
 done
 
