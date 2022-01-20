@@ -27,7 +27,9 @@ jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
 				tmpj = (u_old[i][j-1][k] + u_old[i][j+1][k]);
 				tmpk = (u_old[i][j][k-1] + u_old[i][j][k+1]);
 				u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
-				printf("F %f \n",f[i][j][k]);
+				if (f[i][j][k]>0){
+				printf("F %i %i %i %f \n",i,j,k,f[i][j][k]);
+				}
 			}
 		}
 	}
