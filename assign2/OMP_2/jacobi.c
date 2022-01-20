@@ -25,6 +25,15 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 				u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
 				dist = u[i][j][k] - u_old[i][j][k];
 				d += dist*dist;
+			}
+		}
+	}
+	for (i = 1; i < N+1; i++) 
+	{
+		for (j = 1; j < N+1; j++)   
+		{
+			for (k = 1; k < N+1; k++) 
+			{	
 				printf("%i %i %i %f \n",i,j,k,u_old[i][j][k]);
 				if (f[i][j][k]>0){
 				printf("F %f %i %i %i %f \n",delta,i,j,k,f[i][j][k]);
