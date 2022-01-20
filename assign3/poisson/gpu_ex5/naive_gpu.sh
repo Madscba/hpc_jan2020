@@ -28,7 +28,6 @@ LOGEXT=$CC.dat
 for NDIM in $NDIMS
 do
 	/bin/rm -f "./perf_j_$NDIM$LOGEXT"
-	export OMP_NUM_THREADS=$n
 	echo $EXECUTABLE_J  $NDIM 3000 0.0 $START_T 0 1 $n
 	$EXECUTABLE_J $NDIM 3000 0.0 $START_T 0 1  | grep -v CPU >> ./perf_numa_$NDIM$LOGEXT
 
