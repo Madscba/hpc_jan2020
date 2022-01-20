@@ -7,9 +7,8 @@
 #BSUB -J poisson_ref_gpu_nat
 #BSUB -n 1
 #BSUB -R "rusage[mem=1024MB]"
-#BSUB -R "select[model=XeonE5_2650v4]"
 #BSUB -R "span[hosts=1]"
-##BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -gpu "num=1:mode=exclusive_process"
 #BSUB -M 4GB
 #BSUB -W 40
 ###BSUB -B 
@@ -24,6 +23,9 @@ EXECUTABLE_J="../poisson_gpu"
 THREADS="1"
 lscpu
 LOGEXT=$CC.dat
+module load cuda/11.5.1 
+ 
+export MFLOPS_MAX_IT=1
 
 for NDIM in $NDIMS
 do

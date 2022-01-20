@@ -19,19 +19,16 @@
 #CC=${1-"gcc"}
 NDIMS="4 8 16 32 64 128 256"
 START_T=16
-EXECUTABLE_J="../poisson_j"
+EXECUTABLE_J="./poisson_j"
 THREADS="1"
 lscpu
 LOGEXT=$CC.dat
 export OMP_DISPLAY_ENV=verbose
 export OMP_DISPLAY_AFFINITY=TRUE
-export OMP_PLACES=cores
-export OMP_PROC_BIND=spread #close
-
 for NDIM in $NDIMS
 do
 	/bin/rm -f "./perf_j_$NDIM$LOGEXT"
-	export OMP_NUM_THREADS=$n
+	export OMP_NUM_THREADS=$(THREADS)
 	echo $EXECUTABLE_J  $NDIM 3000 $START_T 0 1 $n
 	$EXECUTABLE_J $NDIM 3000 $START_T 0 1  | grep -v CPU >> ./cpu_$NDIM$LOGEXT
 
