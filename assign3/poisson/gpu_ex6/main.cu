@@ -117,10 +117,6 @@ main(int argc, char *argv[]) {
         jacobi<<<dimGrid,dimBlock>>>(u_d,u_old_d,f_d,N,delta_sqr);
         checkCudaErrors(cudaDeviceSynchronize());
         #endif
-        if ((k % 100) == 0)
-        {   
-            printf("%i \n", k);
-        }
         temp = u_old_d;
         u_old_d = u_d;
         u_d  = temp;
