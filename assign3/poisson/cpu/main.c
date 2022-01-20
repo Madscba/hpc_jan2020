@@ -11,7 +11,6 @@
 #include "alloc3d.h"
 #include "print.h"
 #include "matrix_init.h"
-#include "matrix_overwrite.h"
 
 #ifdef _JACOBI
 #include "jacobi.h"
@@ -98,4 +97,5 @@ main(int argc, char *argv[]) {
     free(u_old);
     free(f);
     return(0);
+}
 }
