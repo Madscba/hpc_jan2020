@@ -45,6 +45,7 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
         // Execute kernel function
         jacobi_kernel<<<1,1>>>(u_d,u_old_d,f_d,N,delta);
         checkCudaErrors(cudaDeviceSynchronize());
+		/*
 		//  #Comment out when benchmarking!!#
         if ((k % 100) == 0)
 		{   
@@ -54,6 +55,7 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
 			printf("%i  %.5f\n", k, d);
         }
         //  #Comment out when benchmarking!!#
+		*/
         temp = u_old_d;
         u_old_d = u_d;
         u_d  = temp;
