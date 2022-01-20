@@ -15,7 +15,6 @@ void
 jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
     int i, j, k;
 	double tmpi, tmpj, tmpk;
-	printf("OLD0: %f NEW: %f \n",u_old[0][1][1],u[0][1][1]);
     for (i = 1; i < N+1; i++) 
 	{
 		for (j = 1; j < N+1; j++)   
@@ -23,13 +22,13 @@ jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
 			for (k = 1; k < N+1; k++) 
 			{	
 				tmpi = (u_old[i-1][j][k] + u_old[i+1][j][k]);
-				printf("i-1 %f i+1 %f tmpi %f sum %f",u_old[i-1][j][k],u_old[i+1][j][k],tmpi,u_old[i-1][j][k]+u_old[i+1][j][k]);
+				//printf("i-1 %f i+1 %f tmpi %f sum %f",u_old[i-1][j][k],u_old[i+1][j][k],tmpi,u_old[i-1][j][k]+u_old[i+1][j][k]);
 				tmpj = (u_old[i][j-1][k] + u_old[i][j+1][k]);
-				printf(" j-1: %f j+1: %f ",u_old[i][j-1][k],u_old[i][j+1][k]);
+				//printf(" j-1: %f j+1: %f ",u_old[i][j-1][k],u_old[i][j+1][k]);
 				tmpk = (u_old[i][j][k-1] + u_old[i][j][k+1]);
-				printf(" k-1: %f k+1: %f \n",u_old[i][j][k-1],u_old[i][j][k+1]);
+				//printf(" k-1: %f k+1: %f \n",u_old[i][j][k-1],u_old[i][j][k+1]);
 				u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
-				printf("(%i,%i,%i) f: %f i %f j %f k %f u %f old %f \n",i,j,k,f[i][j][k],tmpi,tmpj,tmpk,u[i][j][k],u_old[i][j][k]);
+				//printf("(%i,%i,%i) f: %f i %f j %f k %f u %f old %f \n",i,j,k,f[i][j][k],tmpi,tmpj,tmpk,u[i][j][k],u_old[i][j][k]);
 			}
 		}
 	}
@@ -51,8 +50,6 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
 		{   
 			transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
 			transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-			printf("%f \n",u_h[1][2][2]); 
-			printf("%f \n",u_old_h[1][2][2]);
             d = frobenius(u_h,u_old_h,N);
 			printf("%i  %.5f\n", k, d);
         }
