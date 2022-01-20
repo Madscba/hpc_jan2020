@@ -28,7 +28,7 @@ main(int argc, char *argv[]) {
     const int device = 0;   // Set the device to 0 or 1.
 
     // Wake up GPU from power save state.
-    printf("Warming up device %i ... \n", device); fflush(stdout);
+    //printf("Warming up device %i ... \n", device); fflush(stdout);
     cudaSetDevice(device);           // Set the device to 0 or 1.
     double *dummy_d;
     cudaMalloc((void**)&dummy_d, 0);
@@ -62,8 +62,6 @@ main(int argc, char *argv[]) {
     output_type = atoi(argv[5]);  // ouput type
     }
 
-    printf("N=%i iter_max=%i, NUM_BLOCKS=%i, THREADS_PER_BLOCK=%i, device=%i \n",N,iter_max,NUM_BLOCKS,THREADS_PER_BLOCK,device); fflush(stdout);
-
     const long nElms = N * N * N; // Number of elements.
 
     // Allocate 3d array in host memory.
@@ -79,15 +77,11 @@ main(int argc, char *argv[]) {
         perror("array u: allocation failed");
         exit(-1);
     }
-
-    printf("Allocated memory to host \n"); fflush(stdout);
     
     double delta_sqr = (2/(N+2))*(2/(N+2));
     // Init u and f
     init_mat(N,start_T,f_h,u_old_h);
-    printf("Initialized u and f \n"); fflush(stdout);
     init_bounds(N+2,20, 0, u_old_h);
-    printf("Initialized boundaries \n"); fflush(stdout);
 
 
     // Allocate 3d array on device 0 memory
@@ -104,7 +98,6 @@ main(int argc, char *argv[]) {
         exit(-1);
     }
 
-    printf("Allocated memory to device \n"); fflush(stdout);
 
 
     // Transfer to device 0.
@@ -113,7 +106,6 @@ main(int argc, char *argv[]) {
     transfer_3d_from_1d(f_d, f_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
 
 
-    printf("Transfered data \n"); fflush(stdout);
     int k = 0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
@@ -124,10 +116,6 @@ main(int argc, char *argv[]) {
         jacobi<<<1,1>>>(u_d,u_old_d,f_d,N,delta_sqr);
         checkCudaErrors(cudaDeviceSynchronize());
         #endif
-        if ((k % 100) == 0)
-        {   
-            printf("%i \n", k);
-        }
         temp = u_old_d;
         u_old_d = u_d;
         u_d  = temp;
@@ -138,8 +126,6 @@ main(int argc, char *argv[]) {
     // Transfer back
     transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
    
-    printf("Transfered data back \n"); fflush(stdout);
-
     // dump  results if wanted 
     switch(output_type) {
     case 0:
