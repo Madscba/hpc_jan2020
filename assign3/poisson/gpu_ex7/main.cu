@@ -25,20 +25,17 @@ int
 main(int argc, char *argv[]) {
 
     int N;                  // Dimension N x N x N.
-    const int device = 0;   // Set the device to 0 or 1.
 
     // Wake up GPU from power save state.
     //printf("Warming up device %i ... \n", device); fflush(stdout);
-    cudaSetDevice(device);           // Set the device to 0 or 1.
+    cudaSetDevice(0);           // Set the device to 0 or 1.
+    cudaDeviceEnablePeerAccess(1, 0); //Give read access to GPU 1
     double *dummy_d;
     cudaMalloc((void**)&dummy_d, 0);
 
     double 	***u_h = NULL;
     double 	***u_old_h = NULL;
     double 	***f_h = NULL;
-    double 	***u_d = NULL;
-    double 	***u_old_d = NULL;
-    double 	***f_d = NULL;
     double*** temp;
     int NUM_BLOCKS, THREADS_PER_BLOCK;
 
@@ -85,26 +82,52 @@ main(int argc, char *argv[]) {
 
 
     // Allocate 3d array on device 0 memory
-    if ( (u_d = d_malloc_3d_gpu(N+2, N+2, N+2)) == NULL ) {
+    if ( (u_d0 = d_malloc_3d_gpu((N+2) / 2, N+2, N+2)) == NULL ) {
         perror("array u_d0: allocation on gpu failed");
         exit(-1);
     }
-    if ( (u_old_d = d_malloc_3d_gpu(N+2, N+2, N+2)) == NULL ) {
+    if ( (u_old_d0 = d_malloc_3d_gpu((N+2) / 2, N+2, N+2)) == NULL ) {
         perror("array u_d0: allocation on gpu failed");
         exit(-1);
     }
-    if ( (f_d = d_malloc_3d_gpu(N+2, N+2, N+2)) == NULL ) {
+    if ( (f_d0 = d_malloc_3d_gpu((N+2) / 2, N+2, N+2)) == NULL ) {
         perror("array u_d0: allocation on gpu failed");
         exit(-1);
     }
 
+    // Transfer top part to device 0.
+    transfer_3d_from_1d(u_d0, u_h[0][0], (N+2) / 2, N+2, N+2, cudaMemcpyHostToDevice);
+    transfer_3d_from_1d(u_old_d0, u_old_h[0][0], (N+2) / 2, N+2, N+2, cudaMemcpyHostToDevice);
+    transfer_3d_from_1d(f_d0, f_h[0][0], (N+2) / 2, N+2, N+2, cudaMemcpyHostToDevice);
 
 
-    // Transfer to device 0.
-    transfer_3d_from_1d(u_d, u_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
-    transfer_3d_from_1d(u_old_d, u_old_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
-    transfer_3d_from_1d(f_d, f_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
+    double 	***u_d1 = NULL;
+    double 	***u_old_d1 = NULL;
+    double 	***f_d1 = NULL;
+    cudaSetDevice(1);
+	cudaDeviceEnablePeerAccess(0, 0); //Give read access to GPU 0
+    // Allocate 3d array of half size in device 1 memory.
+    if ( (u_d1 = d_malloc_3d_gpu((N+2) / 2, N+2, N+2)) == NULL ) {
+        perror("array u_d1: allocation on gpu failed");
+        exit(-1);
+    }
+    if ( (u_old_d1 = d_malloc_3d_gpu((N+2) / 2, N+2, N+2)) == NULL ) {
+        perror("array u_d1: allocation on gpu failed");
+        exit(-1);
+    }
+    if ( (f_d1 = d_malloc_3d_gpu((N+2) / 2, N+2, N+2)) == NULL ) {
+        perror("array u_d1: allocation on gpu failed");
+        exit(-1);
+    }
 
+    // Transfer bottom part to device 1.
+    transfer_3d_from_1d(u_d1, u_h[0][0] + nElms / 2, (N+2) / 2, N+2, N+2, cudaMemcpyHostToDevice);
+    transfer_3d_from_1d(u_old_d1, u_old_h[0][0] + nElms / 2, (N+2) / 2, N+2, N+2, cudaMemcpyHostToDevice);
+    transfer_3d_from_1d(f_d1, f_h[0][0] + nElms / 2, (N+2) / 2, N+2, N+2, cudaMemcpyHostToDevice);
+
+
+    dim3 dimGrid(N/2,N/2,1); // 4096 blocks in total 
+    dim3 dimBlock(N,N,1);// 256 threads per block
 
     int k = 0;
     // Loop until we meet stopping criteria
@@ -113,7 +136,8 @@ main(int argc, char *argv[]) {
     {
         #ifdef _JACOBI
         // Execute kernel function
-        jacobi<<<1,1>>>(u_d,u_old_d,f_d,N,delta_sqr);
+        jacobi<<<dimGrid,dimBlock>>>(u_d0,u_old_d0,f_d0,N,delta_sqr);
+        jacobi<<<dimGrid,dimBlock>>>(u_d1,u_old_d1,f_d1,N,delta_sqr);
         checkCudaErrors(cudaDeviceSynchronize());
         #endif
         temp = u_old_d;
@@ -123,9 +147,10 @@ main(int argc, char *argv[]) {
     }
     te = omp_get_wtime();
     
-    // Transfer back
-    transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-   
+    // Transfer back top part
+    transfer_3d(u_h,u_d0,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+    transfer_3d(u_h,u_d0,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+
     // dump  results if wanted 
     switch(output_type) {
     case 0:
