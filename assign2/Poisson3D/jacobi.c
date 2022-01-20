@@ -19,7 +19,7 @@ jacobi(double ***u, double ***u_old, double ***f, int N, double delta) {
 				tmpj = (u_old[i][j-1][k] + u_old[i][j+1][k]);
 				tmpk = (u_old[i][j][k-1] + u_old[i][j][k+1]);
 				u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
-				printf("(%i,%i,%i) i %f j %f k %f u %f old %f \n",i,j,k,tmpi,tmpj,tmpk,u[i][j][k],u_old[i][j][k]);
+				printf("(%i,%i,%i) f: %f i %f j %f k %f u %f old %f \n",i,j,k,f[i][j][k],tmpi,tmpj,tmpk,u[i][j][k],u_old[i][j][k]);
 			}
 		}
 	}   
