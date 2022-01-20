@@ -40,7 +40,8 @@ main(int argc, char *argv[]) {
     double 	***u_d0 = NULL;
     double 	***u_old_d0 = NULL;
     double 	***f_d0 = NULL;
-    double*** temp;
+    double*** temp0;
+    double*** temp1;
     int NUM_BLOCKS, THREADS_PER_BLOCK;
 
 
@@ -151,9 +152,12 @@ main(int argc, char *argv[]) {
             d = frobenius(u_d0,u_h,(N+2)/2);
 			printf("%i  %.5f\n", k, d);
         }
-        temp = u_old_d;
-        u_old_d = u_d;
-        u_d  = temp;
+        temp0 = u_old_d0;
+        u_old_d0 = u_d0;
+        u_d0  = temp0;
+        temp1 = u_old_d1;
+        u_old_d1 = u_d1;
+        u_d1  = temp1;
         k+=1;
     }
     te = omp_get_wtime();
