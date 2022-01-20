@@ -102,7 +102,7 @@ main(int argc, char *argv[]) {
     transfer_3d_from_1d(u_d, u_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
     transfer_3d_from_1d(u_old_d, u_old_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
     transfer_3d_from_1d(f_d, f_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
-
+    printf("Here! \n");
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
     k = jacobi(u_d,u_old_d,f_d,u_h,u_old_h,f_h,N,delta_sqr,iter_max,NUM_BLOCKS,THREADS_PER_BLOCK);
