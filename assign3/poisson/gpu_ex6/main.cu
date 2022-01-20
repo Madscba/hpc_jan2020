@@ -38,7 +38,7 @@ main(int argc, char *argv[]) {
     double 	***u_old_d = NULL;
     double 	***f_d = NULL;
     double*** temp;
-    int NUM_BLOCKS, THREADS_PER_BLOCK;
+    int NUM_BLOCKS, THREADS_PER_BLOCK, k;
 
 
     int 	iter_max = 1000;
