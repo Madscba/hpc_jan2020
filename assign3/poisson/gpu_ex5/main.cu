@@ -28,7 +28,7 @@ main(int argc, char *argv[]) {
     const int device = 0;   // Set the device to 0 or 1.
 
     // Wake up GPU from power save state.
-    printf("Warming up device %i ... \n", device); fflush(stdout);
+    //printf("Warming up device %i ... \n", device); fflush(stdout);
     cudaSetDevice(device);           // Set the device to 0 or 1.
     double *dummy_d;
     cudaMalloc((void**)&dummy_d, 0);
