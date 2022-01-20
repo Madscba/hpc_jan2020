@@ -3,6 +3,9 @@
  */
 #include <math.h>
 #include <float.h>
+#include <helper_cuda.h>
+#include "transfer3d_gpu.h"
+#include "frobenius.h"
 
 __global__
 void
@@ -21,7 +24,8 @@ jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
 }
 
 int
-jacobi(double ***u, double ***u_old, double ***f, int N, double delta, int iter_max, int NUM_BLOCKS, int THREADS_PER_BLOCK) {
+jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double ***u_old_h, double ***f_h, int N, double delta, int iter_max, int NUM_BLOCKS, int THREADS_PER_BLOCK) {
+	double*** temp;
 	int k = 0;
     double d = 0.0;
     dim3 dimBlock(NUM_BLOCKS,THREADS_PER_BLOCK,1);
