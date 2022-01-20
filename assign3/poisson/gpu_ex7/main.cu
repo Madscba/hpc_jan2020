@@ -11,7 +11,7 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 #include <omp.h>
-#include "print.h"
+#include "frobenius.h"
 #include "alloc3d.h"
 #include "alloc3d_gpu.h"
 #include "transfer3d_gpu.h"
@@ -131,6 +131,7 @@ main(int argc, char *argv[]) {
     dim3 dimBlock(N,N,1);// 256 threads per block
 
     int k = 0;
+    double d = 0.0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
     while(k<iter_max)
@@ -141,6 +142,11 @@ main(int argc, char *argv[]) {
         jacobi<<<dimGrid,dimBlock>>>(u_d1,u_old_d1,f_d1,N,delta_sqr);
         checkCudaErrors(cudaDeviceSynchronize());
         #endif
+        if ((k % 100) == 0)
+		{   
+            d = frobenius(u_d0,u_h,(N+2)/2);
+			printf("%i  %.5f\n", k, d);
+        }
         temp = u_old_d;
         u_old_d = u_d;
         u_d  = temp;
@@ -162,11 +168,7 @@ main(int argc, char *argv[]) {
         mlups = (double) lats*k/((te-ts)*1000*1000);
         printf("%d %.5f %.5f %d \n",N,mlups, te-ts, omp_get_max_threads());
         break;
-        
-    output_ext = ".vtk";
-    sprintf(output_filename, "%s_%d%s", output_prefix, N, output_ext);
-    fprintf(stderr, "Write VTK file to %s: ", output_filename);
-    print_vtk(output_filename, N+2, u_h);
+
     // de-allocate memory
     free(u_h);
     free(u_old_h);

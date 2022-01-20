@@ -5,7 +5,8 @@
 
 #ifndef _JACOBI_H
 #define _JACOBI_H
-
-double jacobi(double ***u, double ***u_old, double ***f, int N, double delta);
+__global__
+void jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta);
+int jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double ***u_old_h, double ***f_h, int N, double delta, int iter_max);
 
 #endif

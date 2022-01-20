@@ -11,16 +11,13 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 #include <omp.h>
-#include "print.h"
+#include "frobenius.h"
 #include "alloc3d.h"
 #include "alloc3d_gpu.h"
 #include "transfer3d_gpu.h"
 #include "matrix_init.h"
 #include "matrix_overwrite.h"
-
-#ifdef _JACOBI
-#include <jacobi.h>
-#endif
+#include "jacobi.h"
 
 int
 main(int argc, char *argv[]) {
@@ -40,8 +37,7 @@ main(int argc, char *argv[]) {
     double 	***u_d = NULL;
     double 	***u_old_d = NULL;
     double 	***f_d = NULL;
-    double*** temp;
-    int NUM_BLOCKS, THREADS_PER_BLOCK;
+    int NUM_BLOCKS, THREADS_PER_BLOCK, k;
 
 
     int 	iter_max = 1000;
@@ -65,6 +61,7 @@ main(int argc, char *argv[]) {
 
     const long nElms = N * N * N; // Number of elements.
 
+
     // Allocate 3d array in host memory.
     if ( (u_h = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
         perror("array u: allocation failed");
@@ -84,7 +81,6 @@ main(int argc, char *argv[]) {
     init_mat(N,start_T,f_h,u_old_h);
     init_bounds(N+2,20, 0, u_old_h);
 
-
     // Allocate 3d array on device 0 memory
     if ( (u_d = d_malloc_3d_gpu(N+2, N+2, N+2)) == NULL ) {
         perror("array u_d0: allocation on gpu failed");
@@ -100,28 +96,15 @@ main(int argc, char *argv[]) {
     }
 
 
-
     // Transfer to device 0.
-    transfer_3d_from_1d(u_d, u_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
-    transfer_3d_from_1d(u_old_d, u_old_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
-    transfer_3d_from_1d(f_d, f_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
-
-
-    int k = 0;
+    transfer_3d(u_d, u_h, N+2, N+2, N+2, cudaMemcpyHostToDevice);
+    transfer_3d(u_old_d, u_old_h, N+2, N+2, N+2, cudaMemcpyHostToDevice);
+    transfer_3d(f_d, f_h, N+2, N+2, N+2, cudaMemcpyHostToDevice);
+    
+    
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
-    while(k<iter_max)
-    {
-        #ifdef _JACOBI
-        // Execute kernel function
-        jacobi<<<1,1>>>(u_d,u_old_d,f_d,N,delta_sqr);
-        checkCudaErrors(cudaDeviceSynchronize());
-        #endif
-        temp = u_old_d;
-        u_old_d = u_d;
-        u_d  = temp;
-        k+=1;
-    }
+	k = jacobi(u_d,u_old_d,f_d,u_h,u_old_h,f_h,N,delta_sqr,iter_max);
     te = omp_get_wtime();
     
     // Transfer back
@@ -139,11 +122,6 @@ main(int argc, char *argv[]) {
         printf("%d %.5f %.5f %d \n",N,mlups, te-ts, omp_get_max_threads());
         break;
 
-    output_ext = ".vtk";
-    sprintf(output_filename, "%s_%d%s", output_prefix, N, output_ext);
-    fprintf(stderr, "Write VTK file to %s: ", output_filename);
-    print_vtk(output_filename, N+2, u_h);
-    
     // de-allocate memory
     free(u_h);
     free(u_old_h);
