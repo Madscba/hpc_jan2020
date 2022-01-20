@@ -15,5 +15,4 @@ double frobenius(double ***u, double ***u_old, int N){
         }
     }
     return sqrt(sum);
-
 }

@@ -131,6 +131,7 @@ main(int argc, char *argv[]) {
     dim3 dimBlock(N,N,1);// 256 threads per block
 
     int k = 0;
+    double d = 0.0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
     while(k<iter_max)
@@ -141,6 +142,11 @@ main(int argc, char *argv[]) {
         jacobi<<<dimGrid,dimBlock>>>(u_d1,u_old_d1,f_d1,N,delta_sqr);
         checkCudaErrors(cudaDeviceSynchronize());
         #endif
+        if ((k % 100) == 0)
+		{   
+            d = frobenius(u_d0,u_h,(N+2)/2);
+			printf("%i  %.5f\n", k, d);
+        }
         temp = u_old_d;
         u_old_d = u_d;
         u_d  = temp;
