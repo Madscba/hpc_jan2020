@@ -45,7 +45,7 @@ jacobi(double ***u_d0, double ***u_old_d0, double ***f_d0,double ***u_d1, double
     		transfer_3d(u_h,u_d1,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
     		transfer_3d(u_old_h,u_old_d0,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
     		transfer_3d(u_old_h,u_old_d1,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-            d = frobenius(u_h,u_old_h);
+            d = frobenius(u_h,u_old_h,N);
 			printf("%i  %.5f\n", k, d);
         }
         temp0 = u_old_d0;
