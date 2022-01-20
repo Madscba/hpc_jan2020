@@ -1,10 +1,35 @@
 extern "C" {
 #include <math.h>
 #include <stdio.h>
+#define BLOCK_SIZE 16
 __global__ void kernel_gpu5(int m, int n, int k, double *A, double *B, double *C){
-		int x = blockIdx.x;
-		int y = blockIdx.y;
+		//Block
+		int y = blockIdx.y; //Row
+      int x = blockIdx.x; //Col
+      //Thread
+      int i = threadIdx.y; //Row
+    	int j = threadIdx.x; //Col
+
       double tmp = 0;
+
+      __shared__ double tmp_A[BLOCK_SIZE][BLOCK_SIZE];
+      __shared__ double tmp_B[BLOCK_SIZE][BLOCK_SIZE];
+
+      for (int l=0; l<k/BLOCK_SIZE; l++){
+         tmp_A[i][j] = A[i*k + j + l*BLOCK_SIZE + k*BLOCK_SIZE * y];
+         tmp_B[i][j] = B[i*n + j + l*BLOCK_SIZE*n + BLOCK_SIZE * x];
+
+         // Synchronize to make sure the sub-matrices are loaded
+         // before starting the computation
+         __syncthreads();
+
+         for (int subM = 0; subM<BLOCK_SIZE; subM++) {
+			   tmp += tmp_A[i][subM]*tmp_B[subM][j];
+		   }
+		   // Sync before moving on to new submatrices
+        	__syncthreads();
+      }
+      C[i*n + j + y*n*BLOCK_SIZE + x*BLOCK_SIZE] = tmp;
 }
 void matmult_gpu5(int m, int n, int k, double *A_h, double *B_h, double *C_h) 
    { 
@@ -23,7 +48,6 @@ void matmult_gpu5(int m, int n, int k, double *A_h, double *B_h, double *C_h)
       cudaMemcpy(A_d, A_h, A_size, cudaMemcpyHostToDevice);
       cudaMemcpy(B_d, B_h, B_size, cudaMemcpyHostToDevice);
 
-      const int BLOCK_SIZE = 16;
       //Define block grid
       dim3 block(BLOCK_SIZE,BLOCK_SIZE);
       dim3 grid(ceil((double) n/BLOCK_SIZE),  ceil((double) m/BLOCK_SIZE));
