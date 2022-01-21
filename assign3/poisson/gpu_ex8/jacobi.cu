@@ -12,7 +12,8 @@
 __global__ 
 void
 jacobi_reduction_baseline(double ***u, double ***u_old, double ***f, int N, double delta, double *d) {
-	double *a[1] = 0.0;
+	double *a[1];
+	a[0] = 0.0;
 	int i = blockIdx.z * blockDim.z + threadIdx.z+1;
 	int j = blockIdx.y * blockDim.y + threadIdx.y+1;
 	int k = blockIdx.x * blockDim.x + threadIdx.x+1; 
