@@ -1,4 +1,5 @@
 *.o
 *.vtk
+*.dat
 *.err
 *.out
