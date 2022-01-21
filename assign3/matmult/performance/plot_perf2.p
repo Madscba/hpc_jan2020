@@ -1,7 +1,7 @@
 # Set the output to a png file
 set terminal png size 1280,720
 
-set logscale x; set xtics 150,2,1572864
+set logscale x; set xtics 150,4,1572864
 set xlabel "Memory footprint (Kbyte)"
 set ylabel "Mflops (1/s)"
 set pointsize 2.5
