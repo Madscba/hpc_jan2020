@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdio.h>
 __global__
 void frobenius_kernel(double ***u, double ***u_old, int N,double sum){
     int i, j, k;

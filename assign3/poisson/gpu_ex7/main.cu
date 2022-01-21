@@ -17,10 +17,7 @@
 #include "transfer3d_gpu.h"
 #include "matrix_init.h"
 #include "matrix_overwrite.h"
-
-#ifdef _JACOBI
-#include <jacobi.h>
-#endif
+#include "jacobi.h"
 
 int
 main(int argc, char *argv[]) {
@@ -37,7 +34,9 @@ main(int argc, char *argv[]) {
     double 	***u_h = NULL;
     double 	***u_old_h = NULL;
     double 	***f_h = NULL;
-    double*** temp;
+    double 	***u_d0 = NULL;
+    double 	***u_old_d0 = NULL;
+    double 	***f_d0 = NULL;
     int NUM_BLOCKS, THREADS_PER_BLOCK;
 
 
@@ -135,29 +134,12 @@ main(int argc, char *argv[]) {
     double d = 0.0;
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
-    while(k<iter_max)
-    {
-        #ifdef _JACOBI
-        // Execute kernel function
-        jacobi<<<dimGrid,dimBlock>>>(u_d0,u_old_d0,f_d0,N,delta_sqr);
-        jacobi<<<dimGrid,dimBlock>>>(u_d1,u_old_d1,f_d1,N,delta_sqr);
-        checkCudaErrors(cudaDeviceSynchronize());
-        #endif
-        if ((k % 100) == 0)
-		{   
-            d = frobenius(u_d0,u_h,(N+2)/2);
-			printf("%i  %.5f\n", k, d);
-        }
-        temp = u_old_d;
-        u_old_d = u_d;
-        u_d  = temp;
-        k+=1;
-    }
+    k = jacobi(u_d0, u_old_d0, f_d0, u_d1, u_old_d1, f_d1, u_h, u_old_h, f_h, N, delta_sqr, iter_max);
     te = omp_get_wtime();
     
     // Transfer back top part
     transfer_3d(u_h,u_d0,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-    transfer_3d(u_h,u_d0,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+    transfer_3d(u_h,u_d1,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
 
     // dump  results if wanted 
     switch(output_type) {
@@ -174,9 +156,12 @@ main(int argc, char *argv[]) {
     free(u_h);
     free(u_old_h);
     free(f_h);
-    free_gpu(u_d);
-    free_gpu(u_old_d);
-    free_gpu(f_d);
+    free_gpu(u_d0);
+    free_gpu(u_old_d0);
+    free_gpu(f_d0);
+    free_gpu(u_d1);
+    free_gpu(u_old_d1);
+    free_gpu(f_d1);
     return(0);
     }
 }

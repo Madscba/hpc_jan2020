@@ -60,7 +60,7 @@ main(int argc, char *argv[]) {
     output_type = atoi(argv[5]);  // ouput type
     }
 
-    const long nElms = N * N * N; // Number of elements.
+    const long nElms = (N+2) * (N+2) * (N+2); // Number of elements.
 
     // Allocate 3d array in host memory.
     if ( (u_h = d_malloc_3d(N+2, N+2, N+2)) == NULL ) {
@@ -99,10 +99,9 @@ main(int argc, char *argv[]) {
 
 
     // Transfer to device 0.
-    transfer_3d_from_1d(u_d, u_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
-    transfer_3d_from_1d(u_old_d, u_old_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
-    transfer_3d_from_1d(f_d, f_h[0][0], N+2, N+2, N+2, cudaMemcpyHostToDevice);
-    printf("Here! \n");
+    transfer_3d(u_d, u_h, N+2, N+2, N+2, cudaMemcpyHostToDevice);
+    transfer_3d(u_old_d, u_old_h, N+2, N+2, N+2, cudaMemcpyHostToDevice);
+    transfer_3d(f_d, f_h, N+2, N+2, N+2, cudaMemcpyHostToDevice);
     // Loop until we meet stopping criteria
     ts = omp_get_wtime();
     k = jacobi(u_d,u_old_d,f_d,u_h,u_old_h,f_h,N,delta_sqr,iter_max,NUM_BLOCKS,THREADS_PER_BLOCK);
