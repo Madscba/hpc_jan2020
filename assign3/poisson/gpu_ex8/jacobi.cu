@@ -12,8 +12,7 @@
 __global__ 
 void
 jacobi_reduction_baseline(double ***u, double ***u_old, double ***f, int N, double delta, double *d) {
-	double *a[1];
-	a[0] = 0.0;
+	double a;
 	int i = blockIdx.z * blockDim.z + threadIdx.z+1;
 	int j = blockIdx.y * blockDim.y + threadIdx.y+1;
 	int k = blockIdx.x * blockDim.x + threadIdx.x+1; 
@@ -22,7 +21,7 @@ jacobi_reduction_baseline(double ***u, double ***u_old, double ***f, int N, doub
 		double tmpj = (u_old[i][j-1][k] + u_old[i][j+1][k]);
 		double tmpk = (u_old[i][j][k-1] + u_old[i][j][k+1]);
 		u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
-		a[0] = sqrt((u[i][j][k]-u_old[i][j][k])*(u[i][j][k]-u_old[i][j][k]));
+		a = sqrt((u[i][j][k]-u_old[i][j][k])*(u[i][j][k]-u_old[i][j][k]));
         atomicAdd(d,a);
     }
 }
@@ -95,7 +94,7 @@ void jacobi_reduction_presum(double ***u, double ***u_old, double ***f, int N, d
 		}
 	}  
     value = blockReduceSum(value); 
-    if (threadIdx.x == 0){
+    if (threadIdx.x == 0 && threadIdx.y == 0 && threadIdx.z == 0){
 		atomicAdd(d, value); 
 	} 
 }
@@ -122,24 +121,33 @@ int
 jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double ***u_old_h, double ***f_h, int N, double delta, int iter_max, int NUM_BLOCKS, int THREADS_PER_BLOCK) {
 	double*** temp;
 	int k = 0;
-    double *d[1] = 10000000.0;
+    double *d;
+	double *d_h;
+	cudaMallocHost((void**)&d_h, sizeof(double)*1);
+	d_h[0] = 1000000.0;	
+	cudaMalloc((void**)&d, sizeof(double)*1);
+	cudaMemcpy(d,d_h, sizeof(double), cudaMemcpyHostToDevice);
 	double tolerance = 1.0; 
-	dim3 dimBlock(10,10,10); //Threads per block
-    dim3 dimGrid((N+dimBlock.x-1)/dimBlock.x,(N+dimBlock.y-1)/dimBlock.y,1); // Block in grid
-	while(d[0]>tolerance && k<iter_max)
+	dim3 dimBlock(16,4,4); //Threads per block
+    dim3 dimGrid((N+dimBlock.x-1)/dimBlock.x,(N+dimBlock.y-1)/dimBlock.y,(N+dimBlock.z-1)/dimBlock.z); // Block in grid
+	while(d_h[0]>tolerance && k<iter_max)
     {
         // Execute kernel function
 		jacobi_reduction_baseline<<<dimGrid,dimBlock>>>(u_d,u_old_d,f_d,N,delta,d);        
 		checkCudaErrors(cudaDeviceSynchronize());
+		cudaMemcpy(d_h,d, sizeof(double)*1, cudaMemcpyDeviceToHost);
 		//  #Comment out when benchmarking!!#
+		/*
         if ((k % 100) == 0)
 		{   
+
 			transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
 			transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
             d = frobenius(u_h,u_old_h,N);
 			printf("%i  %.5f\n", k, d);
         }
         //  #Comment out when benchmarking!!#
+		*/
         temp = u_old_d;
         u_old_d = u_d;
         u_d  = temp;
