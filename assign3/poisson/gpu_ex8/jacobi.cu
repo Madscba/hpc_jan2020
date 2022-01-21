@@ -135,6 +135,7 @@ jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double **
         // Execute kernel function
 		jacobi_reduction_baseline<<<dimGrid,dimBlock>>>(u_d,u_old_d,f_d,N,delta,d);        
 		checkCudaErrors(cudaDeviceSynchronize());
+		printf("Here!");
 		cudaMemcpy(d_h,d, sizeof(double)*1, cudaMemcpyDeviceToHost);
 		//  #Comment out when benchmarking!!#
 		/*
