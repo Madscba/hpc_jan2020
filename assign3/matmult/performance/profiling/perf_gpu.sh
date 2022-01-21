@@ -25,9 +25,10 @@ EXECUTABLE=matmult_f.nvcc
 SRCPATH="matmult/"
 RPATH=$"/zhome/87/9/127623/Desktop/hpc_jan2022/assign3/"
 DPATH=$"matmult/performance/profiling/"
-PERM=$"lib"
+PERM=$"gpu4 gpu5 gpulib"
 ##PERM=$"gpu1 gpu2 gpu3 gpu4 gpu5 gpu6 gpulib"
-NPARTS="103 146 206 292 413 584 826 1168 1652 2336 3304 4672 6602 9344"
+NPARTS="6602"
+#NPARTS="103 146 206 292 413 584 826 1168 1652 2336 3304 4672 6602 9344"
 LOGEXT=$CC.dat
 
 
@@ -47,18 +48,18 @@ do
 	for mdim in $NPARTS
 	do
 		echo ./$EXECUTABLE $perm $mdim
-    		##nv-nsight-cu-cli -o profile_$perm.$LSB_JOBID \
-		##--section ComputeWorkloadAnalysis \
-		##--section LaunchStats \
-		##--section MemoryWorkloadAnalysis \
-		##--section MemoryWorkloadAnalysis_Chart \
-		##--section MemoryWorkloadAnalysis_Tables \
-		##--section SpeedOfLight \
-		##--section SpeedOfLight_HierarchicalDoubleRooflineChart \
-		##--section SpeedOfLight_HierarchicalSingleRooflineChart \
-		##./$EXECUTABLE $perm $mdim $mdim $mdim | grep -v CPU >> $RPATH/$DPATH/$mdim_$perm.$LOGEXT
-		MKL_NUM_THREADS=12 numactl --cpunodebind=0 \
-		./$EXECUTABLE $perm $mdim $mdim $mdim | grep -v CPU >> $RPATH/$DPATH/$mdim_$perm_single.$LOGEXT
+    		nv-nsight-cu-cli -o profile.$perm.$LSB_JOBID \
+		--section ComputeWorkloadAnalysis \
+		--section LaunchStats \
+		--section MemoryWorkloadAnalysis \
+		--section MemoryWorkloadAnalysis_Chart \
+		--section MemoryWorkloadAnalysis_Tables \
+		--section SpeedOfLight \
+		--section SpeedOfLight_HierarchicalDoubleRooflineChart \
+		--section SpeedOfLight_HierarchicalSingleRooflineChart \
+		./$EXECUTABLE $perm $mdim $mdim $mdim | grep -v CPU >> $RPATH/$DPATH/$mdim_$perm.$LOGEXT
+		##MKL_NUM_THREADS=12 numactl --cpunodebind=0 \
+		##./$EXECUTABLE $perm $mdim $mdim $mdim | grep -v CPU >> $RPATH/$DPATH/$mdim_$perm_single.$LOGEXT
 	done
 done
 
