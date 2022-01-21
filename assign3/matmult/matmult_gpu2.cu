@@ -27,7 +27,7 @@ void matmult_gpu2(int m, int n, int k, double *A_h, double *B_h, double *C_h)
       cudaMalloc( (void**)&A_d, A_size );
       cudaMalloc( (void**)&B_d, B_size );
       cudaMalloc( (void**)&C_d, C_size );
-      cudaMemset(C_d, 0, C_size);
+      //cudaMemset(C_d, 0, C_size);
       //Copy to device from host
       cudaMemcpy(A_d, A_h, A_size, cudaMemcpyHostToDevice);
       cudaMemcpy(B_d, B_h, B_size, cudaMemcpyHostToDevice);

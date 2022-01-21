@@ -11,13 +11,17 @@ __global__ void kernel_gpu5(int m, int n, int k, double *A, double *B, double *C
     	int j = threadIdx.x; //Col
 
       double tmp = 0;
+      double *C_sub = &C[y*n*BLOCK_SIZE + x*BLOCK_SIZE];
 
-      __shared__ double tmp_A[BLOCK_SIZE][BLOCK_SIZE];
-      __shared__ double tmp_B[BLOCK_SIZE][BLOCK_SIZE];
 
-      for (int l=0; l<k/BLOCK_SIZE; l++){
-         tmp_A[i][j] = A[i*k + j + l*BLOCK_SIZE + k*BLOCK_SIZE * y];
-         tmp_B[i][j] = B[i*n + j + l*BLOCK_SIZE*n + BLOCK_SIZE * x];
+      for (int l=0; l< (k/BLOCK_SIZE); l++){
+
+         double *A_sub = &A[l*BLOCK_SIZE + k*BLOCK_SIZE * y];
+         double *B_sub = &B[l*BLOCK_SIZE*n + BLOCK_SIZE * x];
+         __shared__ double tmp_A[BLOCK_SIZE][BLOCK_SIZE];
+         __shared__ double tmp_B[BLOCK_SIZE][BLOCK_SIZE];
+         tmp_A[i][j] = A_sub[i*k + j ];
+         tmp_B[i][j] = B_sub[i*n + j];
 
          // Synchronize to make sure the sub-matrices are loaded
          // before starting the computation
@@ -29,7 +33,7 @@ __global__ void kernel_gpu5(int m, int n, int k, double *A, double *B, double *C
 		   // Sync before moving on to new submatrices
         	__syncthreads();
       }
-      C[i*n + j + y*n*BLOCK_SIZE + x*BLOCK_SIZE] = tmp;
+      C_sub[i*n + j] = tmp;
 }
 void matmult_gpu5(int m, int n, int k, double *A_h, double *B_h, double *C_h) 
    { 
@@ -43,7 +47,6 @@ void matmult_gpu5(int m, int n, int k, double *A_h, double *B_h, double *C_h)
       cudaMalloc( (void**)&A_d, A_size );
       cudaMalloc( (void**)&B_d, B_size );
       cudaMalloc( (void**)&C_d, C_size );
-      cudaMemset(C_d, 0, C_size);
       //Copy to device from host
       cudaMemcpy(A_d, A_h, A_size, cudaMemcpyHostToDevice);
       cudaMemcpy(B_d, B_h, B_size, cudaMemcpyHostToDevice);
