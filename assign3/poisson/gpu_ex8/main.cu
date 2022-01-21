@@ -22,7 +22,7 @@
 int
 main(int argc, char *argv[]) {
 
-    int N;                  // Dimension N x N x N.
+    //int N;                  // Dimension N x N x N.
     const int device = 0;   // Set the device to 0 or 1.
 
     // Wake up GPU from power save state.
@@ -37,8 +37,7 @@ main(int argc, char *argv[]) {
     double 	***u_d = NULL;
     double 	***u_old_d = NULL;
     double 	***f_d = NULL;
-    double*** temp;
-    int NUM_BLOCKS, THREADS_PER_BLOCK, k;
+    int NUM_BLOCKS, THREADS_PER_BLOCK, k, N;
 
 
     int 	iter_max = 1000;
