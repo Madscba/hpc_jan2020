@@ -4,7 +4,7 @@
 
 #BSUB -J poisson_ref_2gpu 
 #BSUB -q hpcintrogpu 
-#BSUB -n 2
+#BSUB -n 1
 #BSUB -R "span[hosts=1]"  
 #BSUB -gpu "num=2:mode=exclusive_process"  
 #BSUB -W 20 
@@ -19,13 +19,15 @@ module load cuda/11.5.1
 export MFLOPS_MAX_IT=1 
 
 LOGEXT=$CC.dat
-NDIMS="16 32 64 128 256 512"
+##NDIMS="16 32 64 128 256 512"
+NDIMS="512"
 EXECUTABLE_J="poisson_gpu"
 lscpu
 
 for NDIM in $NDIMS
 do
 	echo $EXECUTABLE_J $NDIM 1000 1 1
+	nsys profile ./$EXECUTABLE_J $NDIM 1000 1 1
 	./$EXECUTABLE_J $NDIM 1000 1 1 | grep -v CPU >> ./gpu_$NDIM$LOGEXT
 
 done

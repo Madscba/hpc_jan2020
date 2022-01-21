@@ -127,8 +127,8 @@ main(int argc, char *argv[]) {
     transfer_3d_from_1d(f_d1, f_h[0][0] + nElms / 2, (N+2) / 2, N+2, N+2, cudaMemcpyHostToDevice);
 
 
-    dim3 dimGrid(N/2,N/2,1); // 4096 blocks in total 
-    dim3 dimBlock(N,N,1);// 256 threads per block
+    //dim3 dimGrid(N/2,N/2,1); // 4096 blocks in total 
+    //dim3 dimBlock(N,N,1);// 256 threads per block
 
     int k = 0;
     double d = 0.0;
@@ -137,9 +137,12 @@ main(int argc, char *argv[]) {
     k = jacobi(u_d0, u_old_d0, f_d0, u_d1, u_old_d1, f_d1, u_h, u_old_h, f_h, N, delta_sqr, iter_max);
     te = omp_get_wtime();
     
-    // Transfer back top part
-    transfer_3d(u_h,u_d0,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-    transfer_3d(u_h,u_d1,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+	// Transfer back top part
+    transfer_3d_to_1d(u_h[0][0],u_d0,(N+2)/2,(N+2),(N+2),cudaMemcpyDeviceToHost);
+    //Transfer back lower part
+    transfer_3d_to_1d(u_h[0][0]+nElms / 2,u_d1,(N+2)/2,(N+2),(N+2),cudaMemcpyDeviceToHost);
+    //transfer_3d(u_h,u_d0,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
+    //transfer_3d(u_h,u_d1,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
 
     // dump  results if wanted 
     switch(output_type) {

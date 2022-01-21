@@ -20,7 +20,7 @@ double frobenius(double ***u, double ***u_old, int N){
     int i, j, k;
     double dist;
     double sum = 0.0;
-    for (i = 1; i < N+1; i++) 
+    for (i = 1; i < (N+2)/2-1; i++) 
 	{
 		for (j = 1; j < N+1; j++)   
 		{
