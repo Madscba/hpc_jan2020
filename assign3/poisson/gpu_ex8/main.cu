@@ -29,7 +29,7 @@ main(int argc, char *argv[]) {
     //printf("Warming up device %i ... \n", device); fflush(stdout);
     cudaSetDevice(device);           // Set the device to 0 or 1.
     double *dummy_d;
-    cudaMalloc((void**)&dummy_d, 0)
+    cudaMalloc((void**)&dummy_d, 0);
 
     double 	***u_h = NULL;
     double 	***u_old_h = NULL;
@@ -37,7 +37,6 @@ main(int argc, char *argv[]) {
     double 	***u_d = NULL;
     double 	***u_old_d = NULL;
     double 	***f_d = NULL;
-    double*** temp;
     int NUM_BLOCKS, THREADS_PER_BLOCK, k, N;
 
 
