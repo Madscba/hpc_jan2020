@@ -2,7 +2,6 @@
  * 
  */
 #include <math.h>
-#
 #include <float.h>
 #include <helper_cuda.h>
 #include "transfer3d_gpu.h"
@@ -33,25 +32,6 @@ double warpReduceSum(double value) {
     return value; 
 }
 
-__inline__ __device__ 
-double blockReduceSum(double value) { 
-    __shared__ double smem[32]; // Max 32 warp sums 
- 
-    if (threadIdx.x < warpSize) 
-        smem[threadIdx.x] = 0; 
-    __syncthreads(); 
- 
-    value = warpReduceSum(value); 
- 
-    if (threadIdx.x % warpSize == 0) 
-        smem[threadIdx.x / warpSize] = value; 
-    __syncthreads(); 
- 
-    if (threadIdx.x < warpSize) 
-        value = smem[threadIdx.x]; 
-    return warpReduceSum(value); 
-}
-
 __global__ 
 void jacobi_reduction_warp(double ***u, double ***u_old, double ***f, int N, double delta, double *d) 
 { 
@@ -69,86 +49,35 @@ void jacobi_reduction_warp(double ***u, double ***u_old, double ***f, int N, dou
 		value = 0.0;
 	}
     value = warpReduceSum(value); 
-    if (threadIdx.x % warpSize == 0){ // other idx?
+    if (threadIdx.x % warpSize == 0 && threadIdx.y % warpSize == 0 && threadIdx.z % warpSize == 0){
 		 atomicAdd(d, value);
 	} 
-}
-
-__global__ 
-void jacobi_reduction_presum(double ***u, double ***u_old, double ***f, int N, double delta, double *d) 
-{ 
-	double value = 0.0;
-	int idx_i = blockIdx.z * blockDim.z + threadIdx.z+1;
-	int idx_j = blockIdx.y * blockDim.y + threadIdx.y+1;
-	int idx_k = blockIdx.x * blockDim.x + threadIdx.x+1; 
-    //double value = 0; 
-    for (int i = idx_i; i < N+1; i += blockDim.z * gridDim.z){
-		for (int j = idx_j; j < N+1; i += blockDim.y * gridDim.y){
-			for (int k = idx_k; k < N+1; i += blockDim.x * gridDim.x){
-				double tmpi = (u_old[i-1][j][k] + u_old[i+1][j][k]);
-				double tmpj = (u_old[i][j-1][k] + u_old[i][j+1][k]);
-				double tmpk = (u_old[i][j][k-1] + u_old[i][j][k+1]);
-				u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
-				value += sqrt((u[i][j][k]-u_old[i][j][k])*(u[i][j][k]-u_old[i][j][k]));
-			}
-		}
-	}  
-    value = blockReduceSum(value); 
-    if (threadIdx.x == 0 && threadIdx.y == 0 && threadIdx.z == 0){
-		atomicAdd(d, value); 
-	} 
-}
-
-
-__global__
-void
-jacobi_kernel(double ***u, double ***u_old, double ***f, int N, double delta) {
-    int i, j, k;
-	double tmpi, tmpj, tmpk;
-	i = blockIdx.z * blockDim.z + threadIdx.z+1;
-	j = blockIdx.y * blockDim.y + threadIdx.y+1;
-	k = blockIdx.x * blockDim.x + threadIdx.x+1;
-	
-	if (i < N+1 && j < N+1 && k < N+1){
-		tmpi = (u_old[i-1][j][k] + u_old[i+1][j][k]);
-		tmpj = (u_old[i][j-1][k] + u_old[i][j+1][k]);
-		tmpk = (u_old[i][j][k-1] + u_old[i][j][k+1]);
-		u[i][j][k] = (tmpi + tmpj + tmpk + delta*f[i][j][k]) / 6.0;
-	}
 }
 
 int
 jacobi(double ***u_d, double ***u_old_d, double ***f_d, double ***u_h, double ***u_old_h, double ***f_h, int N, double delta, int iter_max, int NUM_BLOCKS, int THREADS_PER_BLOCK) {
 	double*** temp;
 	int k = 0;
+	double frob;
     double *d;
-	double *d_h;
-	cudaMallocHost((void**)&d_h, sizeof(double)*1);
-	d_h[0] = 1000000.0;	
+	double *d_h0;
+	double *d_h1;
+	cudaMallocHost((void**)&d_h0, sizeof(double)*1);
+	cudaMallocHost((void**)&d_h1, sizeof(double)*1);
+	d_h1[0] = 1000000.0;	
 	cudaMalloc((void**)&d, sizeof(double)*1);
-	cudaMemcpy(d,d_h, sizeof(double), cudaMemcpyHostToDevice);
 	double tolerance = 1.0; 
-	dim3 dimBlock(16,4,4); //Threads per block
-    dim3 dimGrid((N+dimBlock.x-1)/dimBlock.x,(N+dimBlock.y-1)/dimBlock.y,(N+dimBlock.z-1)/dimBlock.z); // Block in grid
-	while(d_h[0]>tolerance && k<iter_max)
+	dim3 dimBlock(8,8,8); //Threads per block
+    dim3 dimGrid((N+dimBlock.x-1)/dimBlock.x,(N+dimBlock.y-1)/dimBlock.y,(N+dimBlock.z-1)/dimBlock.z); // Blocks in grid
+	while(d_h1[0]>tolerance && k<iter_max)
     {
+		d_h0[0] = 0.0;
+		cudaMemcpy(d,d_h0, sizeof(double), cudaMemcpyHostToDevice);
         // Execute kernel function
-		jacobi_reduction_baseline<<<dimGrid,dimBlock>>>(u_d,u_old_d,f_d,N,delta,d);        
+		jacobi_reduction_warp<<<dimGrid,dimBlock>>>(u_d,u_old_d,f_d,N,delta,d);        
 		checkCudaErrors(cudaDeviceSynchronize());
-		printf("Here!");
-		cudaMemcpy(d_h,d, sizeof(double)*1, cudaMemcpyDeviceToHost);
-		//  #Comment out when benchmarking!!#
-		/*
-        if ((k % 100) == 0)
-		{   
-
-			transfer_3d(u_h,u_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-			transfer_3d(u_old_h,u_old_d,N+2,N+2,N+2,cudaMemcpyDeviceToHost);
-            d = frobenius(u_h,u_old_h,N);
-			printf("%i  %.5f\n", k, d);
-        }
-        //  #Comment out when benchmarking!!#
-		*/
+		cudaMemcpy(d_h0,d, sizeof(double)*1, cudaMemcpyDeviceToHost);
+		d_h1[0] = d_h0[0];
         temp = u_old_d;
         u_old_d = u_d;
         u_d  = temp;
