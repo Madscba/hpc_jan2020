@@ -19,14 +19,25 @@ module load cuda/11.5.1
 export MFLOPS_MAX_IT=1 
 
 LOGEXT=$CC.dat
-NDIMS="4 8 16 32 64 128 256"
+NDIMS="256"
 EXECUTABLE_J="poisson_gpu"
 lscpu
 
 for NDIM in $NDIMS
 do
 	echo $EXECUTABLE_J $NDIM 1000 1 1
-	./$EXECUTABLE_J $NDIM 1000 1 1 | grep -v CPU >> ./gpu_$LOGEXT
+	nv-nsight-cu-cli -o profile_$LSB_JOBID \
+	--section ComputeWorkloadAnalysis \
+	--section LaunchStats \
+	--section MemoryWorkloadAnalysis \
+	--section MemoryWorkloadAnalysis_Chart \
+	--section MemoryWorkloadAnalysis_Tables \
+	--section SpeedOfLight \
+	--section SpeedOfLight_HierarchicalDoubleRooflineChart \
+	--section SpeedOfLight_HierarchicalSingleRooflineChart \
+	--target-processes all ./$EXECUTABLE_J $perm 10 1 1	
+
+	##./$EXECUTABLE_J $NDIM 1000 1 1 | grep -v CPU >> ./gpu_$LOGEXT
 
 done
 
